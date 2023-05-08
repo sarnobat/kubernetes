@@ -1,5 +1,22 @@
 # 2023-05 nginx on Ubuntu 20
 
+-   [2023-05 nginx on Ubuntu 20](#nginx-on-ubuntu-20)
+    -   [Server Node (antec)](#server-node-antec)
+        -   [taint nodes](#taint-nodes)
+        -   [install containerd](#install-containerd)
+        -   [taint nodes](#taint-nodes-1)
+        -   [Create cluster](#create-cluster)
+        -   [apply flannel](#apply-flannel)
+        -   [Check \_\_\_](#check-___)
+    -   [nuc2020](#nuc2020)
+        -   [install kubeadm, kubectl
+            etc.](#install-kubeadm-kubectl-etc.)
+    -   [antec](#antec)
+        -   [Check node joined
+            successfully](#check-node-joined-successfully)
+        -   [Testing](#testing)
+    -   [Client Node](#client-node)
+    
 ## Server Node (antec)
 
 
