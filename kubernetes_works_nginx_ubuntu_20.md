@@ -584,8 +584,7 @@ TODO: explain why
 
 ## nuc2020
 
-### ~~install kubeadm, kubectl etc.~~
-
+### install kubeadm, kubectl etc.
 
 	appserver Sun 07 May 2023  8:12PM> curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add                 /home/sarnobat
 
