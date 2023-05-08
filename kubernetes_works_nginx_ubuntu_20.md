@@ -52,12 +52,14 @@
 	The reset process does not clean your kubeconfig files and you must remove them manually.
 	Please, check the contents of the $HOME/.kube/config file.
 
-### taint nodes
+### ~~taint nodes~~
 TODO: Explain what this means
 
+~~
 	antec Sun 07 May 2023  7:58PM> kubectl taint nodes --all                                                                            /home/sarnobat
 
 		error: at least one taint update is required
+~~
 
 	antec Sun 07 May 2023  7:59PM> kubectl taint nodes --all node-role.kubernetes.io/control-plane-                                     /home/sarnobat
 
