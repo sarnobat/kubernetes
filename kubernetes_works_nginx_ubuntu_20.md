@@ -1,7 +1,8 @@
 # 2023-05 nginx on Ubuntu 20
 
 -   [2023-05 nginx on Ubuntu 20](#nginx-on-ubuntu-20)
-    -   [Server Node (antec)](#server-node-antec)
+    -   [1. a) Infrastructure setup: Server Node
+        (antec)](#a-infrastructure-setup-server-node-antec)
         -   [kubeadm reset](#kubeadm-reset)
         -   [containerd config default](#containerd-config-default)
         -   [systemctl restart
@@ -13,22 +14,24 @@
         -   [kubectl apply](#kubectl-apply)
         -   [kubectl get pods](#kubectl-get-pods)
         -   [kubectl get nodes](#kubectl-get-nodes)
-    -   [Worker node (nuc2020)](#worker-node-nuc2020)
+    -   [1. b) Infrastructure setup: Worker node
+        (nuc2020)](#b-infrastructure-setup-worker-node-nuc2020)
         -   [apt install kubeadm](#apt-install-kubeadm)
         -   [apt install kubelet](#apt-install-kubelet)
         -   [kubeadm join](#kubeadm-join)
-    -   [Server node (antec)](#server-node-antec-1)
+    -   [2. a) Application deployment: Server node
+        (antec)](#a-application-deployment-server-node-antec)
         -   [kubectl get nodes](#kubectl-get-nodes-1)
         -   [kubectl create deployment
             nginx](#kubectl-create-deployment-nginx)
         -   [kubectl get all](#kubectl-get-all)
         -   [Testing nginx](#testing-nginx)
-based on
+        
+
+Based on
 * https://www.cloudsigma.com/how-to-install-and-use-kubernetes-on-ubuntu-20-04/
     
-## Server Node (antec)
-
-
+## 1. a) Infrastructure setup: Server Node (antec)
 
 ### kubeadm reset
 
@@ -548,7 +551,7 @@ TODO: explain why
 		NAME                STATUS   ROLES           AGE   VERSION
 		kubernetes-worker   Ready    control-plane   23m   v1.26.3
 
-## Worker node (nuc2020)
+## 1. b) Infrastructure setup: Worker node (nuc2020)
 
 ### apt install kubeadm
 
@@ -626,7 +629,7 @@ TODO: explain why
 		Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
 
 
-## Server node (antec)
+## 2. a) Application deployment: Server node (antec)
 
 ### kubectl get nodes
 
@@ -731,8 +734,6 @@ TODO: explain why
 
 #### curl
 
-	antec Sun 07 May 2023  8:33PM> curl 10.96.115.33:31833
-	^C
 	antec Sun 07 May 2023  8:35PM> curl nuc2020:31833
 
 		<!DOCTYPE html>
