@@ -34,7 +34,7 @@ based on
 
 ### kubeadm reset
 
-	antec Sun 07 May 2023  7:58PM> sudo kubeadm reset                                                                                   /home/sarnobat
+	antec Sun 07 May 2023  7:58PM> sudo kubeadm reset
 
 		W0507 19:58:42.526781  648199 preflight.go:56] [reset] WARNING: Changes made to this host by 'kubeadm init' or 'kubeadm join' will be reverted.
 		[reset] Are you sure you want to proceed? [y/N]: y
@@ -58,13 +58,13 @@ based on
 
 ### Install containerd
 
-	antec Sun 07 May 2023  7:59PM> ps aux | grep containerd                                                                             /home/sarnobat
+	antec Sun 07 May 2023  7:59PM> ps aux | grep containerd
 
 		root        2180  0.2  0.0 2321040 23028 ?       Ssl  Apr06 123:04 /usr/bin/containerd
 		sarnobat  648481  0.0  0.0  17864  2276 pts/19   S+   20:00   0:00 grep containerd
 		root     1560181  0.0  0.0 1891168 23920 ?       Ssl  Apr24  12:43 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
 
-	antec Sun 07 May 2023  8:00PM> sudo systemctl status containerd                                                                     /home/sarnobat
+	antec Sun 07 May 2023  8:00PM> sudo systemctl status containerd
 
 		● containerd.service - containerd container runtime
 			 Loaded: loaded (/lib/systemd/system/containerd.service; enabled; vendor preset: enabled)
@@ -80,7 +80,7 @@ based on
 		Notice: journal has been rotated since unit was started, output may be incomplete.
 
 
-	antec Sun 07 May 2023  8:00PM> sudo mkdir -p /etc/containerd/; containerd config default | sudo tee /etc/containerd/config.toml     /home/sarnobat
+	antec Sun 07 May 2023  8:00PM> sudo mkdir -p /etc/containerd/; containerd config default | sudo tee /etc/containerd/config.toml
 
 		disabled_plugins = []
 		imports = []
@@ -335,11 +335,11 @@ based on
 
 
 
-	antec Sun 07 May 2023  8:00PM> sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml           /home/sarnobat
+	antec Sun 07 May 2023  8:00PM> sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
 
 ### systemctl restart containerd
 
-	antec Sun 07 May 2023  8:00PM> sudo systemctl restart containerd                                                                    /home/sarnobat
+	antec Sun 07 May 2023  8:00PM> sudo systemctl restart containerd
 
 ### swapoff
 
@@ -350,29 +350,29 @@ based on
 
 ### taint nodes
 
-	antec Sun 07 May 2023  8:01PM> kubectl taint nodes --all node-role.kubernetes.io/control-plane-                                     /home/sarnobat
+	antec Sun 07 May 2023  8:01PM> kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 
 		E0507 20:01:33.624612  648951 memcache.go:265] couldn't get current server API group list: Get "https://192.168.1.4:6443/api?timeout=32s": dial tcp 192.168.1.4:6443: connect: connection refused
 		E0507 20:01:33.625571  648951 memcache.go:265] couldn't get current server API group list: Get "https://192.168.1.4:6443/api?timeout=32s": dial tcp 192.168.1.4:6443: connect: connection refused
 		The connection to the server 192.168.1.4:6443 was refused - did you specify the right host or port?
 
-	antec Sun 07 May 2023  8:01PM> sudo swapoff -a                                                                                      /home/sarnobat
+	antec Sun 07 May 2023  8:01PM> sudo swapoff -a
 
-	antec Sun 07 May 2023  8:02PM> sudo hostnamectl set-hostname kubernetes-master                                                      /home/sarnobat
-	antec Sun 07 May 2023  8:02PM> sudo hostnamectl set-hostname kubernetes-worker                                                      /home/sarnobat
+	antec Sun 07 May 2023  8:02PM> sudo hostnamectl set-hostname kubernetes-master
+	antec Sun 07 May 2023  8:02PM> sudo hostnamectl set-hostname kubernetes-worker
 
-	antec Sun 07 May 2023  8:02PM> lsmod | grep br_netfilter                                                                            /home/sarnobat
+	antec Sun 07 May 2023  8:02PM> lsmod | grep br_netfilter
 
 		br_netfilter           32768  0
 		bridge                331776  1 br_netfilter
 
-	antec Sun 07 May 2023  8:02PM> sudo sysctl net.bridge.bridge-nf-call-iptables=1                                                     /home/sarnobat
+	antec Sun 07 May 2023  8:02PM> sudo sysctl net.bridge.bridge-nf-call-iptables=1
 
 		net.bridge.bridge-nf-call-iptables = 1
 
 ### Create cluster
 
-	antec Sun 07 May 2023  8:02PM> sudo kubeadm init --pod-network-cidr=10.244.0.0/16                                                   /home/sarnobat
+	antec Sun 07 May 2023  8:02PM> sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 
 		I0507 20:03:07.447819  649218 version.go:256] remote version is much newer: v1.27.1; falling back to: stable-1.26
 		[init] Using Kubernetes version: v1.26.4
@@ -447,14 +447,14 @@ based on
 		kubeadm join 192.168.1.4:6443 --token 33hpb0.ps5p55au5vdualfr \
 			--discovery-token-ca-cert-hash sha256:a0a4f3ec96303b6cbb741259663df3a0101109d284c68329e10d35341866dc78
 
-	antec Sun 07 May 2023  8:04PM> sudo kubeadm init --pod-network-cidr=10.244.0.0/16                                                   /home/sarnobat
-	antec Sun 07 May 2023  8:08PM> mkdir -p $HOME/.kube                                                                                 /home/sarnobat
+	antec Sun 07 May 2023  8:04PM> sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+	antec Sun 07 May 2023  8:08PM> mkdir -p $HOME/.kube
 
 		sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 		sudo chown $(id -u):$(id -g) $HOME/.kube/config
-		cp: overwrite '/home/sarnobat/.kube/config'? y
+		cp: overwrite '/.kube/config'? y
 
-	antec Sun 07 May 2023  8:08PM> sudo ufw allow 6443                                                                                  /home/sarnobat
+	antec Sun 07 May 2023  8:08PM> sudo ufw allow 6443
 
 		sudo ufw allow 6443/tcp
 		Rules updated
@@ -498,7 +498,7 @@ TODO: explain why
 
 ### Check cluster master node is up
 
-	antec Sun 07 May 2023  8:09PM> kubectl get pods --all-namespaces                                                                    /home/sarnobat
+	antec Sun 07 May 2023  8:09PM> kubectl get pods --all-namespaces
 
 		NAMESPACE      NAME                                        READY   STATUS    RESTARTS   AGE
 		  namespace: kube-system
@@ -535,7 +535,7 @@ TODO: explain why
 		kube-system    kube-scheduler-kubernetes-worker            1/1     Running   0          4m58s
 
 
-	antec Sun 07 May 2023  8:09PM> kubectl get componentstatus                                                                          /home/sarnobat
+	antec Sun 07 May 2023  8:09PM> kubectl get componentstatus
 
 		Warning: v1 ComponentStatus is deprecated in v1.19+
 		NAME                 STATUS    MESSAGE                         ERROR
@@ -543,7 +543,7 @@ TODO: explain why
 		scheduler            Healthy   ok
 		etcd-0               Healthy   {"health":"true","reason":""}
 
-	antec Sun 07 May 2023  8:09PM> kubectl get cs                                                                                       /home/sarnobat
+	antec Sun 07 May 2023  8:09PM> kubectl get cs
 
 		Warning: v1 ComponentStatus is deprecated in v1.19+
 		NAME                 STATUS    MESSAGE                         ERROR
@@ -554,7 +554,7 @@ TODO: explain why
 
 ### Check control plane is up
 
-	antec Sun 07 May 2023  8:11PM> kubectl get nodes                                                                                    /home/sarnobat
+	antec Sun 07 May 2023  8:11PM> kubectl get nodes
 
 		NAME                STATUS   ROLES           AGE   VERSION
 		kubernetes-worker   Ready    control-plane   23m   v1.26.3
@@ -563,14 +563,14 @@ TODO: explain why
 
 ### install kubeadm, kubectl etc.
 
-	appserver Sun 07 May 2023  8:12PM> curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add                 /home/sarnobat
+	appserver Sun 07 May 2023  8:12PM> curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 
 	OK
 
-	appserver Sun 07 May 2023  8:14PM> echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" >> ~/kubernetes.list                /home/sarnobat
+	appserver Sun 07 May 2023  8:14PM> echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" >> ~/kubernetes.list
 	sudo mv ~/kubernetes.list /etc/apt/sources.list.d
 
-	appserver Sun 07 May 2023  8:14PM> sudo apt install kubeadm                                                                         /home/sarnobat
+	appserver Sun 07 May 2023  8:14PM> sudo apt install kubeadm
 
 		Reading package lists... Done
 		Building dependency tree
@@ -600,7 +600,7 @@ TODO: explain why
 
 ### install kubelet
 
-	appserver Sun 07 May 2023  8:17PM> sudo apt update && sudo apt install kubelet                                                      /home/sarnobat
+	appserver Sun 07 May 2023  8:17PM> sudo apt update && sudo apt install kubelet
 
 		Hit:1 http://us.archive.ubuntu.com/ubuntu focal InRelease
 		Hit:2 https://dl.google.com/linux/chrome/deb stable InRelease
@@ -617,7 +617,7 @@ TODO: explain why
 		kubelet/kubernetes-xenial,now 1.27.1-00 amd64 [installed,automatic]
 		  Kubernetes Node Agent
 
-	appserver Sun 07 May 2023  8:23PM> sudo apt reinstall kubelet                                                                       /home/sarnobat
+	appserver Sun 07 May 2023  8:23PM> sudo apt reinstall kubelet
 
 		Reading package lists... Done
 		Building dependency tree
@@ -635,174 +635,7 @@ TODO: explain why
 		Unpacking kubelet (1.27.1-00) over (1.27.1-00) ...
 		Setting up kubelet (1.27.1-00) ...
 
-	appserver Sun 07 May 2023  8:24PM> journalctl -u kubelet -f                                                                         /home/sarnobat
-
-		-- Logs begin at Wed 2023-05-03 13:00:27 PDT. --
-		May 07 20:24:07 nuc2020 kubelet[32998]: Flag --container-runtime-endpoint has been deprecated, This parameter should be set via the config file specified by the Kubelet's --config flag. See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-config-file/ for more information.
-		May 07 20:24:07 nuc2020 kubelet[32998]: Flag --pod-infra-container-image has been deprecated, will be removed in a future release. Image garbage collector will get sandbox image information from CRI.
-		May 07 20:24:07 nuc2020 kubelet[32998]: I0507 20:24:07.102878   32998 server.go:199] "--pod-infra-container-image will not be pruned by the image garbage collector in kubelet and should also be set in the remote runtime"
-		May 07 20:24:07 nuc2020 kubelet[32998]: I0507 20:24:07.105167   32998 server.go:415] "Kubelet version" kubeletVersion="v1.27.1"
-		May 07 20:24:07 nuc2020 kubelet[32998]: I0507 20:24:07.105181   32998 server.go:417] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
-		May 07 20:24:07 nuc2020 kubelet[32998]: I0507 20:24:07.105346   32998 server.go:837] "Client rotation is on, will bootstrap in background"
-		May 07 20:24:07 nuc2020 kubelet[32998]: E0507 20:24:07.105728   32998 bootstrap.go:241] unable to read existing bootstrap client config from /etc/kubernetes/kubelet.conf: invalid configuration: [unable to read client-cert /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory, unable to read client-key /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory]
-		May 07 20:24:07 nuc2020 kubelet[32998]: E0507 20:24:07.105756   32998 run.go:74] "command failed" err="failed to run Kubelet: unable to load bootstrap kubeconfig: stat /etc/kubernetes/bootstrap-kubelet.conf: no such file or directory"
-		May 07 20:24:07 nuc2020 systemd[1]: kubelet.service: Main process exited, code=exited, status=1/FAILURE
-		May 07 20:24:07 nuc2020 systemd[1]: kubelet.service: Failed with result 'exit-code'.
-		May 07 20:24:17 nuc2020 systemd[1]: kubelet.service: Scheduled restart job, restart counter is at 51.
-		May 07 20:24:17 nuc2020 systemd[1]: Stopped kubelet: The Kubernetes Node Agent.
-		May 07 20:24:17 nuc2020 systemd[1]: Started kubelet: The Kubernetes Node Agent.
-		May 07 20:24:17 nuc2020 kubelet[33205]: Flag --container-runtime-endpoint has been deprecated, This parameter should be set via the config file specified by the Kubelet's --config flag. See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-config-file/ for more information.
-		May 07 20:24:17 nuc2020 kubelet[33205]: Flag --pod-infra-container-image has been deprecated, will be removed in a future release. Image garbage collector will get sandbox image information from CRI.
-		May 07 20:24:17 nuc2020 kubelet[33205]: I0507 20:24:17.350374   33205 server.go:199] "--pod-infra-container-image will not be pruned by the image garbage collector in kubelet and should also be set in the remote runtime"
-		May 07 20:24:17 nuc2020 kubelet[33205]: I0507 20:24:17.352943   33205 server.go:415] "Kubelet version" kubeletVersion="v1.27.1"
-		May 07 20:24:17 nuc2020 kubelet[33205]: I0507 20:24:17.352958   33205 server.go:417] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
-		May 07 20:24:17 nuc2020 kubelet[33205]: I0507 20:24:17.353108   33205 server.go:837] "Client rotation is on, will bootstrap in background"
-		May 07 20:24:17 nuc2020 kubelet[33205]: E0507 20:24:17.354147   33205 bootstrap.go:241] unable to read existing bootstrap client config from /etc/kubernetes/kubelet.conf: invalid configuration: [unable to read client-cert /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory, unable to read client-key /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory]
-		May 07 20:24:17 nuc2020 kubelet[33205]: E0507 20:24:17.354186   33205 run.go:74] "command failed" err="failed to run Kubelet: unable to load bootstrap kubeconfig: stat /etc/kubernetes/bootstrap-kubelet.conf: no such file or directory"
-		May 07 20:24:17 nuc2020 systemd[1]: kubelet.service: Main process exited, code=exited, status=1/FAILURE
-		May 07 20:24:17 nuc2020 systemd[1]: kubelet.service: Failed with result 'exit-code'.
-		qMay 07 20:24:27 nuc2020 systemd[1]: kubelet.service: Scheduled restart job, restart counter is at 52.
-		May 07 20:24:27 nuc2020 systemd[1]: Stopped kubelet: The Kubernetes Node Agent.
-		May 07 20:24:27 nuc2020 systemd[1]: Started kubelet: The Kubernetes Node Agent.
-		May 07 20:24:27 nuc2020 kubelet[33246]: Flag --container-runtime-endpoint has been deprecated, This parameter should be set via the config file specified by the Kubelet's --config flag. See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-config-file/ for more information.
-		May 07 20:24:27 nuc2020 kubelet[33246]: Flag --pod-infra-container-image has been deprecated, will be removed in a future release. Image garbage collector will get sandbox image information from CRI.
-		May 07 20:24:27 nuc2020 kubelet[33246]: I0507 20:24:27.599843   33246 server.go:199] "--pod-infra-container-image will not be pruned by the image garbage collector in kubelet and should also be set in the remote runtime"
-		May 07 20:24:27 nuc2020 kubelet[33246]: I0507 20:24:27.602471   33246 server.go:415] "Kubelet version" kubeletVersion="v1.27.1"
-		May 07 20:24:27 nuc2020 kubelet[33246]: I0507 20:24:27.602486   33246 server.go:417] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
-		May 07 20:24:27 nuc2020 kubelet[33246]: I0507 20:24:27.602638   33246 server.go:837] "Client rotation is on, will bootstrap in background"
-		May 07 20:24:27 nuc2020 kubelet[33246]: E0507 20:24:27.603036   33246 bootstrap.go:241] unable to read existing bootstrap client config from /etc/kubernetes/kubelet.conf: invalid configuration: [unable to read client-cert /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory, unable to read client-key /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory]
-		May 07 20:24:27 nuc2020 kubelet[33246]: E0507 20:24:27.603066   33246 run.go:74] "command failed" err="failed to run Kubelet: unable to load bootstrap kubeconfig: stat /etc/kubernetes/bootstrap-kubelet.conf: no such file or directory"
-		May 07 20:24:27 nuc2020 systemd[1]: kubelet.service: Main process exited, code=exited, status=1/FAILURE
-		May 07 20:24:27 nuc2020 systemd[1]: kubelet.service: Failed with result 'exit-code'.
-
-
-
-
-
-
-		^C
-
-	appserver Sun 07 May 2023  8:24PM> ls --color -lS --reverse --human-readable --almost-all                                           /home/sarnobat
-	appserver Sun 07 May 2023  8:24PM> sudo service kubelet start                                                                       /home/sarnobat
-	appserver Sun 07 May 2023  8:25PM> journalctl -u kubelet -f                                                                         /home/sarnobat
-
-		-- Logs begin at Wed 2023-05-03 13:00:27 PDT. --
-		May 07 20:25:39 nuc2020 kubelet[33704]: Flag --container-runtime-endpoint has been deprecated, This parameter should be set via the config file specified by the Kubelet's --config flag. See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-config-file/ for more information.
-		May 07 20:25:39 nuc2020 kubelet[33704]: Flag --pod-infra-container-image has been deprecated, will be removed in a future release. Image garbage collector will get sandbox image information from CRI.
-		May 07 20:25:39 nuc2020 kubelet[33704]: I0507 20:25:39.347252   33704 server.go:199] "--pod-infra-container-image will not be pruned by the image garbage collector in kubelet and should also be set in the remote runtime"
-		May 07 20:25:39 nuc2020 kubelet[33704]: I0507 20:25:39.349758   33704 server.go:415] "Kubelet version" kubeletVersion="v1.27.1"
-		May 07 20:25:39 nuc2020 kubelet[33704]: I0507 20:25:39.349772   33704 server.go:417] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
-		May 07 20:25:39 nuc2020 kubelet[33704]: I0507 20:25:39.349909   33704 server.go:837] "Client rotation is on, will bootstrap in background"
-		May 07 20:25:39 nuc2020 kubelet[33704]: E0507 20:25:39.350321   33704 bootstrap.go:241] unable to read existing bootstrap client config from /etc/kubernetes/kubelet.conf: invalid configuration: [unable to read client-cert /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory, unable to read client-key /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory]
-		May 07 20:25:39 nuc2020 kubelet[33704]: E0507 20:25:39.350350   33704 run.go:74] "command failed" err="failed to run Kubelet: unable to load bootstrap kubeconfig: stat /etc/kubernetes/bootstrap-kubelet.conf: no such file or directory"
-		May 07 20:25:39 nuc2020 systemd[1]: kubelet.service: Main process exited, code=exited, status=1/FAILURE
-		May 07 20:25:39 nuc2020 systemd[1]: kubelet.service: Failed with result 'exit-code'.
-		q
-		May 07 20:25:49 nuc2020 systemd[1]: kubelet.service: Scheduled restart job, restart counter is at 60.
-		May 07 20:25:49 nuc2020 systemd[1]: Stopped kubelet: The Kubernetes Node Agent.
-		May 07 20:25:49 nuc2020 systemd[1]: Started kubelet: The Kubernetes Node Agent.
-		May 07 20:25:49 nuc2020 kubelet[33749]: Flag --container-runtime-endpoint has been deprecated, This parameter should be set via the config file specified by the Kubelet's --config flag. See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-config-file/ for more information.
-		May 07 20:25:49 nuc2020 kubelet[33749]: Flag --pod-infra-container-image has been deprecated, will be removed in a future release. Image garbage collector will get sandbox image information from CRI.
-		May 07 20:25:49 nuc2020 kubelet[33749]: I0507 20:25:49.599935   33749 server.go:199] "--pod-infra-container-image will not be pruned by the image garbage collector in kubelet and should also be set in the remote runtime"
-		May 07 20:25:49 nuc2020 kubelet[33749]: I0507 20:25:49.602531   33749 server.go:415] "Kubelet version" kubeletVersion="v1.27.1"
-		May 07 20:25:49 nuc2020 kubelet[33749]: I0507 20:25:49.602545   33749 server.go:417] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
-		May 07 20:25:49 nuc2020 kubelet[33749]: I0507 20:25:49.602667   33749 server.go:837] "Client rotation is on, will bootstrap in background"
-		May 07 20:25:49 nuc2020 kubelet[33749]: E0507 20:25:49.603067   33749 bootstrap.go:241] unable to read existing bootstrap client config from /etc/kubernetes/kubelet.conf: invalid configuration: [unable to read client-cert /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory, unable to read client-key /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory]
-		May 07 20:25:49 nuc2020 kubelet[33749]: E0507 20:25:49.603090   33749 run.go:74] "command failed" err="failed to run Kubelet: unable to load bootstrap kubeconfig: stat /etc/kubernetes/bootstrap-kubelet.conf: no such file or directory"
-		May 07 20:25:49 nuc2020 systemd[1]: kubelet.service: Main process exited, code=exited, status=1/FAILURE
-		May 07 20:25:49 nuc2020 systemd[1]: kubelet.service: Failed with result 'exit-code'.
-
-
-		^C
-
-	appserver Sun 07 May 2023  8:25PM> sudo kubeadm join 127.0.0.188:6443 --token u81y02.91gqwkxx6rnhnnly --discovery-token-ca-cert-hash sha256:4482ab1c66bf17992ea02c1ba580f4af9f3ad4cc37b24f189db34d6e3fe95c2d
-
-		[preflight] Running pre-flight checks
-			[WARNING Swap]: swap is enabled; production deployments should disable swap unless testing the NodeSwap feature gate of the kubelet
-		error execution phase preflight: [preflight] Some fatal errors occurred:
-			[ERROR FileAvailable--etc-kubernetes-kubelet.conf]: /etc/kubernetes/kubelet.conf already exists
-			[ERROR FileAvailable--etc-kubernetes-pki-ca.crt]: /etc/kubernetes/pki/ca.crt already exists
-		[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
-		To see the stack trace of this error execute with --v=5 or higher
-
-	appserver Sun 07 May 2023  8:26PM> kubectl get nodes                                                                                /home/sarnobat
-
-		E0507 20:27:13.942157   34151 memcache.go:265] couldn't get current server API group list: Get "http://localhost:8080/api?timeout=32s": dial tcp 127.0.0.1:8080: connect: connection refused
-		E0507 20:27:13.942477   34151 memcache.go:265] couldn't get current server API group list: Get "http://localhost:8080/api?timeout=32s": dial tcp 127.0.0.1:8080: connect: connection refused
-		E0507 20:27:13.943794   34151 memcache.go:265] couldn't get current server API group list: Get "http://localhost:8080/api?timeout=32s": dial tcp 127.0.0.1:8080: connect: connection refused
-		E0507 20:27:13.945169   34151 memcache.go:265] couldn't get current server API group list: Get "http://localhost:8080/api?timeout=32s": dial tcp 127.0.0.1:8080: connect: connection refused
-		E0507 20:27:13.946310   34151 memcache.go:265] couldn't get current server API group list: Get "http://localhost:8080/api?timeout=32s": dial tcp 127.0.0.1:8080: connect: connection refused
-		The connection to the server localhost:8080 was refused - did you specify the right host or port?
-
-	appserver Sun 07 May 2023  8:27PM> sudo kubeadm join 127.0.0.188:6443 --token u81y02.91gqwkxx6rnhnnly --discovery-token-ca-cert-hash sha256:4482ab1c66bf17992ea02c1ba580f4af9f3ad4cc37b24f189db34d6e3fe95c2d
-
-		[preflight] Running pre-flight checks
-			[WARNING Swap]: swap is enabled; production deployments should disable swap unless testing the NodeSwap feature gate of the kubelet
-		error execution phase preflight: [preflight] Some fatal errors occurred:
-			[ERROR FileAvailable--etc-kubernetes-kubelet.conf]: /etc/kubernetes/kubelet.conf already exists
-			[ERROR FileAvailable--etc-kubernetes-pki-ca.crt]: /etc/kubernetes/pki/ca.crt already exists
-		[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
-		To see the stack trace of this error execute with --v=5 or higher
-
-	appserver Sun 07 May 2023  8:28PM> set                                                                                              /home/sarnobat
-	appserver Sun 07 May 2023  8:28PM> swa                                                                                              /home/sarnobat
-	appserver Sun 07 May 2023  8:28PM> sudo swapoff -a                                                                                  /home/sarnobat
-	appserver Sun 07 May 2023  8:28PM> sudo kubeadm join 127.0.0.188:6443 --token u81y02.91gqwkxx6rnhnnly --discovery-token-ca-cert-hash sha256:4482ab1c66bf17992ea02c1ba580f4af9f3ad4cc37b24f189db34d6e3fe95c2d
-
-	[preflight] Running pre-flight checks
-	error execution phase preflight: [preflight] Some fatal errors occurred:
-		[ERROR FileAvailable--etc-kubernetes-kubelet.conf]: /etc/kubernetes/kubelet.conf already exists
-		[ERROR FileAvailable--etc-kubernetes-pki-ca.crt]: /etc/kubernetes/pki/ca.crt already exists
-	[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
-	To see the stack trace of this error execute with --v=5 or higher
-
-	appserver Sun 07 May 2023  8:28PM> sudo mv /etc/kubernetes/kubelet.conf /etc/kubernetes/kubelet.conf.disabled                       /home/sarnobat
-	appserver Sun 07 May 2023  8:29PM> sudo mv /etc/kubernetes/pki/ca.crt /etc/kubernetes/pki/ca.crt.disabled                           /home/sarnobat
-	appserver Sun 07 May 2023  8:29PM> sudo kubeadm join 127.0.0.188:6443 --token u81y02.91gqwkxx6rnhnnly --discovery-token-ca-cert-hash sha256:4482ab1c66bf17992ea02c1ba580f4af9f3ad4cc37b24f189db34d6e3fe95c2d
-
-	[preflight] Running pre-flight checks
-	^C
-
-	appserver Sun 07 May 2023  8:31PM> sudo kubeadm join 127.0.0.188:6443 --token u81y02.91gqwkxx6rnhnnly --discovery-token-ca-cert-hash sha256:4482ab1c66bf17992ea02c1ba580f4af9f3ad4cc37b24f189db34d6e3fe95c2d -v10
-		I0507 20:31:25.875536   35388 join.go:412] [preflight] found NodeName empty; using OS hostname as NodeName
-		I0507 20:31:25.875666   35388 initconfiguration.go:117] detected and using CRI socket: unix:///var/run/containerd/containerd.sock
-		[preflight] Running pre-flight checks
-		I0507 20:31:25.875727   35388 preflight.go:93] [preflight] Running general checks
-		I0507 20:31:25.875764   35388 checks.go:280] validating the existence of file /etc/kubernetes/kubelet.conf
-		I0507 20:31:25.875774   35388 checks.go:280] validating the existence of file /etc/kubernetes/bootstrap-kubelet.conf
-		I0507 20:31:25.875781   35388 checks.go:104] validating the container runtime
-		I0507 20:31:25.892955   35388 checks.go:639] validating whether swap is enabled or not
-		I0507 20:31:25.892995   35388 checks.go:370] validating the presence of executable crictl
-		I0507 20:31:25.893014   35388 checks.go:370] validating the presence of executable conntrack
-		I0507 20:31:25.893024   35388 checks.go:370] validating the presence of executable ip
-		I0507 20:31:25.893036   35388 checks.go:370] validating the presence of executable iptables
-		I0507 20:31:25.893051   35388 checks.go:370] validating the presence of executable mount
-		I0507 20:31:25.893062   35388 checks.go:370] validating the presence of executable nsenter
-		I0507 20:31:25.893070   35388 checks.go:370] validating the presence of executable ebtables
-		I0507 20:31:25.893079   35388 checks.go:370] validating the presence of executable ethtool
-		I0507 20:31:25.893086   35388 checks.go:370] validating the presence of executable socat
-		I0507 20:31:25.893094   35388 checks.go:370] validating the presence of executable tc
-		I0507 20:31:25.893103   35388 checks.go:370] validating the presence of executable touch
-		I0507 20:31:25.893114   35388 checks.go:516] running all checks
-		I0507 20:31:25.901221   35388 checks.go:401] checking whether the given node name is valid and reachable using net.LookupHost
-		I0507 20:31:25.901343   35388 checks.go:605] validating kubelet version
-		I0507 20:31:25.931455   35388 checks.go:130] validating if the "kubelet" service is enabled and active
-		I0507 20:31:25.939012   35388 checks.go:203] validating availability of port 10250
-		I0507 20:31:25.939118   35388 checks.go:280] validating the existence of file /etc/kubernetes/pki/ca.crt
-		I0507 20:31:25.939127   35388 checks.go:430] validating if the connectivity type is via proxy or direct
-		I0507 20:31:25.939144   35388 checks.go:329] validating the contents of file /proc/sys/net/bridge/bridge-nf-call-iptables
-		I0507 20:31:25.939168   35388 checks.go:329] validating the contents of file /proc/sys/net/ipv4/ip_forward
-		I0507 20:31:25.939183   35388 join.go:529] [preflight] Discovering cluster-info
-		I0507 20:31:25.939196   35388 token.go:80] [discovery] Created cluster-info discovery client, requesting info from "127.0.0.188:6443"
-		I0507 20:31:25.939519   35388 round_trippers.go:466] curl -v -XGET  -H "Accept: application/json, */*" -H "User-Agent: kubeadm/v1.27.1 (linux/amd64) kubernetes/4c94112" 'https://127.0.0.188:6443/api/v1/namespaces/kube-public/configmaps/cluster-info?timeout=10s'
-		I0507 20:31:25.939652   35388 round_trippers.go:508] HTTP Trace: Dial to tcp:127.0.0.188:6443 failed: dial tcp 127.0.0.188:6443: connect: connection refused
-		I0507 20:31:25.939668   35388 round_trippers.go:553] GET https://127.0.0.188:6443/api/v1/namespaces/kube-public/configmaps/cluster-info?timeout=10s  in 0 milliseconds
-		I0507 20:31:25.939675   35388 round_trippers.go:570] HTTP Statistics: DNSLookup 0 ms Dial 0 ms TLSHandshake 0 ms Duration 0 ms
-		I0507 20:31:25.939681   35388 round_trippers.go:577] Response Headers:
-		I0507 20:31:25.939706   35388 token.go:217] [discovery] Failed to request cluster-info, will try again: Get "https://127.0.0.188:6443/api/v1/namespaces/kube-public/configmaps/cluster-info?timeout=10s": dial tcp 127.0.0.188:6443: connect: connection refused
-		^C
-
-### join cluster
+### kubeadm join
 
 	appserver Sun 07 May 2023  8:31PM> sudo kubeadm join 192.168.1.4:6443 --token 33hpb0.ps5p55au5vdualfr   --discovery-token-ca-cert-hash sha256:a0a4f3ec96303b6cbb741259663df3a0101109d284c68329e10d35341866dc78
 
@@ -820,113 +653,28 @@ TODO: explain why
 
 		Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
 
-	appserver Sun 07 May 2023  8:31PM> ip addr                                                                                          /home/sarnobat
-
-		1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-			link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-			inet 127.0.0.1/8 scope host lo
-			   valid_lft forever preferred_lft forever
-			inet6 ::1/128 scope host
-			   valid_lft forever preferred_lft forever
-		2: eno1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
-			link/ether 1c:69:7a:6e:92:ef brd ff:ff:ff:ff:ff:ff
-			altname enp0s31f6
-			inet 192.168.1.3/24 brd 192.168.1.255 scope global dynamic noprefixroute eno1
-			   valid_lft 78210sec preferred_lft 78210sec
-			inet6 fe80::4f35:f886:c69d:b370/64 scope link noprefixroute
-			   valid_lft forever preferred_lft forever
-		3: wlp0s20f3: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
-			link/ether 34:c9:3d:e3:f5:a8 brd ff:ff:ff:ff:ff:ff
-		4: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
-			link/ether 02:42:e3:07:cb:be brd ff:ff:ff:ff:ff:ff
-			inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
-			   valid_lft forever preferred_lft forever
-		5: flannel.1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN group default
-			link/ether 12:8e:a1:0a:3a:eb brd ff:ff:ff:ff:ff:ff
-			inet 10.244.1.0/32 scope global flannel.1
-			   valid_lft forever preferred_lft forever
-			inet6 fe80::108e:a1ff:fe0a:3aeb/64 scope link
-			   valid_lft forever preferred_lft forever
-		6: cni0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default qlen 1000
-			link/ether 86:b7:96:ed:8b:43 brd ff:ff:ff:ff:ff:ff
-			inet 10.244.1.1/24 brd 10.244.1.255 scope global cni0
-			   valid_lft forever preferred_lft forever
-			inet6 fe80::84b7:96ff:feed:8b43/64 scope link
-			   valid_lft forever preferred_lft forever
-		7: vethc96f33bf@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
-			link/ether 82:61:1e:6b:b6:f7 brd ff:ff:ff:ff:ff:ff link-netns cni-08b49b24-28b8-0b49-92bf-7416d58ddfa3
-			inet6 fe80::8061:1eff:fe6b:b6f7/64 scope link
-			   valid_lft forever preferred_lft forever
-
-	appserver Sun 07 May 2023  8:34PM> ifconfig eno0                                                                                    /home/sarnobat
-	zsh: command not found: ifconfig
-	appserver Sun 07 May 2023  8:34PM> ip addr eno0                                                                                     /home/sarnobat
-	Command "eno0" is unknown, try "ip address help".
-	appserver Sun 07 May 2023  8:35PM> ip addr eth0                                                                                     /home/sarnobat
-	Command "eth0" is unknown, try "ip address help".
-	appserver Sun 07 May 2023  8:35PM> ifconfig                                                                                         /home/sarnobat
-	zsh: command not found: ifconfig
-	appserver Sun 07 May 2023  8:35PM> ip addr                                                                                          /home/sarnobat
-
-		1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-			link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-			inet 127.0.0.1/8 scope host lo
-			   valid_lft forever preferred_lft forever
-			inet6 ::1/128 scope host
-			   valid_lft forever preferred_lft forever
-		2: eno1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
-			link/ether 1c:69:7a:6e:92:ef brd ff:ff:ff:ff:ff:ff
-			altname enp0s31f6
-			inet 192.168.1.3/24 brd 192.168.1.255 scope global dynamic noprefixroute eno1
-			   valid_lft 78193sec preferred_lft 78193sec
-			inet6 fe80::4f35:f886:c69d:b370/64 scope link noprefixroute
-			   valid_lft forever preferred_lft forever
-		3: wlp0s20f3: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
-			link/ether 34:c9:3d:e3:f5:a8 brd ff:ff:ff:ff:ff:ff
-		4: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
-			link/ether 02:42:e3:07:cb:be brd ff:ff:ff:ff:ff:ff
-			inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
-			   valid_lft forever preferred_lft forever
-		5: flannel.1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN group default
-			link/ether 12:8e:a1:0a:3a:eb brd ff:ff:ff:ff:ff:ff
-			inet 10.244.1.0/32 scope global flannel.1
-			   valid_lft forever preferred_lft forever
-			inet6 fe80::108e:a1ff:fe0a:3aeb/64 scope link
-			   valid_lft forever preferred_lft forever
-		6: cni0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default qlen 1000
-			link/ether 86:b7:96:ed:8b:43 brd ff:ff:ff:ff:ff:ff
-			inet 10.244.1.1/24 brd 10.244.1.255 scope global cni0
-			   valid_lft forever preferred_lft forever
-			inet6 fe80::84b7:96ff:feed:8b43/64 scope link
-			   valid_lft forever preferred_lft forever
-		7: vethc96f33bf@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
-			link/ether 82:61:1e:6b:b6:f7 brd ff:ff:ff:ff:ff:ff link-netns cni-08b49b24-28b8-0b49-92bf-7416d58ddfa3
-			inet6 fe80::8061:1eff:fe6b:b6f7/64 scope link
-			   valid_lft forever preferred_lft forever
-
-	appserver Sun 07 May 2023  8:35PM>                                                                                                  /home/sarnobat
 
 ## Server node (antec)
 
 ### Check node joined successfully
 
-	antec Sun 07 May 2023  8:28PM> kubectl get nodes                                                                                    /home/sarnobat
+	antec Sun 07 May 2023  8:28PM> kubectl get nodes
 
 		NAME                STATUS     ROLES           AGE   VERSION
 		kubernetes-worker   Ready      control-plane   27m   v1.26.3
 		nuc2020             NotReady   <none>          11s   v1.27.1
 
-	antec Sun 07 May 2023  8:31PM> kubectl get nodes                                                                                    /home/sarnobat
+	antec Sun 07 May 2023  8:31PM> kubectl get nodes
 
 		NAME                STATUS   ROLES           AGE   VERSION
 		kubernetes-worker   Ready    control-plane   27m   v1.26.3
 		nuc2020             Ready    <none>          27s   v1.27.1
 
-	antec Sun 07 May 2023  8:32PM> kubectl create deployment nginx --image=nginx                                                        /home/sarnobat
+	antec Sun 07 May 2023  8:32PM> kubectl create deployment nginx --image=nginx
 
 		deployment.apps/nginx created
 
-	antec Sun 07 May 2023  8:33PM> kubectl describe deployment nginx                                                                    /home/sarnobat
+	antec Sun 07 May 2023  8:33PM> kubectl describe deployment nginx
 
 		Name:                   nginx
 		Namespace:              default
@@ -960,12 +708,12 @@ TODO: explain why
 		  ----    ------             ----  ----                   -------
 		  Normal  ScalingReplicaSet  9s    deployment-controller  Scaled up replica set nginx-748c667d99 to 1
 
-	antec Sun 07 May 2023  8:33PM>                                                                                                      /home/sarnobat
+	antec Sun 07 May 2023  8:33PM>
 
 		kubectl create service nodeport nginx --tcp=80:80
 		service/nginx created
 
-	antec Sun 07 May 2023  8:33PM> kubectl get svc                                                                                      /home/sarnobat
+	antec Sun 07 May 2023  8:33PM> kubectl get svc
 
 		NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
 		kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP        29m
@@ -1005,9 +753,9 @@ TODO: explain why
 
 ### Testing nginx
 
-	antec Sun 07 May 2023  8:33PM> curl 10.96.115.33:31833                                                                              /home/sarnobat
+	antec Sun 07 May 2023  8:33PM> curl 10.96.115.33:31833
 	^C
-	antec Sun 07 May 2023  8:35PM> curl nuc2020:31833                                                                                   /home/sarnobat
+	antec Sun 07 May 2023  8:35PM> curl nuc2020:31833
 
 		<!DOCTYPE html>
 		<html>
