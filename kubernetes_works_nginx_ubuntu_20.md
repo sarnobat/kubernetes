@@ -10,22 +10,19 @@
         -   [systemctl restart kubelet](#systemctl-restart-kubelet)
         -   [hostnamectl set-hostname](#hostnamectl-set-hostname)
         -   [kubeadm init](#kubeadm-init)
-        -   [apply flannel](#apply-flannel)
-        -   [Check cluster master node is
-            up](#check-cluster-master-node-is-up)
-        -   [Check control plane is up](#check-control-plane-is-up)
-    -   [nuc2020](#nuc2020)
-        -   [install kubeadm, kubectl
-            etc.](#install-kubeadm-kubectl-etc.)
-        -   [install kubelet](#install-kubelet)
+        -   [kubectl apply](#kubectl-apply)
+        -   [kubectl get pods](#kubectl-get-pods)
+        -   [kubectl get nodes](#kubectl-get-nodes)
+    -   [Worker node (nuc2020)](#worker-node-nuc2020)
+        -   [apt install kubeadm](#apt-install-kubeadm)
+        -   [apt install kubelet](#apt-install-kubelet)
         -   [kubeadm join](#kubeadm-join)
     -   [Server node (antec)](#server-node-antec-1)
-        -   [Check node joined
-            successfully](#check-node-joined-successfully)
+        -   [kubectl get nodes](#kubectl-get-nodes-1)
+        -   [kubectl create deployment
+            nginx](#kubectl-create-deployment-nginx)
+        -   [kubectl get all](#kubectl-get-all)
         -   [Testing nginx](#testing-nginx)
-    -   [Client Node](#client-node)
-
-
 based on
 * https://www.cloudsigma.com/how-to-install-and-use-kubernetes-on-ubuntu-20-04/
     
