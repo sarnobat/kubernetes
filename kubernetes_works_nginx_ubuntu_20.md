@@ -1722,7 +1722,7 @@ I couldn't get this to work
 
 	appserver Sun 07 May 2023  8:35PM>                                                                                                  /home/sarnobat
 
-## antec
+## Server node (antec)
 
 ### Check node joined successfully
 
@@ -1787,7 +1787,8 @@ I couldn't get this to work
 		kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP        29m
 		nginx        NodePort    10.96.115.33   <none>        80:31833/TCP   12s
 
-### Testing
+### Testing nginx
+
 	antec Sun 07 May 2023  8:33PM> curl 10.96.115.33:31833                                                                              /home/sarnobat
 	^C
 	antec Sun 07 May 2023  8:35PM> curl nuc2020:31833                                                                                   /home/sarnobat
