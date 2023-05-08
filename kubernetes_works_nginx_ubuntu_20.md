@@ -13,8 +13,8 @@
             up](#check-cluster-master-node-is-up)
         -   [Check control plane is up](#check-control-plane-is-up)
     -   [nuc2020](#nuc2020)
-        -   [~~install kubeadm, kubectl
-            etc.~~](#install-kubeadm-kubectl-etc.)
+        -   [install kubeadm, kubectl
+            etc.](#install-kubeadm-kubectl-etc.)
         -   [install kubelet](#install-kubelet)
         -   [join cluster](#join-cluster)
     -   [Server node (antec)](#server-node-antec-1)
@@ -22,6 +22,7 @@
             successfully](#check-node-joined-successfully)
         -   [Testing nginx](#testing-nginx)
     -   [Client Node](#client-node)
+
 
 
 based on
