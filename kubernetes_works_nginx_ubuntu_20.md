@@ -674,6 +674,956 @@
 		27327  swapoff -a
 		27330  sudo swapoff -a\n
 
+## nuc2020
+
+### install kubeadm, kubectl etc.
+
+	  ipfs pin update <from-path> <to-path> - Update a recursive pin.
+	  ipfs pin verify                       - Verify that recursive pins are complete.
+
+	  For more information about each command, use:
+	  'ipfs pin <subcmd> --help'
+
+
+	appserver Sun 07 May 2023 12:44AM> ipfs pin ls QmUZUmSBL4TGGqw2eNjKPpyPdvGpJUHBBoihradVWrSsEm                                 /home/sarnobat/trash
+	QmUZUmSBL4TGGqw2eNjKPpyPdvGpJUHBBoihradVWrSsEm recursive
+	appserver Sun 07 May 2023 12:44AM> ipfs pin ls *                                                                              /home/sarnobat/trash
+	Error: invalid path "2022-09-09": selected encoding not supported
+	appserver Sun 07 May 2023  1:20AM> ipfs pin ls .                                                                              /home/sarnobat/trash
+	Error: invalid path ".": cid too short
+	appserver Sun 07 May 2023  1:20AM> ipfs pin ls                                                                                /home/sarnobat/trash
+	QmQGiYLVAdSHJQKYFRTJZMG4BXBHqKperaZtyKGmCRLmsF indirect
+	QmQy6xmJhrcC5QLboAcGFcAE1tC8CrwDVkrHdEYJkLscrQ indirect
+	QmUNLLsPACCz1vLxQVkXqqLX5R1X345qqfHbsf67hvA3Nn recursive
+	QmUZUmSBL4TGGqw2eNjKPpyPdvGpJUHBBoihradVWrSsEm recursive
+	QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB indirect
+	QmQ5vhrL7uv6tuoN9KeVBwd4PwfQkXdVVmDLUZuTNxqgvm indirect
+	QmQPeNsJPyVWPFDVHb77w8G42Fvo15z4bG2X8D2GhfbSXc recursive
+	QmU5k7ter3RdjZXu3sHghsga1UQtrztnQxmTL22nPnsu3g indirect
+	QmYCvbfNbCwFR45HiNP45rwJgvatpiW38D961L5qAhUM5Y indirect
+	QmejvEPop4D7YUadeGqYWmZxHhLc4JBUCzJJHWMzdcMe2y indirect
+	appserver Sun 07 May 2023  1:20AM> ipfs                                                                                       /home/sarnobat/trash
+	USAGE
+	  ipfs  - Global p2p merkle-dag filesystem.
+
+	  ipfs [--config=<config> | -c] [--debug | -D] [--help] [-h] [--api=<api>] [--offline] [--cid-base=<base>] [--upgrade-cidv0-in-output] [--encoding=<encoding> | --enc] [--timeout=<timeout>] <command> ...
+
+	SUBCOMMANDS
+	  BASIC COMMANDS
+		init          Initialize local IPFS configuration
+		add <path>    Add a file to IPFS
+		cat <ref>     Show IPFS object data
+		get <ref>     Download IPFS objects
+		ls <ref>      List links from an object
+		refs <ref>    List hashes of links from an object
+
+	  DATA STRUCTURE COMMANDS
+		dag           Interact with IPLD DAG nodes
+		files         Interact with files as if they were a unix filesystem
+		block         Interact with raw blocks in the datastore
+
+	  TEXT ENCODING COMMANDS
+		cid           Convert and discover properties of CIDs
+		multibase     Encode and decode data with Multibase format
+
+	  ADVANCED COMMANDS
+		daemon        Start a long-running daemon process
+		shutdown      Shut down the daemon process
+		resolve       Resolve any type of content path
+		name          Publish and resolve IPNS names
+		key           Create and list IPNS name keypairs
+		pin           Pin objects to local storage
+		repo          Manipulate the IPFS repository
+		stats         Various operational stats
+		p2p           Libp2p stream mounting (experimental)
+		filestore     Manage the filestore (experimental)
+		mount         Mount an IPFS read-only mount point (experimental)
+
+	  NETWORK COMMANDS
+		id            Show info about IPFS peers
+		bootstrap     Add or remove bootstrap peers
+		swarm         Manage connections to the p2p network
+		dht           Query the DHT for values or peers
+		routing       Issue routing commands
+		ping          Measure the latency of a connection
+		bitswap       Inspect bitswap state
+		pubsub        Send and receive messages via pubsub
+
+	  TOOL COMMANDS
+		config        Manage configuration
+		version       Show IPFS version information
+		diag          Generate diagnostic reports
+		update        Download and apply go-ipfs updates
+		commands      List all available commands
+		log           Manage and show logs of running daemon
+
+	  Use 'ipfs <command> --help' to learn more about each command.
+
+	  ipfs uses a repository in the local file system. By default, the repo is
+	  located at ~/.ipfs. To change the repo location, set the $IPFS_PATH
+	  environment variable:
+
+		export IPFS_PATH=/path/to/ipfsrepo
+
+	  EXIT STATUS
+
+	  The CLI will exit with one of the following values:
+
+	  0     Successful execution.
+	  1     Failed executions.
+
+	appserver Sun 07 May 2023  1:20AM> ipfs pin ls                                                                                /home/sarnobat/trash
+	QmUNLLsPACCz1vLxQVkXqqLX5R1X345qqfHbsf67hvA3Nn recursive
+	QmYCvbfNbCwFR45HiNP45rwJgvatpiW38D961L5qAhUM5Y indirect
+	QmejvEPop4D7YUadeGqYWmZxHhLc4JBUCzJJHWMzdcMe2y indirect
+	QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB indirect
+	QmQy6xmJhrcC5QLboAcGFcAE1tC8CrwDVkrHdEYJkLscrQ indirect
+	QmU5k7ter3RdjZXu3sHghsga1UQtrztnQxmTL22nPnsu3g indirect
+	QmUZUmSBL4TGGqw2eNjKPpyPdvGpJUHBBoihradVWrSsEm recursive
+	QmQ5vhrL7uv6tuoN9KeVBwd4PwfQkXdVVmDLUZuTNxqgvm indirect
+	QmQGiYLVAdSHJQKYFRTJZMG4BXBHqKperaZtyKGmCRLmsF indirect
+	QmQPeNsJPyVWPFDVHb77w8G42Fvo15z4bG2X8D2GhfbSXc recursive
+	appserver Sun 07 May 2023  1:20AM> ipfs resolve QmejvEPop4D7YUadeGqYWmZxHhLc4JBUCzJJHWMzdcMe2y                                /home/sarnobat/trash
+	/ipfs/QmejvEPop4D7YUadeGqYWmZxHhLc4JBUCzJJHWMzdcMe2y
+	appserver Sun 07 May 2023  1:20AM> ipfs name QmejvEPop4D7YUadeGqYWmZxHhLc4JBUCzJJHWMzdcMe2y                                   /home/sarnobat/trash
+	Error: expected 0 argument(s), got 1
+
+	USAGE
+	  ipfs name - Publish and resolve IPNS names.
+
+	  ipfs name
+
+	  IPNS is a PKI namespace, where names are the hashes of public keys, and
+	  the private key enables publishing new (signed) values. In both publish
+	  and resolve, the default name used is the node's own PeerID,
+	  which is the hash of its public key.
+
+	SUBCOMMANDS
+	  ipfs name publish <ipfs-path> - Publish IPNS names.
+	  ipfs name resolve [<name>]    - Resolve IPNS names.
+
+	  For more information about each command, use:
+	  'ipfs name <subcmd> --help'
+
+	EXPERIMENTAL SUBCOMMANDS
+	  ipfs name inspect <record> - Inspects an IPNS Record
+	  ipfs name pubsub           - IPNS pubsub management
+
+
+	appserver Sun 07 May 2023  1:20AM> ipfs name inspect QmejvEPop4D7YUadeGqYWmZxHhLc4JBUCzJJHWMzdcMe2y                           /home/sarnobat/trash
+	Error: lstat QmejvEPop4D7YUadeGqYWmZxHhLc4JBUCzJJHWMzdcMe2y: no such file or directory
+
+	WARNING:   EXPERIMENTAL, command may change in future releases
+
+	USAGE
+	  ipfs name inspect <record> - Inspects an IPNS Record
+
+	  ipfs name inspect [--verify=<verify>] [--] <record>
+
+	  Prints values inside of IPNS Record protobuf and its DAG-CBOR Data field.
+	  Passing --verify will verify signature against provided public key.
+
+	  For more information about each command, use:
+	  'ipfs name inspect <subcmd> --help'
+
+
+	appserver Sun 07 May 2023  1:20AM> ipfs                                                                                       /home/sarnobat/trash
+	USAGE
+	  ipfs  - Global p2p merkle-dag filesystem.
+
+	  ipfs [--config=<config> | -c] [--debug | -D] [--help] [-h] [--api=<api>] [--offline] [--cid-base=<base>] [--upgrade-cidv0-in-output] [--encoding=<encoding> | --enc] [--timeout=<timeout>] <command> ...
+
+	SUBCOMMANDS
+	  BASIC COMMANDS
+		init          Initialize local IPFS configuration
+		add <path>    Add a file to IPFS
+		cat <ref>     Show IPFS object data
+		get <ref>     Download IPFS objects
+		ls <ref>      List links from an object
+		refs <ref>    List hashes of links from an object
+
+	  DATA STRUCTURE COMMANDS
+		dag           Interact with IPLD DAG nodes
+		files         Interact with files as if they were a unix filesystem
+		block         Interact with raw blocks in the datastore
+
+	  TEXT ENCODING COMMANDS
+		cid           Convert and discover properties of CIDs
+		multibase     Encode and decode data with Multibase format
+
+	  ADVANCED COMMANDS
+		daemon        Start a long-running daemon process
+		shutdown      Shut down the daemon process
+		resolve       Resolve any type of content path
+		name          Publish and resolve IPNS names
+		key           Create and list IPNS name keypairs
+		pin           Pin objects to local storage
+		repo          Manipulate the IPFS repository
+		stats         Various operational stats
+		p2p           Libp2p stream mounting (experimental)
+		filestore     Manage the filestore (experimental)
+		mount         Mount an IPFS read-only mount point (experimental)
+
+	  NETWORK COMMANDS
+		id            Show info about IPFS peers
+		bootstrap     Add or remove bootstrap peers
+		swarm         Manage connections to the p2p network
+		dht           Query the DHT for values or peers
+		routing       Issue routing commands
+		ping          Measure the latency of a connection
+		bitswap       Inspect bitswap state
+		pubsub        Send and receive messages via pubsub
+
+	  TOOL COMMANDS
+		config        Manage configuration
+		version       Show IPFS version information
+		diag          Generate diagnostic reports
+		update        Download and apply go-ipfs updates
+		commands      List all available commands
+		log           Manage and show logs of running daemon
+
+	  Use 'ipfs <command> --help' to learn more about each command.
+
+	  ipfs uses a repository in the local file system. By default, the repo is
+	  located at ~/.ipfs. To change the repo location, set the $IPFS_PATH
+	  environment variable:
+
+		export IPFS_PATH=/path/to/ipfsrepo
+
+	  EXIT STATUS
+
+	  The CLI will exit with one of the following values:
+
+	  0     Successful execution.
+	  1     Failed executions.
+
+	appserver Sun 07 May 2023  1:21AM> ls ~/.ipfs.                                                                                /home/sarnobat/trash
+	ls: cannot access '/home/sarnobat/.ipfs.': No such file or directory
+	appserver Sun 07 May 2023  1:21AM> ls ~/.ipfs                                                                                 /home/sarnobat/trash
+	api  blocks  config  datastore	datastore_spec	gateway  keystore  repo.lock  version
+	appserver Sun 07 May 2023  1:21AM> find ~/.ipfs                                                                               /home/sarnobat/trash
+	/home/sarnobat/.ipfs
+	/home/sarnobat/.ipfs/repo.lock
+	/home/sarnobat/.ipfs/gateway
+	/home/sarnobat/.ipfs/keystore
+	/home/sarnobat/.ipfs/version
+	/home/sarnobat/.ipfs/blocks
+	/home/sarnobat/.ipfs/blocks/UC
+	/home/sarnobat/.ipfs/blocks/UC/CIQFKVEG2CPWTPRG5KNRUAWMOABRSTYUFHFK3QF6KN3M67G5E3ILUCY.data
+	/home/sarnobat/.ipfs/blocks/U2
+	/home/sarnobat/.ipfs/blocks/U2/CIQHFTCY7XL57YWLVDQ6UAXUOND3ADYQYJKYXA6G7A5IMD7SMO22U2A.data
+	/home/sarnobat/.ipfs/blocks/V3
+	/home/sarnobat/.ipfs/blocks/V3/CIQAPZYJAKUKALYI4YTB5PUMEN5BZYZHUQZWGFL4Q3HZUV26SYX2V3Q.data
+	/home/sarnobat/.ipfs/blocks/R3
+	/home/sarnobat/.ipfs/blocks/R3/CIQBED3K6YA5I3QQWLJOCHWXDRK5EXZQILBCKAPEDUJENZ5B5HJ5R3A.data
+	/home/sarnobat/.ipfs/blocks/BE
+	/home/sarnobat/.ipfs/blocks/BE/CIQCXBHBZAHEHBHU6P7PEA72E7UZQRJALHH7OH2FCWSWMTU7DMWVBEA.data
+	/home/sarnobat/.ipfs/blocks/JN
+	/home/sarnobat/.ipfs/blocks/JN/CIQPHMHGQLLZXC32FQQW2YVM4KGFORVFJAQYY55VK3WJGLZ2MS4RJNQ.data
+	/home/sarnobat/.ipfs/blocks/RO
+	/home/sarnobat/.ipfs/blocks/RO/CIQDRD2UT66U4EATJW53PSVWMFFPGNAN42PVWMDLHJD6FA5EVNNZROI.data
+	/home/sarnobat/.ipfs/blocks/QD
+	/home/sarnobat/.ipfs/blocks/QD/CIQL4QZR6XGWMPEV5Q2FCTDFD7MF3G5OOC5CMEDUHNA5VXYZVDLFQDA.data
+	/home/sarnobat/.ipfs/blocks/TP
+	/home/sarnobat/.ipfs/blocks/TP/CIQCODPXR5G237BYM7E5JF4A624CLH2TQDLC4QI6HEZK7FUWZQESTPI.data
+	/home/sarnobat/.ipfs/blocks/CP
+	/home/sarnobat/.ipfs/blocks/CP/CIQFY33OB6EGMICDWK2FOPJL4YSG4CR56BVB5LHELSANW36BYAUSCPQ.data
+	/home/sarnobat/.ipfs/blocks/N6
+	/home/sarnobat/.ipfs/blocks/N6/CIQGFYPT5OBMRC7ZMUFC2R3ZQPKOGBMHJEDDFEVS5ALYBKIZCXPTN6Y.data
+	/home/sarnobat/.ipfs/blocks/75
+	/home/sarnobat/.ipfs/blocks/75/CIQBEM7N2AM5YRAMJY7WDI6TJ4MGYIWVBA7POWSBPYKENY5IKK2I75Y.data
+	/home/sarnobat/.ipfs/blocks/IL
+	/home/sarnobat/.ipfs/blocks/IL/CIQJFGRQHQ45VCQLM7AJNF2GF5UHUAGGHC6LLAH6VYDEKLQMD4QLILY.data
+	/home/sarnobat/.ipfs/blocks/OO
+	/home/sarnobat/.ipfs/blocks/OO/CIQBT4N7PS5IZ5IG2ZOUGKFK27IE33WKGJNDW2TY3LSBNQ34R6OVOOQ.data
+	/home/sarnobat/.ipfs/blocks/X3
+	/home/sarnobat/.ipfs/blocks/X3/CIQFTFEEHEDF6KLBT32BFAGLXEZL4UWFNWM4LFTLMXQBCERZ6CMLX3Y.data
+	/home/sarnobat/.ipfs/blocks/HB
+	/home/sarnobat/.ipfs/blocks/HB/CIQMDQRK7B5DSZKBYOX4353TGN5J3JXS5VS6YNSAEJBOXBG26R76HBY.data
+	/home/sarnobat/.ipfs/blocks/KE
+	/home/sarnobat/.ipfs/blocks/KE/CIQD44K6LTXM6PHWK2RHB3G2VCYFPMVBTALE572GSMETJGBJTELFKEI.data
+	/home/sarnobat/.ipfs/blocks/IG
+	/home/sarnobat/.ipfs/blocks/IG/CIQF37MJMQBSCNICEBHHBUMQEDRU6KD2HTZFNXV7EOXTUQABMDG3IGQ.data
+	/home/sarnobat/.ipfs/blocks/RR
+	/home/sarnobat/.ipfs/blocks/RR/CIQODOBNMTM4MFM7QMMC27SGXAOVQFBJRPAG3AAOV67F7ESYL7R7RRQ.data
+	/home/sarnobat/.ipfs/blocks/I2
+	/home/sarnobat/.ipfs/blocks/I2/CIQBZNLCBI3U2I5F7O636DRBO552SCMSK2X2WYVCQ6BMYJN4MJTRI2Q.data
+	/home/sarnobat/.ipfs/blocks/LB
+	/home/sarnobat/.ipfs/blocks/LB/CIQEBIDOXSDDZEMFXGLMAUK36MA3EVOWNOZPV26HCFE4SEONFXO6LBA.data
+	/home/sarnobat/.ipfs/blocks/MJ
+	/home/sarnobat/.ipfs/blocks/MJ/CIQHQFRJK4MU2CVNFR3QG6KZB3FZG6OG7EBI4SUNB5K4S4T5UVECMJA.data
+	/home/sarnobat/.ipfs/blocks/6Y
+	/home/sarnobat/.ipfs/blocks/6Y/CIQA4T3TD3BP3C2M3GXCGRCRTCCHV7XSGAZPZJOAOHLPOI6IQR3H6YQ.data
+	/home/sarnobat/.ipfs/blocks/ZR
+	/home/sarnobat/.ipfs/blocks/ZR/CIQGQKGRCCLACORJVCOCZ54B6WYNYEF56DWYOR2YHFQYH4YHL3RYZRY.data
+	/home/sarnobat/.ipfs/blocks/SHARDING
+	/home/sarnobat/.ipfs/blocks/XV
+	/home/sarnobat/.ipfs/blocks/XV/CIQGAS6MQJCEC37C2IIH5ZFYJCSTT7TCKJP3F7SLGNVSDVZSMACCXVA.data
+	/home/sarnobat/.ipfs/blocks/VN
+	/home/sarnobat/.ipfs/blocks/VN/CIQPEOA2TS3RMLOBOF55ZOEZE3TNBQG3HCNFOYC3BATAIJBOIE5FVNY.data
+	/home/sarnobat/.ipfs/blocks/.temp
+	/home/sarnobat/.ipfs/blocks/IY
+	/home/sarnobat/.ipfs/blocks/IY/CIQB4655YD5GLBB7WWEUAHCO6QONU5ICBONAA5JEPBIOEIVZ5RXTIYY.data
+	/home/sarnobat/.ipfs/blocks/diskUsage.cache
+	/home/sarnobat/.ipfs/blocks/_README
+	/home/sarnobat/.ipfs/api
+	/home/sarnobat/.ipfs/datastore_spec
+	/home/sarnobat/.ipfs/config
+	/home/sarnobat/.ipfs/datastore
+	/home/sarnobat/.ipfs/datastore/MANIFEST-000011
+	/home/sarnobat/.ipfs/datastore/000028.ldb
+	/home/sarnobat/.ipfs/datastore/CURRENT
+	/home/sarnobat/.ipfs/datastore/000033.ldb
+	/home/sarnobat/.ipfs/datastore/LOCK
+	/home/sarnobat/.ipfs/datastore/000032.ldb
+	/home/sarnobat/.ipfs/datastore/000035.ldb
+	/home/sarnobat/.ipfs/datastore/000034.ldb
+	/home/sarnobat/.ipfs/datastore/000031.ldb
+	/home/sarnobat/.ipfs/datastore/000038.ldb
+	/home/sarnobat/.ipfs/datastore/000043.log
+	/home/sarnobat/.ipfs/datastore/000029.ldb
+	/home/sarnobat/.ipfs/datastore/000042.ldb
+	/home/sarnobat/.ipfs/datastore/000037.ldb
+	/home/sarnobat/.ipfs/datastore/000044.ldb
+	/home/sarnobat/.ipfs/datastore/CURRENT.bak
+	/home/sarnobat/.ipfs/datastore/LOG
+	/home/sarnobat/.ipfs/datastore/000036.ldb
+	/home/sarnobat/.ipfs/datastore/000030.ldb
+	/home/sarnobat/.ipfs/datastore/000040.ldb
+	appserver Sun 07 May 2023  1:21AM> sudo reboot now                                                                            /home/sarnobat/trash
+	Connection to netgear.rohidekar.com closed by remote host.
+	Connection to netgear.rohidekar.com closed.
+	ssh: connect to host netgear.rohidekar.com port 22222: Connection refused
+	ssh: connect to host netgear.rohidekar.com port 22222: Connection refused
+	ssh: connect to host netgear.rohidekar.com port 22222: Connection refused
+	ssh: connect to host netgear.rohidekar.com port 22222: Connection refused
+	ssh: connect to host netgear.rohidekar.com port 22222: Connection refused
+	ssh: connect to host netgear.rohidekar.com port 22222: Connection refused
+	ssh: connect to host netgear.rohidekar.com port 22222: Connection refused
+	ssh: connect to host netgear.rohidekar.com port 22222: Connection refused
+	ssh: connect to host netgear.rohidekar.com port 22222: Connection refused
+	Warning: No xauth data; using fake authentication data for X11 forwarding.
+	cd /net/antec/media/sarnobat
+	Do not cd to an nfs mount, you'll get locked out of ssh
+	autofs_restart
+	umount /media/sarnobat/ubuntu_valuables1; sudo mount /dev/disk/by-label/ubuntu_valuables /media/sarnobat/ubuntu_valuables
+	appserver Sun 07 May 2023  6:18PM> umount /media/sarnobat/ubuntu_valuables1; sudo mount /dev/disk/by-label/ubuntu_valuables /media/sarnobat/ubuntu_valuables
+	appserver Sun 07 May 2023  6:21PM> ~/bin/df.sh                                                                               /home/sarnobat/db.git
+	Filesystem      Size  Used Avail Use% Mounted on
+	/dev/sda10                         83G   36G   43G  46% /home
+	antec:/media/sarnobat/sandy       293G  235G   43G  85% /media/sarnobat/sandy
+	/dev/sdb1                          60G   27G   34G  44% /media/sarnobat/ubuntu_valuables
+	antec:/media/sarnobat/unmirrored  2.7T  2.6T   25G 100% /media/sarnobat/unmirrored
+	antec:/media/sarnobat/e           292G  255G   22G  93% /media/sarnobat/e
+	/dev/sda9                          19G   78M   18G   1% /usr/local
+	/dev/sda7                          19G   24K   18G   1% /srv
+	/dev/sda8                          19G  265M   17G   2% /opt
+	/dev/sda4                          19G  897M   17G   6% /
+	/dev/sda5                          19G  6.5G   11G  38% /usr
+	/dev/sda6                          19G  7.7G  9.7G  45% /var
+	antec:/media/sarnobat/3TB         2.7T  2.6T     0 100% /media/sarnobat/3TB
+	appserver Sun 07 May 2023  6:21PM> cd ..                                                                                     /home/sarnobat/db.git
+	appserver Sun 07 May 2023  6:24PM> ls --color -lS --reverse --human-readable --almost-all                                           /home/sarnobat
+	total 2.3G
+	-rw-r--r--  1 sarnobat sarnobat    0 Apr  9  2022  .sudo_as_admin_successful
+	-rw-rw-r--  1 sarnobat sarnobat    0 May  2 08:00 'Sofia Vergara'\''s Son Knows׃ “Mom Knows Best“ ¦ Head & Shoulders Shampoo [AxjKUb6zfko].f137.mp4.part'
+	-rw-rw-r--  1 sarnobat sarnobat    0 Dec 30 04:30  Sofia_Vergara_s_Son_Knows_Mom_Knows_Best_Head_and_Shoulders_Shampoo-AxjKUb6zfko-.f137.mp4.part
+	-rw-rw-r--  1 sarnobat sarnobat    0 May  7 18:19  .hushlogin
+	lrwxrwxrwx  1 sarnobat sarnobat   24 Mar 19  2021  .zshrc -> computers.git/nuc/.zshrc
+	lrwxrwxrwx  1 sarnobat sarnobat   24 Apr 26  2022  3TB -> ../../media/sarnobat/3TB
+	lrwxrwxrwx  1 sarnobat sarnobat   25 Jan  8 19:46  .vim -> computers.git/common/.vim
+	lrwxrwxrwx  1 sarnobat sarnobat   25 Mar 19  2021  bin -> computers.git/ubuntu/bin/
+	lrwxrwxrwx  1 sarnobat sarnobat   30 Apr 28  2022  www -> computers.git/nuc/var/www/html
+	lrwxrwxrwx  1 sarnobat sarnobat   31 Apr 26  2022  .groovy -> github/groovy_libraries/.groovy
+	lrwxrwxrwx  1 sarnobat sarnobat   32 Jan  7 15:11  .zshrc-misc -> computers.git/common/.zshrc-misc
+	lrwxrwxrwx  1 sarnobat sarnobat   32 Aug 27  2022  ubuntu_valuables -> /media/sarnobat/ubuntu_valuables
+	lrwxrwxrwx  1 sarnobat sarnobat   32 Jan  8 19:58  .dir_colors -> computers.git/common/.dir_colors
+	lrwxrwxrwx  1 sarnobat sarnobat   37 Jan  7 15:11  .zshrc-git -> computers.git/2022/mac/zsh/.zshrc-git
+	lrwxrwxrwx  1 sarnobat sarnobat   37 Dec 25 02:15  favorites -> ../../media/sarnobat/e/2021/favorites
+	lrwxrwxrwx  1 sarnobat sarnobat   40 Jan  7 15:11  .zshrc-key-bindings -> computers.git/common/.zshrc-key-bindings
+	lrwxrwxrwx  1 sarnobat sarnobat   43 Jan  7 15:11  .zshrc-tab-completions -> computers.git/common/.zshrc-tab-completions
+	lrwxrwxrwx  1 sarnobat sarnobat   44 Jan  7 15:11  .zshrc.mac.common -> computers.git/2022/mac/zsh/.zshrc.mac.common
+	lrwxrwxrwx  1 sarnobat sarnobat   45 Apr 27  2022  videos -> /media/sarnobat/3TB/2021/disks/thistle/videos
+	lrwxrwxrwx  1 sarnobat sarnobat   48 Jan  9 17:10  .aliases -> computers.git/2022/dotfiles_and_scripts/.aliases
+	lrwxrwxrwx  1 sarnobat sarnobat   49 Feb 13 10:07  sarnobat.git -> ../../media/sarnobat/unmirrored/2021/sarnobat.git
+	lrwxrwxrwx  1 sarnobat sarnobat   49 Jan  7 14:41  conf.tail -> computers.git/2022/dotfiles_and_scripts/conf.tail
+	-rw-rw-r--  1 sarnobat sarnobat   50 May  2 08:00 'Sofia Vergara'\''s Son Knows׃ “Mom Knows Best“ ¦ Head & Shoulders Shampoo [AxjKUb6zfko].f137.mp4.ytdl'
+	-rw-rw-r--  1 sarnobat sarnobat   50 Dec 30 04:30  Sofia_Vergara_s_Son_Knows_Mom_Knows_Best_Head_and_Shoulders_Shampoo-AxjKUb6zfko-.f137.mp4.ytdl
+	lrwxrwxrwx  1 sarnobat sarnobat   55 Jan  8 19:43  .vimrc -> computers.git/2022/dotfiles_and_scripts/2021/vim/.vimrc
+	lrwxrwxrwx  1 sarnobat sarnobat   61 Jan 17 00:11  youtube_download_no_record -> computers.git/2022/ubuntu/bin/2021/youtube_download_no_record
+	-rw-------  1 sarnobat sarnobat  100 Apr 20 21:20  .lesshst
+	-rw-rw-r--  1 sarnobat sarnobat  171 May  7 18:19  .gitconfig
+	-rw-r--r--  1 sarnobat sarnobat  220 Apr  9  2022  .bash_logout
+	-rw-r--r--  1 sarnobat sarnobat  807 Apr  9  2022  .profile
+	-rw-------  1 sarnobat sarnobat 1.1K Aug 20  2022  .bash_history
+	-rw-------  1 sarnobat sarnobat 1.2K May  7 18:18  .Xauthority
+	-rw-rw-r--  1 sarnobat sarnobat 3.0K May  6 23:17  .wget-hsts
+	-rw-r--r--  1 sarnobat sarnobat 3.7K Apr  9  2022  .bashrc
+	drwxr-xr-x 10 sarnobat sarnobat 4.0K May  6 23:51  trash
+	drwxrwxr-x  3 sarnobat sarnobat 4.0K Apr 22  2022  .tldr
+	drwxr-xr-x  2 sarnobat sarnobat 4.0K Apr  9  2022  Templates
+	drwx------  2 sarnobat sarnobat 4.0K Mar 28 20:40  .ssh
+	drwxrwxr-x 31 sarnobat sarnobat 4.0K May  1  2022  src.git
+	drwx------  3 sarnobat sarnobat 4.0K May  6 23:10  snap
+	drwxrwxr-x  3 sarnobat sarnobat 4.0K Apr 28  2022  sarnobat.git.old
+	drwxr-xr-x  2 sarnobat sarnobat 4.0K Apr  9  2022  Public
+	drwx------  3 sarnobat sarnobat 4.0K Apr 26  2022  .pki
+	drwxr-xr-x  2 sarnobat sarnobat 4.0K Apr  9  2022  Pictures
+	drwxrwxr-x  3 sarnobat sarnobat 4.0K Oct 10  2022  News
+	drwxr-xr-x  2 sarnobat sarnobat 4.0K Apr  9  2022  Music
+	drwx------  4 sarnobat sarnobat 4.0K Jan 18 20:23  .mozilla
+	drwxrwxr-x  3 sarnobat sarnobat 4.0K Sep  9  2022  .m2
+	drwx------  3 sarnobat sarnobat 4.0K Apr  9  2022  .local
+	drwxrwxr-x  5 sarnobat sarnobat 4.0K May  6 23:49  .ipfs
+	drwxrwxr-x  7 sarnobat sarnobat 4.0K Dec 26 00:14  .gradle
+	drwx------  3 sarnobat sarnobat 4.0K Jan 26 18:52  .gnupg
+	drwxrwxr-x 22 sarnobat sarnobat 4.0K Mar 28 20:40  github
+	drwxr-xr-x  2 sarnobat sarnobat 4.0K Apr  9  2022  Downloads
+	drwxr-xr-x  2 sarnobat sarnobat 4.0K Apr  9  2022  Documents
+	drwxr-xr-x  2 sarnobat sarnobat 4.0K May  6 23:50  Desktop
+	drwxrwxr-x  6 sarnobat sarnobat 4.0K Feb 13 10:08  db.git.small_alternative
+	drwxrwxr-x  6 sarnobat sarnobat 4.0K May  6 23:51  db.git
+	drwx------ 15 sarnobat sarnobat 4.0K Feb 18 00:13  .config
+	drwxrwxr-x  9 sarnobat sarnobat 4.0K Feb 18 17:40  computers.git
+	drwx------ 18 sarnobat sarnobat 4.0K May  7 18:00  .cache
+	drwxrwxr-x  3 sarnobat sarnobat  12K May  2 17:56  new
+	-rw-------  1 sarnobat sarnobat  30K May  6 23:53  .viminfo
+	-rw-rw-r--  1 sarnobat sarnobat  49K May  7 18:18  .zcompdump
+	-rw-rw-r--  1 sarnobat sarnobat  78K May  3  2020 'Teen Pregnancy Rates by State [hjmbpqpbnkw41].png'
+	-rw-------  1 sarnobat sarnobat 244K Jan  8 19:35  mbox
+	-rw-------  1 sarnobat sarnobat 640K May  7 18:24  .zsh-history
+	-rw-rw-r--  1 sarnobat sarnobat  55M May  7 18:00 'Hot Flexing Boobs Biceps and Back [ph5f8357baac2d9].mp4'
+	-rw-rw-r--  1 sarnobat sarnobat 211M Apr 13  2019 'How the Internet Crossed the Sea ｜ Nostalgia Nerd [A8q7Ayvw5kA].webm'
+	-rw-rw-r--  1 sarnobat sarnobat 219M Apr 16 02:37  ccia0aUKXIk-.f313.webm.part
+	-rw-rw-r--  1 sarnobat sarnobat 604M Jan 10  2021 'The Origins Of Mussolini'\''s Italy ｜ Secrets Of War ｜ Timeline [tAqkl-hCW0U].webm'
+	-rw-rw-r--  1 sarnobat sarnobat 1.2G Apr 16 23:58  Why_Chicagoland_s_Oasis_is_Disappearing_The_Rise_and_Fall_of_The_Illinois_Tollway_Oasis-gWH0BBuSpaU.f313.webm.part
+	appserver Sun 07 May 2023  6:24PM> ls --color -lS --reverse --human-readable --almost-all                                           /home/sarnobat
+	total 3.9G
+	-rw-r--r--  1 sarnobat sarnobat    0 Apr  9  2022  .sudo_as_admin_successful
+	-rw-rw-r--  1 sarnobat sarnobat    0 May  2 08:00 'Sofia Vergara'\''s Son Knows׃ “Mom Knows Best“ ¦ Head & Shoulders Shampoo [AxjKUb6zfko].f137.mp4.part'
+	-rw-rw-r--  1 sarnobat sarnobat    0 Dec 30 04:30  Sofia_Vergara_s_Son_Knows_Mom_Knows_Best_Head_and_Shoulders_Shampoo-AxjKUb6zfko-.f137.mp4.part
+	-rw-rw-r--  1 sarnobat sarnobat    0 May  7 18:19  .hushlogin
+	lrwxrwxrwx  1 sarnobat sarnobat   24 Mar 19  2021  .zshrc -> computers.git/nuc/.zshrc
+	lrwxrwxrwx  1 sarnobat sarnobat   24 Apr 26  2022  3TB -> ../../media/sarnobat/3TB
+	lrwxrwxrwx  1 sarnobat sarnobat   25 Jan  8 19:46  .vim -> computers.git/common/.vim
+	lrwxrwxrwx  1 sarnobat sarnobat   25 Mar 19  2021  bin -> computers.git/ubuntu/bin/
+	lrwxrwxrwx  1 sarnobat sarnobat   30 Apr 28  2022  www -> computers.git/nuc/var/www/html
+	lrwxrwxrwx  1 sarnobat sarnobat   31 Apr 26  2022  .groovy -> github/groovy_libraries/.groovy
+	lrwxrwxrwx  1 sarnobat sarnobat   32 Jan  7 15:11  .zshrc-misc -> computers.git/common/.zshrc-misc
+	lrwxrwxrwx  1 sarnobat sarnobat   32 Aug 27  2022  ubuntu_valuables -> /media/sarnobat/ubuntu_valuables
+	lrwxrwxrwx  1 sarnobat sarnobat   32 Jan  8 19:58  .dir_colors -> computers.git/common/.dir_colors
+	lrwxrwxrwx  1 sarnobat sarnobat   37 Jan  7 15:11  .zshrc-git -> computers.git/2022/mac/zsh/.zshrc-git
+	lrwxrwxrwx  1 sarnobat sarnobat   37 Dec 25 02:15  favorites -> ../../media/sarnobat/e/2021/favorites
+	lrwxrwxrwx  1 sarnobat sarnobat   40 Jan  7 15:11  .zshrc-key-bindings -> computers.git/common/.zshrc-key-bindings
+	lrwxrwxrwx  1 sarnobat sarnobat   43 Jan  7 15:11  .zshrc-tab-completions -> computers.git/common/.zshrc-tab-completions
+	lrwxrwxrwx  1 sarnobat sarnobat   44 Jan  7 15:11  .zshrc.mac.common -> computers.git/2022/mac/zsh/.zshrc.mac.common
+	lrwxrwxrwx  1 sarnobat sarnobat   45 Apr 27  2022  videos -> /media/sarnobat/3TB/2021/disks/thistle/videos
+	lrwxrwxrwx  1 sarnobat sarnobat   48 Jan  9 17:10  .aliases -> computers.git/2022/dotfiles_and_scripts/.aliases
+	lrwxrwxrwx  1 sarnobat sarnobat   49 Feb 13 10:07  sarnobat.git -> ../../media/sarnobat/unmirrored/2021/sarnobat.git
+	lrwxrwxrwx  1 sarnobat sarnobat   49 Jan  7 14:41  conf.tail -> computers.git/2022/dotfiles_and_scripts/conf.tail
+	-rw-rw-r--  1 sarnobat sarnobat   50 May  2 08:00 'Sofia Vergara'\''s Son Knows׃ “Mom Knows Best“ ¦ Head & Shoulders Shampoo [AxjKUb6zfko].f137.mp4.ytdl'
+	-rw-rw-r--  1 sarnobat sarnobat   50 Dec 30 04:30  Sofia_Vergara_s_Son_Knows_Mom_Knows_Best_Head_and_Shoulders_Shampoo-AxjKUb6zfko-.f137.mp4.ytdl
+	lrwxrwxrwx  1 sarnobat sarnobat   55 Jan  8 19:43  .vimrc -> computers.git/2022/dotfiles_and_scripts/2021/vim/.vimrc
+	lrwxrwxrwx  1 sarnobat sarnobat   61 Jan 17 00:11  youtube_download_no_record -> computers.git/2022/ubuntu/bin/2021/youtube_download_no_record
+	-rw-------  1 sarnobat sarnobat  100 Apr 20 21:20  .lesshst
+	-rw-rw-r--  1 sarnobat sarnobat  171 May  7 18:19  .gitconfig
+	-rw-r--r--  1 sarnobat sarnobat  220 Apr  9  2022  .bash_logout
+	-rw-r--r--  1 sarnobat sarnobat  807 Apr  9  2022  .profile
+	-rw-------  1 sarnobat sarnobat 1.1K Aug 20  2022  .bash_history
+	-rw-------  1 sarnobat sarnobat 1.2K May  7 18:18  .Xauthority
+	-rw-rw-r--  1 sarnobat sarnobat 3.0K May  6 23:17  .wget-hsts
+	-rw-r--r--  1 sarnobat sarnobat 3.7K Apr  9  2022  .bashrc
+	drwxr-xr-x 10 sarnobat sarnobat 4.0K May  6 23:51  trash
+	drwxrwxr-x  3 sarnobat sarnobat 4.0K Apr 22  2022  .tldr
+	drwxr-xr-x  2 sarnobat sarnobat 4.0K Apr  9  2022  Templates
+	drwx------  2 sarnobat sarnobat 4.0K Mar 28 20:40  .ssh
+	drwxrwxr-x 31 sarnobat sarnobat 4.0K May  1  2022  src.git
+	drwx------  3 sarnobat sarnobat 4.0K May  6 23:10  snap
+	drwxrwxr-x  3 sarnobat sarnobat 4.0K Apr 28  2022  sarnobat.git.old
+	drwxr-xr-x  2 sarnobat sarnobat 4.0K Apr  9  2022  Public
+	drwx------  3 sarnobat sarnobat 4.0K Apr 26  2022  .pki
+	drwxr-xr-x  2 sarnobat sarnobat 4.0K Apr  9  2022  Pictures
+	drwxrwxr-x  3 sarnobat sarnobat 4.0K Oct 10  2022  News
+	drwxr-xr-x  2 sarnobat sarnobat 4.0K Apr  9  2022  Music
+	drwx------  4 sarnobat sarnobat 4.0K Jan 18 20:23  .mozilla
+	drwxrwxr-x  3 sarnobat sarnobat 4.0K Sep  9  2022  .m2
+	drwx------  3 sarnobat sarnobat 4.0K Apr  9  2022  .local
+	drwxrwxr-x  5 sarnobat sarnobat 4.0K May  6 23:49  .ipfs
+	drwxrwxr-x  7 sarnobat sarnobat 4.0K Dec 26 00:14  .gradle
+	drwx------  3 sarnobat sarnobat 4.0K Jan 26 18:52  .gnupg
+	drwxrwxr-x 22 sarnobat sarnobat 4.0K Mar 28 20:40  github
+	drwxr-xr-x  2 sarnobat sarnobat 4.0K Apr  9  2022  Downloads
+	drwxr-xr-x  2 sarnobat sarnobat 4.0K Apr  9  2022  Documents
+	drwxr-xr-x  2 sarnobat sarnobat 4.0K May  6 23:50  Desktop
+	drwxrwxr-x  6 sarnobat sarnobat 4.0K Feb 13 10:08  db.git.small_alternative
+	drwxrwxr-x  6 sarnobat sarnobat 4.0K May  6 23:51  db.git
+	drwx------ 15 sarnobat sarnobat 4.0K Feb 18 00:13  .config
+	drwxrwxr-x  9 sarnobat sarnobat 4.0K Feb 18 17:40  computers.git
+	drwx------ 18 sarnobat sarnobat 4.0K May  7 18:00  .cache
+	drwxrwxr-x  3 sarnobat sarnobat  12K May  2 17:56  new
+	-rw-------  1 sarnobat sarnobat  30K May  6 23:53  .viminfo
+	-rw-rw-r--  1 sarnobat sarnobat  49K May  7 18:18  .zcompdump
+	-rw-rw-r--  1 sarnobat sarnobat  78K May  3  2020 'Teen Pregnancy Rates by State [hjmbpqpbnkw41].png'
+	-rw-------  1 sarnobat sarnobat 244K Jan  8 19:35  mbox
+	-rw-------  1 sarnobat sarnobat 640K May  7 18:52  .zsh-history
+	-rw-rw-r--  1 sarnobat sarnobat 1.2M Oct  4  2019 'Serie A 1999-2000, day 05 Fiorentina - Roma 1-3 (2 Cafu, Tommasi, Batistuta) [mtBX6Z8ae0M].webm'
+	-rw-rw-r--  1 sarnobat sarnobat 8.4M Mar 19  2018 'Hardcore Pawn - Lex Luger Visits the Store [woui4O25Z18].webm'
+	-rw-rw-r--  1 sarnobat sarnobat  16M Apr 20 14:11 'The Mountie on REAL REASON Why He Beat Bret Hart for WWE Intercontinetal Title [XwVy9ljEmTw].webm'
+	-rw-rw-r--  1 sarnobat sarnobat  30M May  7 18:52 'Goals Galore VHS ｜ 1988-89 ｜ 110 Great Goals from the Season [VgeqR5O2zYw].f251.webm.part'
+	-rw-rw-r--  1 sarnobat sarnobat  43M Apr 18 12:45 'Sycho Sid REVEALS Who Was Supposed To Win At Survivor Series 1996 [cRmYs4goLss].webm'
+	-rw-rw-r--  1 sarnobat sarnobat  55M May  7 18:00 'Hot Flexing Boobs Biceps and Back [ph5f8357baac2d9].mp4'
+	-rw-rw-r--  1 sarnobat sarnobat  97M Apr 12  2016 'Ariana Grande： My Way (Trailer) [KcoIDeULdbA].mp4'
+	-rw-rw-r--  1 sarnobat sarnobat 150M Nov 10  2021 'The Reign of Terror ｜ Wrestling With Wregret [bao2JhbHPQw].webm'
+	-rw-rw-r--  1 sarnobat sarnobat 211M Apr 13  2019 'How the Internet Crossed the Sea ｜ Nostalgia Nerd [A8q7Ayvw5kA].webm'
+	-rw-rw-r--  1 sarnobat sarnobat 219M Apr 16 02:37  ccia0aUKXIk-.f313.webm.part
+	-rw-rw-r--  1 sarnobat sarnobat 449M May  7 18:52 'Goals Galore VHS ｜ 1988-89 ｜ 110 Great Goals from the Season [VgeqR5O2zYw].f247.webm'
+	-rw-rw-r--  1 sarnobat sarnobat 604M Jan 10  2021 'The Origins Of Mussolini'\''s Italy ｜ Secrets Of War ｜ Timeline [tAqkl-hCW0U].webm'
+	-rw-rw-r--  1 sarnobat sarnobat 856M Jan  7  2022 'Goals Galore VHS ｜ 1989-90 ｜ 110 Great Goals from the Season [ArvyL0uze00].mkv'
+	-rw-rw-r--  1 sarnobat sarnobat 1.2G Apr 16 23:58  Why_Chicagoland_s_Oasis_is_Disappearing_The_Rise_and_Fall_of_The_Illinois_Tollway_Oasis-gWH0BBuSpaU.f313.webm.part
+	appserver Sun 07 May 2023  6:52PM> yt-dlp --trim-filenames 100 --restrict-filename "https://twitter.com/WWFOldSchoolcom/status/1094945886529089538?lang=en"
+	[twitter] Extracting URL: https://twitter.com/WWFOldSchoolcom/status/1094945886529089538?lang=en
+	[twitter] 1094945886529089538: Downloading guest token
+	[twitter] 1094945886529089538: Downloading JSON metadata
+	[twitter] 1094945886529089538: Downloading m3u8 information
+	[info] 1094945420609024002: Downloading 1 format(s): http-832
+	[download] Destination: WWFOldSchool.com_-_Rare_footage_of_@HulkHogan_celebrating_with_Vince_McMahon_Randy_Savage_@brutusbeefcake__and_@RealJimmyHart_after_WrestleMania_IX_went_off_the_air_HulkHogan_WrestleMania-[1094945420609024002].mp4
+	[download] 100% of    4.04MiB in 00:00:02 at 1.82MiB/s
+	appserver Sun 07 May 2023  7:25PM> kubectl get all --all-namespaces                                                                 /home/sarnobat
+	zsh: command not found: kubectl
+	appserver Sun 07 May 2023  7:58PM> kubeadm join 192.168.1.4:6443 --token 33hpb0.ps5p55au5vdualfr        --discovery-token-ca-cert-hash sha256:a0a4f3ec96303b6cbb741259663df3a0101109d284c68329e10d35341866dc78
+	zsh: command not found: kubeadm
+	appserver Sun 07 May 2023  8:11PM> sudo apt install -y kubeadm                                                                      /home/sarnobat
+	Reading package lists... Done
+	Building dependency tree
+	Reading state information... Done
+
+	No apt package "kubeadm", but there is a snap with that name.
+	Try "snap install kubeadm"
+
+	E: Unable to locate package kubeadm
+	appserver Sun 07 May 2023  8:11PM> snap install kubeadm                                                                             /home/sarnobat
+	error: access denied (try with sudo)
+	appserver Sun 07 May 2023  8:11PM> sudo snap install kubeadm                                                                        /home/sarnobat
+	error: This revision of snap "kubeadm" was published using classic confinement and thus may perform
+		   arbitrary system changes outside of the security sandbox that snaps are usually confined to,
+		   which may put your system at risk.
+
+		   If you understand and want to proceed repeat the command including --classic.
+	appserver Sun 07 May 2023  8:11PM> sudo apt install kubeadm                                                                         /home/sarnobat
+	Reading package lists... Done
+	Building dependency tree
+	Reading state information... Done
+
+	No apt package "kubeadm", but there is a snap with that name.
+	Try "snap install kubeadm"
+
+	E: Unable to locate package kubeadm
+	appserver Sun 07 May 2023  8:12PM> curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add                 /home/sarnobat
+
+	OK
+	appserver Sun 07 May 2023  8:14PM> echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" >> ~/kubernetes.list                /home/sarnobat
+	sudo mv ~/kubernetes.list /etc/apt/sources.list.d
+	appserver Sun 07 May 2023  8:14PM> sudo apt update && sudo apt install kubeadm                                                      /home/sarnobat
+	Hit:1 https://dl.google.com/linux/chrome/deb stable InRelease
+	Hit:2 http://us.archive.ubuntu.com/ubuntu focal InRelease
+	Get:4 http://us.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+	Get:5 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+	Ign:6 http://ppa.launchpad.net/b-stolk/ppa/ubuntu focal InRelease
+	Get:7 http://us.archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
+	Hit:8 http://ppa.launchpad.net/videolan/master-daily/ubuntu focal InRelease
+	Get:3 https://packages.cloud.google.com/apt kubernetes-xenial InRelease [8,993 B]
+	Get:9 http://us.archive.ubuntu.com/ubuntu focal-updates/main amd64 DEP-11 Metadata [275 kB]
+	Err:10 http://ppa.launchpad.net/b-stolk/ppa/ubuntu focal Release
+	  404  Not Found [IP: 185.125.190.52 80]
+	Get:11 http://us.archive.ubuntu.com/ubuntu focal-updates/universe amd64 DEP-11 Metadata [410 kB]
+	Get:12 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 Packages [65.7 kB]
+	Get:13 http://us.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 DEP-11 Metadata [944 B]
+	Get:14 http://us.archive.ubuntu.com/ubuntu focal-backports/main amd64 DEP-11 Metadata [7,968 B]
+	Get:15 http://us.archive.ubuntu.com/ubuntu focal-backports/universe amd64 DEP-11 Metadata [30.5 kB]
+	Get:16 http://security.ubuntu.com/ubuntu focal-security/main amd64 DEP-11 Metadata [59.9 kB]
+	Get:17 http://security.ubuntu.com/ubuntu focal-security/universe amd64 DEP-11 Metadata [95.6 kB]
+	Get:18 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 DEP-11 Metadata [940 B]
+	Reading package lists... Done
+	E: The repository 'http://ppa.launchpad.net/b-stolk/ppa/ubuntu focal Release' does not have a Release file.
+	N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+	N: See apt-secure(8) manpage for repository creation and user configuration details.
+	appserver Sun 07 May 2023  8:14PM> sudo apt install kubeadm                                                                         /home/sarnobat
+	Reading package lists... Done
+	Building dependency tree
+	Reading state information... Done
+	The following packages were automatically installed and are no longer required:
+	Unpacking socat (1.7.3.3-2) ...
+	Selecting previously unselected package kubelet.
+	Preparing to unpack .../6-kubelet_1.27.1-00_amd64.deb ...
+	Unpacking kubelet (1.27.1-00) ...
+	Selecting previously unselected package kubectl.
+	Preparing to unpack .../7-kubectl_1.27.1-00_amd64.deb ...
+	Unpacking kubectl (1.27.1-00) ...
+	Selecting previously unselected package kubeadm.
+	Preparing to unpack .../8-kubeadm_1.27.1-00_amd64.deb ...
+	Unpacking kubeadm (1.27.1-00) ...
+	Setting up conntrack (1:1.4.5-2) ...
+	Setting up kubectl (1.27.1-00) ...
+	Setting up ebtables (2.0.11-3build1) ...
+	Setting up socat (1.7.3.3-2) ...
+	Setting up cri-tools (1.26.0-00) ...
+	Setting up kubernetes-cni (1.2.0-00) ...
+	Setting up ethtool (1:5.4-1) ...
+	Setting up kubelet (1.27.1-00) ...
+	Created symlink /etc/systemd/system/multi-user.target.wants/kubelet.service → /lib/systemd/system/kubelet.service.
+	Setting up kubeadm (1.27.1-00) ...
+	Processing triggers for man-db (2.9.1-1) ...
+	appserver Sun 07 May 2023  8:15PM> kubeadm join 192.168.1.4:6443 --token 33hpb0.ps5p55au5vdualfr        --discovery-token-ca-cert-hash sha256:a0a4f3ec96303b6cbb741259663df3a0101109d284c68329e10d35341866dc78
+	[preflight] Running pre-flight checks
+	error execution phase preflight: [preflight] Some fatal errors occurred:
+		[ERROR IsPrivilegedUser]: user is not running as root
+	[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
+	To see the stack trace of this error execute with --v=5 or higher
+	appserver Sun 07 May 2023  8:15PM> sudo kubeadm join 192.168.1.4:6443 --token 33hpb0.ps5p55au5vdualfr   --discovery-token-ca-cert-hash sha256:a0a4f3ec96303b6cbb741259663df3a0101109d284c68329e10d35341866dc78
+	[preflight] Running pre-flight checks
+		[WARNING Swap]: swap is enabled; production deployments should disable swap unless testing the NodeSwap feature gate of the kubelet
+	[preflight] Reading configuration from the cluster...
+	[preflight] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -o yaml'
+	[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
+	[kubelet-start] Writing kubelet environment file with flags to file "/var/lib/kubelet/kubeadm-flags.env"
+	[kubelet-start] Starting the kubelet
+	[kubelet-start] Waiting for the kubelet to perform the TLS Bootstrap...
+	[kubelet-check] Initial timeout of 40s passed.
+	[kubelet-check] It seems like the kubelet isn't running or healthy.
+	[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
+	[kubelet-check] It seems like the kubelet isn't running or healthy.
+	[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
+	[kubelet-check] It seems like the kubelet isn't running or healthy.
+	[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
+	[kubelet-check] It seems like the kubelet isn't running or healthy.
+	[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
+	[kubelet-check] It seems like the kubelet isn't running or healthy.
+	[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
+
+	Unfortunately, an error has occurred:
+		timed out waiting for the condition
+
+	This error is likely caused by:
+		- The kubelet is not running
+		- The kubelet is unhealthy due to a misconfiguration of the node in some way (required cgroups disabled)
+
+	If you are on a systemd-powered system, you can try to troubleshoot the error with the following commands:
+		- 'systemctl status kubelet'
+		- 'journalctl -xeu kubelet'
+	error execution phase kubelet-start: timed out waiting for the condition
+	To see the stack trace of this error execute with --v=5 or higher
+	appserver Sun 07 May 2023  8:17PM> journalctl -u kubelet -f                                                                         /home/sarnobat
+
+	-- Logs begin at Wed 2023-05-03 13:00:27 PDT. --
+	May 07 20:17:45 nuc2020 kubelet[30340]: Flag --container-runtime-endpoint has been deprecated, This parameter should be set via the config file specified by the Kubelet's --config flag. See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-config-file/ for more information.
+	May 07 20:17:45 nuc2020 kubelet[30340]: Flag --pod-infra-container-image has been deprecated, will be removed in a future release. Image garbage collector will get sandbox image information from CRI.
+	May 07 20:17:45 nuc2020 kubelet[30340]: I0507 20:17:45.599893   30340 server.go:199] "--pod-infra-container-image will not be pruned by the image garbage collector in kubelet and should also be set in the remote runtime"
+	May 07 20:17:45 nuc2020 kubelet[30340]: I0507 20:17:45.602446   30340 server.go:415] "Kubelet version" kubeletVersion="v1.27.1"
+	May 07 20:17:45 nuc2020 kubelet[30340]: I0507 20:17:45.602465   30340 server.go:417] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+	May 07 20:17:45 nuc2020 kubelet[30340]: I0507 20:17:45.602664   30340 server.go:837] "Client rotation is on, will bootstrap in background"
+	May 07 20:17:45 nuc2020 kubelet[30340]: E0507 20:17:45.603126   30340 bootstrap.go:241] unable to read existing bootstrap client config from /etc/kubernetes/kubelet.conf: invalid configuration: [unable to read client-cert /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory, unable to read client-key /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory]
+	May 07 20:17:45 nuc2020 kubelet[30340]: E0507 20:17:45.603161   30340 run.go:74] "command failed" err="failed to run Kubelet: unable to load bootstrap kubeconfig: stat /etc/kubernetes/bootstrap-kubelet.conf: no such file or directory"
+	May 07 20:17:45 nuc2020 systemd[1]: kubelet.service: Main process exited, code=exited, status=1/FAILURE
+	May 07 20:17:45 nuc2020 systemd[1]: kubelet.service: Failed with result 'exit-code'.
+	qMay 07 20:17:55 nuc2020 systemd[1]: kubelet.service: Scheduled restart job, restart counter is at 14.
+	May 07 20:17:55 nuc2020 systemd[1]: Stopped kubelet: The Kubernetes Node Agent.
+	May 07 20:17:55 nuc2020 systemd[1]: Started kubelet: The Kubernetes Node Agent.
+	May 07 20:17:55 nuc2020 kubelet[30357]: Flag --container-runtime-endpoint has been deprecated, This parameter should be set via the config file specified by the Kubelet's --config flag. See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-config-file/ for more information.
+	May 07 20:17:55 nuc2020 kubelet[30357]: Flag --pod-infra-container-image has been deprecated, will be removed in a future release. Image garbage collector will get sandbox image information from CRI.
+	May 07 20:17:55 nuc2020 kubelet[30357]: I0507 20:17:55.848662   30357 server.go:199] "--pod-infra-container-image will not be pruned by the image garbage collector in kubelet and should also be set in the remote runtime"
+	May 07 20:17:55 nuc2020 kubelet[30357]: I0507 20:17:55.851348   30357 server.go:415] "Kubelet version" kubeletVersion="v1.27.1"
+	May 07 20:17:55 nuc2020 kubelet[30357]: I0507 20:17:55.851364   30357 server.go:417] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+	May 07 20:17:55 nuc2020 kubelet[30357]: I0507 20:17:55.851528   30357 server.go:837] "Client rotation is on, will bootstrap in background"
+	May 07 20:17:55 nuc2020 kubelet[30357]: E0507 20:17:55.851939   30357 bootstrap.go:241] unable to read existing bootstrap client config from /etc/kubernetes/kubelet.conf: invalid configuration: [unable to read client-cert /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory, unable to read client-key /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory]
+	May 07 20:17:55 nuc2020 kubelet[30357]: E0507 20:17:55.851964   30357 run.go:74] "command failed" err="failed to run Kubelet: unable to load bootstrap kubeconfig: stat /etc/kubernetes/bootstrap-kubelet.conf: no such file or directory"
+	May 07 20:17:55 nuc2020 systemd[1]: kubelet.service: Main process exited, code=exited, status=1/FAILURE
+	May 07 20:17:55 nuc2020 systemd[1]: kubelet.service: Failed with result 'exit-code'.
+	^C
+	appserver Sun 07 May 2023  8:17PM> sudo apt update && sudo apt install kubelet                                                      /home/sarnobat
+	Hit:1 http://us.archive.ubuntu.com/ubuntu focal InRelease
+	Hit:2 https://dl.google.com/linux/chrome/deb stable InRelease
+	Hit:4 http://us.archive.ubuntu.com/ubuntu focal-updates InRelease
+	Ign:5 http://ppa.launchpad.net/b-stolk/ppa/ubuntu focal InRelease
+	Hit:6 http://security.ubuntu.com/ubuntu focal-security InRelease
+	Hit:7 http://us.archive.ubuntu.com/ubuntu focal-backports InRelease
+	Hit:3 https://packages.cloud.google.com/apt kubernetes-xenial InRelease
+	Hit:8 http://ppa.launchpad.net/videolan/master-daily/ubuntu focal InRelease
+	Err:9 http://ppa.launchpad.net/b-stolk/ppa/ubuntu focal Release
+	  404  Not Found [IP: 185.125.190.52 80]
+	Sorting... Done
+	Full Text Search... Done
+	kubelet/kubernetes-xenial,now 1.27.1-00 amd64 [installed,automatic]
+	  Kubernetes Node Agent
+
+	appserver Sun 07 May 2023  8:23PM> sudo apt reinstall kubelet                                                                       /home/sarnobat
+	Reading package lists... Done
+	Building dependency tree
+	Reading state information... Done
+	The following packages were automatically installed and are no longer required:
+	  libbasicusageenvironment1 libgroupsock8 liblivemedia77 libopenmpt-modplug1 libplacebo7 libsdl-image1.2 libsrt1 libusageenvironment3
+	Use 'sudo apt autoremove' to remove them.
+	0 upgraded, 0 newly installed, 1 reinstalled, 0 to remove and 310 not upgraded.
+	Need to get 18.7 MB of archives.
+	After this operation, 0 B of additional disk space will be used.
+	Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubelet amd64 1.27.1-00 [18.7 MB]
+	Fetched 18.7 MB in 4s (5,317 kB/s)
+	(Reading database ... 214195 files and directories currently installed.)
+	Preparing to unpack .../kubelet_1.27.1-00_amd64.deb ...
+	Unpacking kubelet (1.27.1-00) over (1.27.1-00) ...
+	Setting up kubelet (1.27.1-00) ...
+	appserver Sun 07 May 2023  8:24PM> journalctl -u kubelet -f                                                                         /home/sarnobat
+	-- Logs begin at Wed 2023-05-03 13:00:27 PDT. --
+	May 07 20:24:07 nuc2020 kubelet[32998]: Flag --container-runtime-endpoint has been deprecated, This parameter should be set via the config file specified by the Kubelet's --config flag. See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-config-file/ for more information.
+	May 07 20:24:07 nuc2020 kubelet[32998]: Flag --pod-infra-container-image has been deprecated, will be removed in a future release. Image garbage collector will get sandbox image information from CRI.
+	May 07 20:24:07 nuc2020 kubelet[32998]: I0507 20:24:07.102878   32998 server.go:199] "--pod-infra-container-image will not be pruned by the image garbage collector in kubelet and should also be set in the remote runtime"
+	May 07 20:24:07 nuc2020 kubelet[32998]: I0507 20:24:07.105167   32998 server.go:415] "Kubelet version" kubeletVersion="v1.27.1"
+	May 07 20:24:07 nuc2020 kubelet[32998]: I0507 20:24:07.105181   32998 server.go:417] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+	May 07 20:24:07 nuc2020 kubelet[32998]: I0507 20:24:07.105346   32998 server.go:837] "Client rotation is on, will bootstrap in background"
+	May 07 20:24:07 nuc2020 kubelet[32998]: E0507 20:24:07.105728   32998 bootstrap.go:241] unable to read existing bootstrap client config from /etc/kubernetes/kubelet.conf: invalid configuration: [unable to read client-cert /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory, unable to read client-key /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory]
+	May 07 20:24:07 nuc2020 kubelet[32998]: E0507 20:24:07.105756   32998 run.go:74] "command failed" err="failed to run Kubelet: unable to load bootstrap kubeconfig: stat /etc/kubernetes/bootstrap-kubelet.conf: no such file or directory"
+	May 07 20:24:07 nuc2020 systemd[1]: kubelet.service: Main process exited, code=exited, status=1/FAILURE
+	May 07 20:24:07 nuc2020 systemd[1]: kubelet.service: Failed with result 'exit-code'.
+	May 07 20:24:17 nuc2020 systemd[1]: kubelet.service: Scheduled restart job, restart counter is at 51.
+	May 07 20:24:17 nuc2020 systemd[1]: Stopped kubelet: The Kubernetes Node Agent.
+	May 07 20:24:17 nuc2020 systemd[1]: Started kubelet: The Kubernetes Node Agent.
+	May 07 20:24:17 nuc2020 kubelet[33205]: Flag --container-runtime-endpoint has been deprecated, This parameter should be set via the config file specified by the Kubelet's --config flag. See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-config-file/ for more information.
+	May 07 20:24:17 nuc2020 kubelet[33205]: Flag --pod-infra-container-image has been deprecated, will be removed in a future release. Image garbage collector will get sandbox image information from CRI.
+	May 07 20:24:17 nuc2020 kubelet[33205]: I0507 20:24:17.350374   33205 server.go:199] "--pod-infra-container-image will not be pruned by the image garbage collector in kubelet and should also be set in the remote runtime"
+	May 07 20:24:17 nuc2020 kubelet[33205]: I0507 20:24:17.352943   33205 server.go:415] "Kubelet version" kubeletVersion="v1.27.1"
+	May 07 20:24:17 nuc2020 kubelet[33205]: I0507 20:24:17.352958   33205 server.go:417] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+	May 07 20:24:17 nuc2020 kubelet[33205]: I0507 20:24:17.353108   33205 server.go:837] "Client rotation is on, will bootstrap in background"
+	May 07 20:24:17 nuc2020 kubelet[33205]: E0507 20:24:17.354147   33205 bootstrap.go:241] unable to read existing bootstrap client config from /etc/kubernetes/kubelet.conf: invalid configuration: [unable to read client-cert /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory, unable to read client-key /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory]
+	May 07 20:24:17 nuc2020 kubelet[33205]: E0507 20:24:17.354186   33205 run.go:74] "command failed" err="failed to run Kubelet: unable to load bootstrap kubeconfig: stat /etc/kubernetes/bootstrap-kubelet.conf: no such file or directory"
+	May 07 20:24:17 nuc2020 systemd[1]: kubelet.service: Main process exited, code=exited, status=1/FAILURE
+	May 07 20:24:17 nuc2020 systemd[1]: kubelet.service: Failed with result 'exit-code'.
+	qMay 07 20:24:27 nuc2020 systemd[1]: kubelet.service: Scheduled restart job, restart counter is at 52.
+	May 07 20:24:27 nuc2020 systemd[1]: Stopped kubelet: The Kubernetes Node Agent.
+	May 07 20:24:27 nuc2020 systemd[1]: Started kubelet: The Kubernetes Node Agent.
+	May 07 20:24:27 nuc2020 kubelet[33246]: Flag --container-runtime-endpoint has been deprecated, This parameter should be set via the config file specified by the Kubelet's --config flag. See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-config-file/ for more information.
+	May 07 20:24:27 nuc2020 kubelet[33246]: Flag --pod-infra-container-image has been deprecated, will be removed in a future release. Image garbage collector will get sandbox image information from CRI.
+	May 07 20:24:27 nuc2020 kubelet[33246]: I0507 20:24:27.599843   33246 server.go:199] "--pod-infra-container-image will not be pruned by the image garbage collector in kubelet and should also be set in the remote runtime"
+	May 07 20:24:27 nuc2020 kubelet[33246]: I0507 20:24:27.602471   33246 server.go:415] "Kubelet version" kubeletVersion="v1.27.1"
+	May 07 20:24:27 nuc2020 kubelet[33246]: I0507 20:24:27.602486   33246 server.go:417] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+	May 07 20:24:27 nuc2020 kubelet[33246]: I0507 20:24:27.602638   33246 server.go:837] "Client rotation is on, will bootstrap in background"
+	May 07 20:24:27 nuc2020 kubelet[33246]: E0507 20:24:27.603036   33246 bootstrap.go:241] unable to read existing bootstrap client config from /etc/kubernetes/kubelet.conf: invalid configuration: [unable to read client-cert /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory, unable to read client-key /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory]
+	May 07 20:24:27 nuc2020 kubelet[33246]: E0507 20:24:27.603066   33246 run.go:74] "command failed" err="failed to run Kubelet: unable to load bootstrap kubeconfig: stat /etc/kubernetes/bootstrap-kubelet.conf: no such file or directory"
+	May 07 20:24:27 nuc2020 systemd[1]: kubelet.service: Main process exited, code=exited, status=1/FAILURE
+	May 07 20:24:27 nuc2020 systemd[1]: kubelet.service: Failed with result 'exit-code'.
+
+
+
+
+
+
+	^C
+	appserver Sun 07 May 2023  8:24PM> ls --color -lS --reverse --human-readable --almost-all                                           /home/sarnobat
+	appserver Sun 07 May 2023  8:24PM> sudo service kubelet start                                                                       /home/sarnobat
+	appserver Sun 07 May 2023  8:25PM> journalctl -u kubelet -f                                                                         /home/sarnobat
+	-- Logs begin at Wed 2023-05-03 13:00:27 PDT. --
+	May 07 20:25:39 nuc2020 kubelet[33704]: Flag --container-runtime-endpoint has been deprecated, This parameter should be set via the config file specified by the Kubelet's --config flag. See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-config-file/ for more information.
+	May 07 20:25:39 nuc2020 kubelet[33704]: Flag --pod-infra-container-image has been deprecated, will be removed in a future release. Image garbage collector will get sandbox image information from CRI.
+	May 07 20:25:39 nuc2020 kubelet[33704]: I0507 20:25:39.347252   33704 server.go:199] "--pod-infra-container-image will not be pruned by the image garbage collector in kubelet and should also be set in the remote runtime"
+	May 07 20:25:39 nuc2020 kubelet[33704]: I0507 20:25:39.349758   33704 server.go:415] "Kubelet version" kubeletVersion="v1.27.1"
+	May 07 20:25:39 nuc2020 kubelet[33704]: I0507 20:25:39.349772   33704 server.go:417] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+	May 07 20:25:39 nuc2020 kubelet[33704]: I0507 20:25:39.349909   33704 server.go:837] "Client rotation is on, will bootstrap in background"
+	May 07 20:25:39 nuc2020 kubelet[33704]: E0507 20:25:39.350321   33704 bootstrap.go:241] unable to read existing bootstrap client config from /etc/kubernetes/kubelet.conf: invalid configuration: [unable to read client-cert /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory, unable to read client-key /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory]
+	May 07 20:25:39 nuc2020 kubelet[33704]: E0507 20:25:39.350350   33704 run.go:74] "command failed" err="failed to run Kubelet: unable to load bootstrap kubeconfig: stat /etc/kubernetes/bootstrap-kubelet.conf: no such file or directory"
+	May 07 20:25:39 nuc2020 systemd[1]: kubelet.service: Main process exited, code=exited, status=1/FAILURE
+	May 07 20:25:39 nuc2020 systemd[1]: kubelet.service: Failed with result 'exit-code'.
+	q
+	May 07 20:25:49 nuc2020 systemd[1]: kubelet.service: Scheduled restart job, restart counter is at 60.
+	May 07 20:25:49 nuc2020 systemd[1]: Stopped kubelet: The Kubernetes Node Agent.
+	May 07 20:25:49 nuc2020 systemd[1]: Started kubelet: The Kubernetes Node Agent.
+	May 07 20:25:49 nuc2020 kubelet[33749]: Flag --container-runtime-endpoint has been deprecated, This parameter should be set via the config file specified by the Kubelet's --config flag. See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-config-file/ for more information.
+	May 07 20:25:49 nuc2020 kubelet[33749]: Flag --pod-infra-container-image has been deprecated, will be removed in a future release. Image garbage collector will get sandbox image information from CRI.
+	May 07 20:25:49 nuc2020 kubelet[33749]: I0507 20:25:49.599935   33749 server.go:199] "--pod-infra-container-image will not be pruned by the image garbage collector in kubelet and should also be set in the remote runtime"
+	May 07 20:25:49 nuc2020 kubelet[33749]: I0507 20:25:49.602531   33749 server.go:415] "Kubelet version" kubeletVersion="v1.27.1"
+	May 07 20:25:49 nuc2020 kubelet[33749]: I0507 20:25:49.602545   33749 server.go:417] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+	May 07 20:25:49 nuc2020 kubelet[33749]: I0507 20:25:49.602667   33749 server.go:837] "Client rotation is on, will bootstrap in background"
+	May 07 20:25:49 nuc2020 kubelet[33749]: E0507 20:25:49.603067   33749 bootstrap.go:241] unable to read existing bootstrap client config from /etc/kubernetes/kubelet.conf: invalid configuration: [unable to read client-cert /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory, unable to read client-key /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory]
+	May 07 20:25:49 nuc2020 kubelet[33749]: E0507 20:25:49.603090   33749 run.go:74] "command failed" err="failed to run Kubelet: unable to load bootstrap kubeconfig: stat /etc/kubernetes/bootstrap-kubelet.conf: no such file or directory"
+	May 07 20:25:49 nuc2020 systemd[1]: kubelet.service: Main process exited, code=exited, status=1/FAILURE
+	May 07 20:25:49 nuc2020 systemd[1]: kubelet.service: Failed with result 'exit-code'.
+
+
+	^C
+	appserver Sun 07 May 2023  8:25PM> sudo kubeadm join 127.0.0.188:6443 --token u81y02.91gqwkxx6rnhnnly --discovery-token-ca-cert-hash sha256:4482ab1c66bf17992ea02c1ba580f4af9f3ad4cc37b24f189db34d6e3fe95c2d
+	[preflight] Running pre-flight checks
+		[WARNING Swap]: swap is enabled; production deployments should disable swap unless testing the NodeSwap feature gate of the kubelet
+	error execution phase preflight: [preflight] Some fatal errors occurred:
+		[ERROR FileAvailable--etc-kubernetes-kubelet.conf]: /etc/kubernetes/kubelet.conf already exists
+		[ERROR FileAvailable--etc-kubernetes-pki-ca.crt]: /etc/kubernetes/pki/ca.crt already exists
+	[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
+	To see the stack trace of this error execute with --v=5 or higher
+	appserver Sun 07 May 2023  8:26PM> kubectl get nodes                                                                                /home/sarnobat
+	E0507 20:27:13.942157   34151 memcache.go:265] couldn't get current server API group list: Get "http://localhost:8080/api?timeout=32s": dial tcp 127.0.0.1:8080: connect: connection refused
+	E0507 20:27:13.942477   34151 memcache.go:265] couldn't get current server API group list: Get "http://localhost:8080/api?timeout=32s": dial tcp 127.0.0.1:8080: connect: connection refused
+	E0507 20:27:13.943794   34151 memcache.go:265] couldn't get current server API group list: Get "http://localhost:8080/api?timeout=32s": dial tcp 127.0.0.1:8080: connect: connection refused
+	E0507 20:27:13.945169   34151 memcache.go:265] couldn't get current server API group list: Get "http://localhost:8080/api?timeout=32s": dial tcp 127.0.0.1:8080: connect: connection refused
+	E0507 20:27:13.946310   34151 memcache.go:265] couldn't get current server API group list: Get "http://localhost:8080/api?timeout=32s": dial tcp 127.0.0.1:8080: connect: connection refused
+	The connection to the server localhost:8080 was refused - did you specify the right host or port?
+	appserver Sun 07 May 2023  8:27PM> sudo kubeadm join 127.0.0.188:6443 --token u81y02.91gqwkxx6rnhnnly --discovery-token-ca-cert-hash sha256:4482ab1c66bf17992ea02c1ba580f4af9f3ad4cc37b24f189db34d6e3fe95c2d
+	[preflight] Running pre-flight checks
+		[WARNING Swap]: swap is enabled; production deployments should disable swap unless testing the NodeSwap feature gate of the kubelet
+	error execution phase preflight: [preflight] Some fatal errors occurred:
+		[ERROR FileAvailable--etc-kubernetes-kubelet.conf]: /etc/kubernetes/kubelet.conf already exists
+		[ERROR FileAvailable--etc-kubernetes-pki-ca.crt]: /etc/kubernetes/pki/ca.crt already exists
+	[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
+	To see the stack trace of this error execute with --v=5 or higher
+	appserver Sun 07 May 2023  8:28PM> set                                                                                              /home/sarnobat
+	appserver Sun 07 May 2023  8:28PM> swa                                                                                              /home/sarnobat
+	appserver Sun 07 May 2023  8:28PM> sudo swapoff -a                                                                                  /home/sarnobat
+	appserver Sun 07 May 2023  8:28PM> sudo kubeadm join 127.0.0.188:6443 --token u81y02.91gqwkxx6rnhnnly --discovery-token-ca-cert-hash sha256:4482ab1c66bf17992ea02c1ba580f4af9f3ad4cc37b24f189db34d6e3fe95c2d
+	[preflight] Running pre-flight checks
+	error execution phase preflight: [preflight] Some fatal errors occurred:
+		[ERROR FileAvailable--etc-kubernetes-kubelet.conf]: /etc/kubernetes/kubelet.conf already exists
+		[ERROR FileAvailable--etc-kubernetes-pki-ca.crt]: /etc/kubernetes/pki/ca.crt already exists
+	[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
+	To see the stack trace of this error execute with --v=5 or higher
+	appserver Sun 07 May 2023  8:28PM> sudo mv /etc/kubernetes/kubelet.conf /etc/kubernetes/kubelet.conf.disabled                       /home/sarnobat
+	appserver Sun 07 May 2023  8:29PM> sudo mv /etc/kubernetes/pki/ca.crt /etc/kubernetes/pki/ca.crt.disabled                           /home/sarnobat
+	appserver Sun 07 May 2023  8:29PM> sudo kubeadm join 127.0.0.188:6443 --token u81y02.91gqwkxx6rnhnnly --discovery-token-ca-cert-hash sha256:4482ab1c66bf17992ea02c1ba580f4af9f3ad4cc37b24f189db34d6e3fe95c2d
+	[preflight] Running pre-flight checks
+	^C
+	appserver Sun 07 May 2023  8:31PM> sudo kubeadm join 127.0.0.188:6443 --token u81y02.91gqwkxx6rnhnnly --discovery-token-ca-cert-hash sha256:4482ab1c66bf17992ea02c1ba580f4af9f3ad4cc37b24f189db34d6e3fe95c2d -v10
+	I0507 20:31:25.875536   35388 join.go:412] [preflight] found NodeName empty; using OS hostname as NodeName
+	I0507 20:31:25.875666   35388 initconfiguration.go:117] detected and using CRI socket: unix:///var/run/containerd/containerd.sock
+	[preflight] Running pre-flight checks
+	I0507 20:31:25.875727   35388 preflight.go:93] [preflight] Running general checks
+	I0507 20:31:25.875764   35388 checks.go:280] validating the existence of file /etc/kubernetes/kubelet.conf
+	I0507 20:31:25.875774   35388 checks.go:280] validating the existence of file /etc/kubernetes/bootstrap-kubelet.conf
+	I0507 20:31:25.875781   35388 checks.go:104] validating the container runtime
+	I0507 20:31:25.892955   35388 checks.go:639] validating whether swap is enabled or not
+	I0507 20:31:25.892995   35388 checks.go:370] validating the presence of executable crictl
+	I0507 20:31:25.893014   35388 checks.go:370] validating the presence of executable conntrack
+	I0507 20:31:25.893024   35388 checks.go:370] validating the presence of executable ip
+	I0507 20:31:25.893036   35388 checks.go:370] validating the presence of executable iptables
+	I0507 20:31:25.893051   35388 checks.go:370] validating the presence of executable mount
+	I0507 20:31:25.893062   35388 checks.go:370] validating the presence of executable nsenter
+	I0507 20:31:25.893070   35388 checks.go:370] validating the presence of executable ebtables
+	I0507 20:31:25.893079   35388 checks.go:370] validating the presence of executable ethtool
+	I0507 20:31:25.893086   35388 checks.go:370] validating the presence of executable socat
+	I0507 20:31:25.893094   35388 checks.go:370] validating the presence of executable tc
+	I0507 20:31:25.893103   35388 checks.go:370] validating the presence of executable touch
+	I0507 20:31:25.893114   35388 checks.go:516] running all checks
+	I0507 20:31:25.901221   35388 checks.go:401] checking whether the given node name is valid and reachable using net.LookupHost
+	I0507 20:31:25.901343   35388 checks.go:605] validating kubelet version
+	I0507 20:31:25.931455   35388 checks.go:130] validating if the "kubelet" service is enabled and active
+	I0507 20:31:25.939012   35388 checks.go:203] validating availability of port 10250
+	I0507 20:31:25.939118   35388 checks.go:280] validating the existence of file /etc/kubernetes/pki/ca.crt
+	I0507 20:31:25.939127   35388 checks.go:430] validating if the connectivity type is via proxy or direct
+	I0507 20:31:25.939144   35388 checks.go:329] validating the contents of file /proc/sys/net/bridge/bridge-nf-call-iptables
+	I0507 20:31:25.939168   35388 checks.go:329] validating the contents of file /proc/sys/net/ipv4/ip_forward
+	I0507 20:31:25.939183   35388 join.go:529] [preflight] Discovering cluster-info
+	I0507 20:31:25.939196   35388 token.go:80] [discovery] Created cluster-info discovery client, requesting info from "127.0.0.188:6443"
+	I0507 20:31:25.939519   35388 round_trippers.go:466] curl -v -XGET  -H "Accept: application/json, */*" -H "User-Agent: kubeadm/v1.27.1 (linux/amd64) kubernetes/4c94112" 'https://127.0.0.188:6443/api/v1/namespaces/kube-public/configmaps/cluster-info?timeout=10s'
+	I0507 20:31:25.939652   35388 round_trippers.go:508] HTTP Trace: Dial to tcp:127.0.0.188:6443 failed: dial tcp 127.0.0.188:6443: connect: connection refused
+	I0507 20:31:25.939668   35388 round_trippers.go:553] GET https://127.0.0.188:6443/api/v1/namespaces/kube-public/configmaps/cluster-info?timeout=10s  in 0 milliseconds
+	I0507 20:31:25.939675   35388 round_trippers.go:570] HTTP Statistics: DNSLookup 0 ms Dial 0 ms TLSHandshake 0 ms Duration 0 ms
+	I0507 20:31:25.939681   35388 round_trippers.go:577] Response Headers:
+	I0507 20:31:25.939706   35388 token.go:217] [discovery] Failed to request cluster-info, will try again: Get "https://127.0.0.188:6443/api/v1/namespaces/kube-public/configmaps/cluster-info?timeout=10s": dial tcp 127.0.0.188:6443: connect: connection refused
+	^C
+	appserver Sun 07 May 2023  8:31PM> sudo kubeadm join 192.168.1.4:6443 --token 33hpb0.ps5p55au5vdualfr   --discovery-token-ca-cert-hash sha256:a0a4f3ec96303b6cbb741259663df3a0101109d284c68329e10d35341866dc78
+	[preflight] Running pre-flight checks
+	[preflight] Reading configuration from the cluster...
+	[preflight] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -o yaml'
+	[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
+	[kubelet-start] Writing kubelet environment file with flags to file "/var/lib/kubelet/kubeadm-flags.env"
+	[kubelet-start] Starting the kubelet
+	[kubelet-start] Waiting for the kubelet to perform the TLS Bootstrap...
+
+	This node has joined the cluster:
+	* Certificate signing request was sent to apiserver and a response was received.
+	* The Kubelet was informed of the new secure connection details.
+
+	Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
+
+	appserver Sun 07 May 2023  8:31PM> ip addr                                                                                          /home/sarnobat
+	1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+		link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+		inet 127.0.0.1/8 scope host lo
+		   valid_lft forever preferred_lft forever
+		inet6 ::1/128 scope host
+		   valid_lft forever preferred_lft forever
+	2: eno1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+		link/ether 1c:69:7a:6e:92:ef brd ff:ff:ff:ff:ff:ff
+		altname enp0s31f6
+		inet 192.168.1.3/24 brd 192.168.1.255 scope global dynamic noprefixroute eno1
+		   valid_lft 78210sec preferred_lft 78210sec
+		inet6 fe80::4f35:f886:c69d:b370/64 scope link noprefixroute
+		   valid_lft forever preferred_lft forever
+	3: wlp0s20f3: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
+		link/ether 34:c9:3d:e3:f5:a8 brd ff:ff:ff:ff:ff:ff
+	4: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+		link/ether 02:42:e3:07:cb:be brd ff:ff:ff:ff:ff:ff
+		inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+		   valid_lft forever preferred_lft forever
+	5: flannel.1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN group default
+		link/ether 12:8e:a1:0a:3a:eb brd ff:ff:ff:ff:ff:ff
+		inet 10.244.1.0/32 scope global flannel.1
+		   valid_lft forever preferred_lft forever
+		inet6 fe80::108e:a1ff:fe0a:3aeb/64 scope link
+		   valid_lft forever preferred_lft forever
+	6: cni0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default qlen 1000
+		link/ether 86:b7:96:ed:8b:43 brd ff:ff:ff:ff:ff:ff
+		inet 10.244.1.1/24 brd 10.244.1.255 scope global cni0
+		   valid_lft forever preferred_lft forever
+		inet6 fe80::84b7:96ff:feed:8b43/64 scope link
+		   valid_lft forever preferred_lft forever
+	7: vethc96f33bf@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+		link/ether 82:61:1e:6b:b6:f7 brd ff:ff:ff:ff:ff:ff link-netns cni-08b49b24-28b8-0b49-92bf-7416d58ddfa3
+		inet6 fe80::8061:1eff:fe6b:b6f7/64 scope link
+		   valid_lft forever preferred_lft forever
+	appserver Sun 07 May 2023  8:34PM> ifconfig eno0                                                                                    /home/sarnobat
+	zsh: command not found: ifconfig
+	appserver Sun 07 May 2023  8:34PM> ip addr eno0                                                                                     /home/sarnobat
+	Command "eno0" is unknown, try "ip address help".
+	appserver Sun 07 May 2023  8:35PM> ip addr eth0                                                                                     /home/sarnobat
+	Command "eth0" is unknown, try "ip address help".
+	appserver Sun 07 May 2023  8:35PM> ifconfig                                                                                         /home/sarnobat
+	zsh: command not found: ifconfig
+	appserver Sun 07 May 2023  8:35PM> ip addr                                                                                          /home/sarnobat
+	1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+		link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+		inet 127.0.0.1/8 scope host lo
+		   valid_lft forever preferred_lft forever
+		inet6 ::1/128 scope host
+		   valid_lft forever preferred_lft forever
+	2: eno1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+		link/ether 1c:69:7a:6e:92:ef brd ff:ff:ff:ff:ff:ff
+		altname enp0s31f6
+		inet 192.168.1.3/24 brd 192.168.1.255 scope global dynamic noprefixroute eno1
+		   valid_lft 78193sec preferred_lft 78193sec
+		inet6 fe80::4f35:f886:c69d:b370/64 scope link noprefixroute
+		   valid_lft forever preferred_lft forever
+	3: wlp0s20f3: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
+		link/ether 34:c9:3d:e3:f5:a8 brd ff:ff:ff:ff:ff:ff
+	4: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+		link/ether 02:42:e3:07:cb:be brd ff:ff:ff:ff:ff:ff
+		inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+		   valid_lft forever preferred_lft forever
+	5: flannel.1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN group default
+		link/ether 12:8e:a1:0a:3a:eb brd ff:ff:ff:ff:ff:ff
+		inet 10.244.1.0/32 scope global flannel.1
+		   valid_lft forever preferred_lft forever
+		inet6 fe80::108e:a1ff:fe0a:3aeb/64 scope link
+		   valid_lft forever preferred_lft forever
+	6: cni0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default qlen 1000
+		link/ether 86:b7:96:ed:8b:43 brd ff:ff:ff:ff:ff:ff
+		inet 10.244.1.1/24 brd 10.244.1.255 scope global cni0
+		   valid_lft forever preferred_lft forever
+		inet6 fe80::84b7:96ff:feed:8b43/64 scope link
+		   valid_lft forever preferred_lft forever
+	7: vethc96f33bf@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master cni0 state UP group default
+		link/ether 82:61:1e:6b:b6:f7 brd ff:ff:ff:ff:ff:ff link-netns cni-08b49b24-28b8-0b49-92bf-7416d58ddfa3
+		inet6 fe80::8061:1eff:fe6b:b6f7/64 scope link
+		   valid_lft forever preferred_lft forever
+	appserver Sun 07 May 2023  8:35PM>                                                                                                  /home/sarnobat
+
+## antec
+
+### Check node joined successfully
+
 	antec Sun 07 May 2023  8:28PM> kubectl get nodes                                                                                    /home/sarnobat
 
 		NAME                STATUS     ROLES           AGE   VERSION
