@@ -34,7 +34,7 @@ based on
 
 
 
-	antec Sun 07 May 2023  7:53PM> kubectl get all --all-namespaces                                                                     /home/sarnobat
+	antec Sun 07 May 2023  7:53PM> kubectl get all --all-namespaces
 
 		E0507 19:58:34.124367  648188 memcache.go:265] couldn't get current server API group list: Get "https://192.168.1.4:6443/api?timeout=32s": dial tcp 192.168.1.4:6443: connect: connection refused
 		E0507 19:58:34.125132  648188 memcache.go:265] couldn't get current server API group list: Get "https://192.168.1.4:6443/api?timeout=32s": dial tcp 192.168.1.4:6443: connect: connection refused
@@ -45,25 +45,25 @@ based on
 
 	antec Sun 07 May 2023  7:58PM> sudo kubeadm reset                                                                                   /home/sarnobat
 
-	W0507 19:58:42.526781  648199 preflight.go:56] [reset] WARNING: Changes made to this host by 'kubeadm init' or 'kubeadm join' will be reverted.
-	[reset] Are you sure you want to proceed? [y/N]: y
-	[preflight] Running pre-flight checks
-	W0507 19:58:45.186816  648199 removeetcdmember.go:106] [reset] No kubeadm config, using etcd pod spec to get data directory
-	[reset] Stopping the kubelet service
-	[reset] Unmounting mounted directories in "/var/lib/kubelet"
-	[reset] Deleting contents of directories: [/etc/kubernetes/manifests /var/lib/kubelet /etc/kubernetes/pki]
-	[reset] Deleting files: [/etc/kubernetes/admin.conf /etc/kubernetes/kubelet.conf /etc/kubernetes/bootstrap-kubelet.conf /etc/kubernetes/controller-manager.conf /etc/kubernetes/scheduler.conf]
+		W0507 19:58:42.526781  648199 preflight.go:56] [reset] WARNING: Changes made to this host by 'kubeadm init' or 'kubeadm join' will be reverted.
+		[reset] Are you sure you want to proceed? [y/N]: y
+		[preflight] Running pre-flight checks
+		W0507 19:58:45.186816  648199 removeetcdmember.go:106] [reset] No kubeadm config, using etcd pod spec to get data directory
+		[reset] Stopping the kubelet service
+		[reset] Unmounting mounted directories in "/var/lib/kubelet"
+		[reset] Deleting contents of directories: [/etc/kubernetes/manifests /var/lib/kubelet /etc/kubernetes/pki]
+		[reset] Deleting files: [/etc/kubernetes/admin.conf /etc/kubernetes/kubelet.conf /etc/kubernetes/bootstrap-kubelet.conf /etc/kubernetes/controller-manager.conf /etc/kubernetes/scheduler.conf]
 
-	The reset process does not clean CNI configuration. To do so, you must remove /etc/cni/net.d
+		The reset process does not clean CNI configuration. To do so, you must remove /etc/cni/net.d
 
-	The reset process does not reset or clean up iptables rules or IPVS tables.
-	If you wish to reset iptables, you must do so manually by using the "iptables" command.
+		The reset process does not reset or clean up iptables rules or IPVS tables.
+		If you wish to reset iptables, you must do so manually by using the "iptables" command.
 
-	If your cluster was setup to utilize IPVS, run ipvsadm --clear (or similar)
-	to reset your system's IPVS tables.
+		If your cluster was setup to utilize IPVS, run ipvsadm --clear (or similar)
+		to reset your system's IPVS tables.
 
-	The reset process does not clean your kubeconfig files and you must remove them manually.
-	Please, check the contents of the $HOME/.kube/config file.
+		The reset process does not clean your kubeconfig files and you must remove them manually.
+		Please, check the contents of the $HOME/.kube/config file.
 
 ### ~~taint nodes~~
 TODO: Explain what this means
@@ -577,29 +577,6 @@ TODO: explain why
 		controller-manager   Healthy   ok
 		etcd-0               Healthy   {"health":"true","reason":""}
 
-### ~~join cluster from master node~~
-I couldn't get this to work
-
-	antec Sun 07 May 2023  8:09PM> sudo vi /etc/kubernetes/manifests/kube-scheduler.yaml +/port                                         /home/sarnobat
-	antec Sun 07 May 2023  8:10PM> sudo systemctl restart kubelet.service                                                               /home/sarnobat
-
-	antec Sun 07 May 2023  8:10PM> kubeadm join 192.168.1.4:6443 --token 33hpb0.ps5p55au5vdualfr    --discovery-token-ca-cert-hash sha256:a0a4f3ec96303b6cbb741259663df3a0101109d284c68329e10d35341866dc78
-
-		[preflight] Running pre-flight checks
-		error execution phase preflight: [preflight] Some fatal errors occurred:
-			[ERROR IsPrivilegedUser]: user is not running as root
-		[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
-		To see the stack trace of this error execute with --v=5 or higher
-
-	antec Sun 07 May 2023  8:11PM> sudo kubeadm join 192.168.1.4:6443 --token 33hpb0.ps5p55au5vdualfr       --discovery-token-ca-cert-hash sha256:a0a4f3ec96303b6cbb741259663df3a0101109d284c68329e10d35341866dc78
-
-		[preflight] Running pre-flight checks
-		error execution phase preflight: [preflight] Some fatal errors occurred:
-			[ERROR FileAvailable--etc-kubernetes-kubelet.conf]: /etc/kubernetes/kubelet.conf already exists
-			[ERROR Port-10250]: Port 10250 is in use
-			[ERROR FileAvailable--etc-kubernetes-pki-ca.crt]: /etc/kubernetes/pki/ca.crt already exists
-		[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
-		To see the stack trace of this error execute with --v=5 or higher
 
 ### Check control plane is up
 
@@ -607,9 +584,6 @@ I couldn't get this to work
 
 		NAME                STATUS   ROLES           AGE   VERSION
 		kubernetes-worker   Ready    control-plane   23m   v1.26.3
-
-### ~~junk~~
-
 
 ## nuc2020
 
@@ -1023,6 +997,38 @@ I couldn't get this to work
 		NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
 		kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP        29m
 		nginx        NodePort    10.96.115.33   <none>        80:31833/TCP   12s
+
+	antec Sun 07 May 2023  8:28PM> kubectl get all --all-namespaces                                      /media/sarnobat/3TB/2021/disks/thistle/videos
+
+		NAMESPACE      NAME                                            READY   STATUS    RESTARTS   AGE
+		default        pod/nginx-748c667d99-q865x                      1/1     Running   0          65m
+		kube-flannel   pod/kube-flannel-ds-swkrf                       1/1     Running   0          67m
+		kube-flannel   pod/kube-flannel-ds-wdrzc                       1/1     Running   0          90m
+		kube-system    pod/coredns-787d4945fb-224pv                    1/1     Running   0          94m
+		kube-system    pod/coredns-787d4945fb-zmzf6                    1/1     Running   0          94m
+		kube-system    pod/etcd-kubernetes-worker                      1/1     Running   0          94m
+		kube-system    pod/kube-apiserver-kubernetes-worker            1/1     Running   0          94m
+		kube-system    pod/kube-controller-manager-kubernetes-worker   1/1     Running   0          94m
+		kube-system    pod/kube-proxy-qxb2m                            1/1     Running   0          67m
+		kube-system    pod/kube-proxy-x97gx                            1/1     Running   0          94m
+		kube-system    pod/kube-scheduler-kubernetes-worker            1/1     Running   0          94m
+
+		NAMESPACE     NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)                  AGE
+		default       service/kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP                  94m
+		default       service/nginx        NodePort    10.96.115.33   <none>        80:31833/TCP             65m
+		kube-system   service/kube-dns     ClusterIP   10.96.0.10     <none>        53/UDP,53/TCP,9153/TCP   94m
+
+		NAMESPACE      NAME                             DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE
+		kube-flannel   daemonset.apps/kube-flannel-ds   2         2         2       2            2           <none>                   90m
+		kube-system    daemonset.apps/kube-proxy        2         2         2       2            2           kubernetes.io/os=linux   94m
+
+		NAMESPACE     NAME                      READY   UP-TO-DATE   AVAILABLE   AGE
+		default       deployment.apps/nginx     1/1     1            1           65m
+		kube-system   deployment.apps/coredns   2/2     2            2           94m
+
+		NAMESPACE     NAME                                 DESIRED   CURRENT   READY   AGE
+		default       replicaset.apps/nginx-748c667d99     1         1         1       65m
+		kube-system   replicaset.apps/coredns-787d4945fb   2         2         2       94m
 
 ### Testing nginx
 
