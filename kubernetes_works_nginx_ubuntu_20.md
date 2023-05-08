@@ -1,13 +1,19 @@
 # 2023-05 nginx on Ubuntu 20
-
 -   [2023-05 nginx on Ubuntu 20](#nginx-on-ubuntu-20)
     -   [Server Node (antec)](#server-node-antec)
-        -   [taint nodes](#taint-nodes)
-        -   [install containerd](#install-containerd)
+        -   [~~taint nodes~~](#taint-nodes)
+        -   [Install containerd](#install-containerd)
+        -   [start containerd](#start-containerd)
+        -   [start kubelet](#start-kubelet)
         -   [taint nodes](#taint-nodes-1)
         -   [Create cluster](#create-cluster)
         -   [apply flannel](#apply-flannel)
-        -   [Check \_\_\_](#check-___)
+        -   [Check cluster master node is
+            up](#check-cluster-master-node-is-up)
+        -   [~~join cluster from master
+            node~~](#join-cluster-from-master-node)
+        -   [Check control plane is up](#check-control-plane-is-up)
+        -   [~~junk~~](#junk)
     -   [nuc2020](#nuc2020)
         -   [~~install kubeadm, kubectl
             etc.~~](#install-kubeadm-kubectl-etc.)
@@ -55,17 +61,17 @@
 ### ~~taint nodes~~
 TODO: Explain what this means
 
-~~
 	antec Sun 07 May 2023  7:58PM> kubectl taint nodes --all                                                                            /home/sarnobat
 
 		error: at least one taint update is required
-~~
 
 	antec Sun 07 May 2023  7:59PM> kubectl taint nodes --all node-role.kubernetes.io/control-plane-                                     /home/sarnobat
 
 		E0507 19:59:52.834337  648465 memcache.go:265] couldn't get current server API group list: Get "https://192.168.1.4:6443/api?timeout=32s": dial tcp 192.168.1.4:6443: connect: connection refused
 		E0507 19:59:52.837840  648465 memcache.go:265] couldn't get current server API group list: Get "https://192.168.1.4:6443/api?timeout=32s": dial tcp 192.168.1.4:6443: connect: connection refused
 		The connection to the server 192.168.1.4:6443 was refused - did you specify the right host or port?
+
+### Install containerd
 
 	antec Sun 07 May 2023  7:59PM> ps aux | grep containerd                                                                             /home/sarnobat
 
@@ -75,18 +81,20 @@ TODO: Explain what this means
 
 	antec Sun 07 May 2023  8:00PM> sudo systemctl status containerd                                                                     /home/sarnobat
 
-	● containerd.service - containerd container runtime
-		 Loaded: loaded (/lib/systemd/system/containerd.service; enabled; vendor preset: enabled)
-		 Active: active (running) since Thu 2023-04-06 17:46:58 PDT; 1 month 0 days ago
-		   Docs: https://containerd.io
-	   Main PID: 2180 (containerd)
-		  Tasks: 15
-		 Memory: 33.5M
-			CPU: 2h 42min 29.350s
-		 CGroup: /system.slice/containerd.service
-				 └─2180 /usr/bin/containerd
+		● containerd.service - containerd container runtime
+			 Loaded: loaded (/lib/systemd/system/containerd.service; enabled; vendor preset: enabled)
+			 Active: active (running) since Thu 2023-04-06 17:46:58 PDT; 1 month 0 days ago
+			   Docs: https://containerd.io
+		   Main PID: 2180 (containerd)
+			  Tasks: 15
+			 Memory: 33.5M
+				CPU: 2h 42min 29.350s
+			 CGroup: /system.slice/containerd.service
+					 └─2180 /usr/bin/containerd
 
-	Notice: journal has been rotated since unit was started, output may be incomplete.
+		Notice: journal has been rotated since unit was started, output may be incomplete.
+
+
 	antec Sun 07 May 2023  8:00PM> sudo mkdir -p /etc/containerd/; containerd config default | sudo tee /etc/containerd/config.toml     /home/sarnobat
 
 		disabled_plugins = []
@@ -340,9 +348,11 @@ TODO: Explain what this means
 		  gid = 0
 		  uid = 0
 
-### install containerd
+
 
 	antec Sun 07 May 2023  8:00PM> sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml           /home/sarnobat
+
+### start containerd
 
 	antec Sun 07 May 2023  8:00PM> sudo systemctl restart containerd                                                                    /home/sarnobat
 
@@ -352,10 +362,13 @@ TODO: Explain what this means
 		E0507 20:00:44.969496  648545 memcache.go:265] couldn't get current server API group list: Get "https://192.168.1.4:6443/api?timeout=32s": dial tcp 192.168.1.4:6443: connect: connection refused
 		The connection to the server 192.168.1.4:6443 was refused - did you specify the right host or port?
 
-### taint nodes
+### start kubelet
 
 	antec Sun 07 May 2023  8:00PM> swapoff -a                                                                                           /home/sarnobat
-	antec Sun 07 May 2023  8:01PM> sudo systemctl restart kubelet                                                                       /home/sarnobat
+	antec Sun 07 May 2023  8:01PM> sudo systemctl restart kubelet                
+
+### taint nodes
+
 	antec Sun 07 May 2023  8:01PM> kubectl taint nodes --all node-role.kubernetes.io/control-plane-                                     /home/sarnobat
 
 		E0507 20:01:33.624612  648951 memcache.go:265] couldn't get current server API group list: Get "https://192.168.1.4:6443/api?timeout=32s": dial tcp 192.168.1.4:6443: connect: connection refused
@@ -502,6 +515,8 @@ TODO: explain why
 		resource mapping not found for name: "flannel" namespace: "" from "https://raw.githubusercontent.com/coreos/flannel/v0.8.0/Documentation/kube-flannel-rbac.yml": no matches for kind "ClusterRoleBinding" in version "rbac.authorization.k8s.io/v1beta1"
 		ensure CRDs are installed first
 
+### Check cluster master node is up
+
 	antec Sun 07 May 2023  8:09PM> kubectl get pods --all-namespaces                                                                    /home/sarnobat
 
 		NAMESPACE      NAME                                        READY   STATUS    RESTARTS   AGE
@@ -538,7 +553,7 @@ TODO: explain why
 		kube-system    kube-proxy-x97gx                            1/1     Running   0          4m51s
 		kube-system    kube-scheduler-kubernetes-worker            1/1     Running   0          4m58s
 
-### Check ___
+
 	antec Sun 07 May 2023  8:09PM> kubectl get componentstatus                                                                          /home/sarnobat
 
 		Warning: v1 ComponentStatus is deprecated in v1.19+
@@ -554,6 +569,9 @@ TODO: explain why
 		scheduler            Healthy   ok
 		controller-manager   Healthy   ok
 		etcd-0               Healthy   {"health":"true","reason":""}
+
+### ~~join cluster from master node~~
+I couldn't get this to work
 
 	antec Sun 07 May 2023  8:09PM> sudo vi /etc/kubernetes/manifests/kube-scheduler.yaml +/port                                         /home/sarnobat
 	antec Sun 07 May 2023  8:10PM> sudo systemctl restart kubelet.service                                                               /home/sarnobat
@@ -576,11 +594,14 @@ TODO: explain why
 		[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
 		To see the stack trace of this error execute with --v=5 or higher
 
+### Check control plane is up
+
 	antec Sun 07 May 2023  8:11PM> kubectl get nodes                                                                                    /home/sarnobat
 
 		NAME                STATUS   ROLES           AGE   VERSION
 		kubernetes-worker   Ready    control-plane   23m   v1.26.3
 
+### ~~junk~~
 	antec Sun 07 May 2023  8:27PM> set                                                                                                  /home/sarnobat
 	antec Sun 07 May 2023  8:28PM> history                                                                                              /home/sarnobat
 
