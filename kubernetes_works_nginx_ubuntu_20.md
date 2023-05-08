@@ -11,10 +11,7 @@
         -   [apply flannel](#apply-flannel)
         -   [Check cluster master node is
             up](#check-cluster-master-node-is-up)
-        -   [~~join cluster from master
-            node~~](#join-cluster-from-master-node)
         -   [Check control plane is up](#check-control-plane-is-up)
-        -   [~~junk~~](#junk)
     -   [nuc2020](#nuc2020)
         -   [~~install kubeadm, kubectl
             etc.~~](#install-kubeadm-kubectl-etc.)
