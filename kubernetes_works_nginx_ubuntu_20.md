@@ -34,6 +34,9 @@
 	The reset process does not clean your kubeconfig files and you must remove them manually.
 	Please, check the contents of the $HOME/.kube/config file.
 
+### taint nodes
+TODO: Explain what this means
+
 	antec Sun 07 May 2023  7:58PM> kubectl taint nodes --all                                                                            /home/sarnobat
 
 		error: at least one taint update is required
@@ -317,6 +320,8 @@
 		  gid = 0
 		  uid = 0
 
+### install containerd
+
 	antec Sun 07 May 2023  8:00PM> sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml           /home/sarnobat
 
 	antec Sun 07 May 2023  8:00PM> sudo systemctl restart containerd                                                                    /home/sarnobat
@@ -326,6 +331,8 @@
 		E0507 20:00:44.968912  648545 memcache.go:265] couldn't get current server API group list: Get "https://192.168.1.4:6443/api?timeout=32s": dial tcp 192.168.1.4:6443: connect: connection refused
 		E0507 20:00:44.969496  648545 memcache.go:265] couldn't get current server API group list: Get "https://192.168.1.4:6443/api?timeout=32s": dial tcp 192.168.1.4:6443: connect: connection refused
 		The connection to the server 192.168.1.4:6443 was refused - did you specify the right host or port?
+
+### taint nodes
 
 	antec Sun 07 May 2023  8:00PM> swapoff -a                                                                                           /home/sarnobat
 	antec Sun 07 May 2023  8:01PM> sudo systemctl restart kubelet                                                                       /home/sarnobat
@@ -348,6 +355,8 @@
 	antec Sun 07 May 2023  8:02PM> sudo sysctl net.bridge.bridge-nf-call-iptables=1                                                     /home/sarnobat
 
 		net.bridge.bridge-nf-call-iptables = 1
+
+### Create cluster
 
 	antec Sun 07 May 2023  8:02PM> sudo kubeadm init --pod-network-cidr=10.244.0.0/16                                                   /home/sarnobat
 
@@ -439,6 +448,9 @@
 		Rules updated
 		Rules updated (v6)
 
+### apply flannel
+TODO: explain why
+
 	antec Sun 07 May 2023  8:08PM> kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
 		kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-rbac.yml
@@ -506,6 +518,7 @@
 		kube-system    kube-proxy-x97gx                            1/1     Running   0          4m51s
 		kube-system    kube-scheduler-kubernetes-worker            1/1     Running   0          4m58s
 
+### Check ___
 	antec Sun 07 May 2023  8:09PM> kubectl get componentstatus                                                                          /home/sarnobat
 
 		Warning: v1 ComponentStatus is deprecated in v1.19+
