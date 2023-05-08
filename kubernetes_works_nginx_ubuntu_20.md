@@ -2,12 +2,14 @@
 
 -   [2023-05 nginx on Ubuntu 20](#nginx-on-ubuntu-20)
     -   [Server Node (antec)](#server-node-antec)
-        -   [~~taint nodes~~](#taint-nodes)
-        -   [Install containerd](#install-containerd)
-        -   [start containerd](#start-containerd)
-        -   [start kubelet](#start-kubelet)
-        -   [taint nodes](#taint-nodes-1)
-        -   [Create cluster](#create-cluster)
+        -   [kubeadm reset](#kubeadm-reset)
+        -   [containerd config default](#containerd-config-default)
+        -   [systemctl restart
+            containerd](#systemctl-restart-containerd)
+        -   [swapoff](#swapoff)
+        -   [systemctl restart kubelet](#systemctl-restart-kubelet)
+        -   [hostnamectl set-hostname](#hostnamectl-set-hostname)
+        -   [kubeadm init](#kubeadm-init)
         -   [apply flannel](#apply-flannel)
         -   [Check cluster master node is
             up](#check-cluster-master-node-is-up)
@@ -16,13 +18,12 @@
         -   [install kubeadm, kubectl
             etc.](#install-kubeadm-kubectl-etc.)
         -   [install kubelet](#install-kubelet)
-        -   [join cluster](#join-cluster)
+        -   [kubeadm join](#kubeadm-join)
     -   [Server node (antec)](#server-node-antec-1)
         -   [Check node joined
             successfully](#check-node-joined-successfully)
         -   [Testing nginx](#testing-nginx)
     -   [Client Node](#client-node)
-
 
 
 based on
@@ -56,7 +57,7 @@ based on
 		The reset process does not clean your kubeconfig files and you must remove them manually.
 		Please, check the contents of the $HOME/.kube/config file.
 
-### Install containerd
+### containerd config default
 
 	antec Sun 07 May 2023  7:59PM> ps aux | grep containerd
 
@@ -333,8 +334,6 @@ based on
 		  gid = 0
 		  uid = 0
 
-
-
 	antec Sun 07 May 2023  8:00PM> sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
 
 ### systemctl restart containerd
@@ -348,17 +347,10 @@ based on
 
 	antec Sun 07 May 2023  8:01PM> sudo systemctl restart kubelet                
 
-### taint nodes
-
-	antec Sun 07 May 2023  8:01PM> kubectl taint nodes --all node-role.kubernetes.io/control-plane-
-
-		E0507 20:01:33.624612  648951 memcache.go:265] couldn't get current server API group list: Get "https://192.168.1.4:6443/api?timeout=32s": dial tcp 192.168.1.4:6443: connect: connection refused
-		E0507 20:01:33.625571  648951 memcache.go:265] couldn't get current server API group list: Get "https://192.168.1.4:6443/api?timeout=32s": dial tcp 192.168.1.4:6443: connect: connection refused
-		The connection to the server 192.168.1.4:6443 was refused - did you specify the right host or port?
+### hostnamectl set-hostname
 
 	antec Sun 07 May 2023  8:01PM> sudo swapoff -a
 
-	antec Sun 07 May 2023  8:02PM> sudo hostnamectl set-hostname kubernetes-master
 	antec Sun 07 May 2023  8:02PM> sudo hostnamectl set-hostname kubernetes-worker
 
 	antec Sun 07 May 2023  8:02PM> lsmod | grep br_netfilter
@@ -370,7 +362,7 @@ based on
 
 		net.bridge.bridge-nf-call-iptables = 1
 
-### Create cluster
+### kubeadm init
 
 	antec Sun 07 May 2023  8:02PM> sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 
