@@ -9,8 +9,9 @@
         -   [apply flannel](#apply-flannel)
         -   [Check \_\_\_](#check-___)
     -   [nuc2020](#nuc2020)
-        -   [install kubeadm, kubectl
-            etc.](#install-kubeadm-kubectl-etc.)
+        -   [~~install kubeadm, kubectl
+            etc.~~](#install-kubeadm-kubectl-etc.)
+        -   [join cluster](#join-cluster)
     -   [antec](#antec)
         -   [Check node joined
             successfully](#check-node-joined-successfully)
