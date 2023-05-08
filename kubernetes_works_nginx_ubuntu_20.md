@@ -32,14 +32,7 @@ based on
 
 
 
-	antec Sun 07 May 2023  7:53PM> kubectl get all --all-namespaces
-
-		E0507 19:58:34.124367  648188 memcache.go:265] couldn't get current server API group list: Get "https://192.168.1.4:6443/api?timeout=32s": dial tcp 192.168.1.4:6443: connect: connection refused
-		E0507 19:58:34.125132  648188 memcache.go:265] couldn't get current server API group list: Get "https://192.168.1.4:6443/api?timeout=32s": dial tcp 192.168.1.4:6443: connect: connection refused
-		E0507 19:58:34.126834  648188 memcache.go:265] couldn't get current server API group list: Get "https://192.168.1.4:6443/api?timeout=32s": dial tcp 192.168.1.4:6443: connect: connection refused
-		E0507 19:58:34.128708  648188 memcache.go:265] couldn't get current server API group list: Get "https://192.168.1.4:6443/api?timeout=32s": dial tcp 192.168.1.4:6443: connect: connection refused
-		E0507 19:58:34.130525  648188 memcache.go:265] couldn't get current server API group list: Get "https://192.168.1.4:6443/api?timeout=32s": dial tcp 192.168.1.4:6443: connect: connection refused
-		The connection to the server 192.168.1.4:6443 was refused - did you specify the right host or port?
+### kubeadm reset
 
 	antec Sun 07 May 2023  7:58PM> sudo kubeadm reset                                                                                   /home/sarnobat
 
@@ -62,19 +55,6 @@ based on
 
 		The reset process does not clean your kubeconfig files and you must remove them manually.
 		Please, check the contents of the $HOME/.kube/config file.
-
-### ~~taint nodes~~
-TODO: Explain what this means
-
-	antec Sun 07 May 2023  7:58PM> kubectl taint nodes --all                                                                            /home/sarnobat
-
-		error: at least one taint update is required
-
-	antec Sun 07 May 2023  7:59PM> kubectl taint nodes --all node-role.kubernetes.io/control-plane-                                     /home/sarnobat
-
-		E0507 19:59:52.834337  648465 memcache.go:265] couldn't get current server API group list: Get "https://192.168.1.4:6443/api?timeout=32s": dial tcp 192.168.1.4:6443: connect: connection refused
-		E0507 19:59:52.837840  648465 memcache.go:265] couldn't get current server API group list: Get "https://192.168.1.4:6443/api?timeout=32s": dial tcp 192.168.1.4:6443: connect: connection refused
-		The connection to the server 192.168.1.4:6443 was refused - did you specify the right host or port?
 
 ### Install containerd
 
@@ -357,19 +337,15 @@ TODO: Explain what this means
 
 	antec Sun 07 May 2023  8:00PM> sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml           /home/sarnobat
 
-### start containerd
+### systemctl restart containerd
 
 	antec Sun 07 May 2023  8:00PM> sudo systemctl restart containerd                                                                    /home/sarnobat
 
-	antec Sun 07 May 2023  8:00PM> kubectl taint nodes --all node-role.kubernetes.io/control-plane-                                     /home/sarnobat
+### swapoff
 
-		E0507 20:00:44.968912  648545 memcache.go:265] couldn't get current server API group list: Get "https://192.168.1.4:6443/api?timeout=32s": dial tcp 192.168.1.4:6443: connect: connection refused
-		E0507 20:00:44.969496  648545 memcache.go:265] couldn't get current server API group list: Get "https://192.168.1.4:6443/api?timeout=32s": dial tcp 192.168.1.4:6443: connect: connection refused
-		The connection to the server 192.168.1.4:6443 was refused - did you specify the right host or port?
+	antec Sun 07 May 2023  8:00PM> swapoff -a    
+### systemctl restart kubelet
 
-### start kubelet
-
-	antec Sun 07 May 2023  8:00PM> swapoff -a                                                                                           /home/sarnobat
 	antec Sun 07 May 2023  8:01PM> sudo systemctl restart kubelet                
 
 ### taint nodes
