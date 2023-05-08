@@ -454,7 +454,7 @@ based on
 		Rules updated
 		Rules updated (v6)
 
-### apply flannel
+### kubectl apply
 TODO: explain why
 
 	antec Sun 07 May 2023  8:08PM> kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
@@ -488,7 +488,7 @@ TODO: explain why
 		resource mapping not found for name: "flannel" namespace: "" from "https://raw.githubusercontent.com/coreos/flannel/v0.8.0/Documentation/kube-flannel-rbac.yml": no matches for kind "ClusterRoleBinding" in version "rbac.authorization.k8s.io/v1beta1"
 		ensure CRDs are installed first
 
-### Check cluster master node is up
+### kubectl get pods
 
 	antec Sun 07 May 2023  8:09PM> kubectl get pods --all-namespaces
 
@@ -544,16 +544,16 @@ TODO: explain why
 		etcd-0               Healthy   {"health":"true","reason":""}
 
 
-### Check control plane is up
+### kubectl get nodes
 
 	antec Sun 07 May 2023  8:11PM> kubectl get nodes
 
 		NAME                STATUS   ROLES           AGE   VERSION
 		kubernetes-worker   Ready    control-plane   23m   v1.26.3
 
-## nuc2020
+## Worker node (nuc2020)
 
-### install kubeadm, kubectl etc.
+### apt install kubeadm
 
 	appserver Sun 07 May 2023  8:12PM> curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 
@@ -590,24 +590,7 @@ TODO: explain why
 		Setting up kubeadm (1.27.1-00) ...
 		Processing triggers for man-db (2.9.1-1) ...
 
-### install kubelet
-
-	appserver Sun 07 May 2023  8:17PM> sudo apt update && sudo apt install kubelet
-
-		Hit:1 http://us.archive.ubuntu.com/ubuntu focal InRelease
-		Hit:2 https://dl.google.com/linux/chrome/deb stable InRelease
-		Hit:4 http://us.archive.ubuntu.com/ubuntu focal-updates InRelease
-		Ign:5 http://ppa.launchpad.net/b-stolk/ppa/ubuntu focal InRelease
-		Hit:6 http://security.ubuntu.com/ubuntu focal-security InRelease
-		Hit:7 http://us.archive.ubuntu.com/ubuntu focal-backports InRelease
-		Hit:3 https://packages.cloud.google.com/apt kubernetes-xenial InRelease
-		Hit:8 http://ppa.launchpad.net/videolan/master-daily/ubuntu focal InRelease
-		Err:9 http://ppa.launchpad.net/b-stolk/ppa/ubuntu focal Release
-		  404  Not Found [IP: 185.125.190.52 80]
-		Sorting... Done
-		Full Text Search... Done
-		kubelet/kubernetes-xenial,now 1.27.1-00 amd64 [installed,automatic]
-		  Kubernetes Node Agent
+### apt install kubelet
 
 	appserver Sun 07 May 2023  8:23PM> sudo apt reinstall kubelet
 
@@ -648,7 +631,7 @@ TODO: explain why
 
 ## Server node (antec)
 
-### Check node joined successfully
+### kubectl get nodes
 
 	antec Sun 07 May 2023  8:28PM> kubectl get nodes
 
@@ -661,6 +644,8 @@ TODO: explain why
 		NAME                STATUS   ROLES           AGE   VERSION
 		kubernetes-worker   Ready    control-plane   27m   v1.26.3
 		nuc2020             Ready    <none>          27s   v1.27.1
+
+### kubectl create deployment nginx
 
 	antec Sun 07 May 2023  8:32PM> kubectl create deployment nginx --image=nginx
 
@@ -711,6 +696,8 @@ TODO: explain why
 		kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP        29m
 		nginx        NodePort    10.96.115.33   <none>        80:31833/TCP   12s
 
+### kubectl get all
+
 	antec Sun 07 May 2023  8:28PM> kubectl get all --all-namespaces                                      /media/sarnobat/3TB/2021/disks/thistle/videos
 
 		NAMESPACE      NAME                                            READY   STATUS    RESTARTS   AGE
@@ -745,6 +732,8 @@ TODO: explain why
 
 ### Testing nginx
 
+#### curl
+
 	antec Sun 07 May 2023  8:33PM> curl 10.96.115.33:31833
 	^C
 	antec Sun 07 May 2023  8:35PM> curl nuc2020:31833
@@ -773,4 +762,3 @@ TODO: explain why
 		</body>
 		</html>
 
-## Client Node
