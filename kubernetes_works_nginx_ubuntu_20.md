@@ -23,8 +23,12 @@
             successfully](#check-node-joined-successfully)
         -   [Testing](#testing)
     -   [Client Node](#client-node)
+
+based on
+* https://www.cloudsigma.com/how-to-install-and-use-kubernetes-on-ubuntu-20-04/
     
 ## Server Node (antec)
+
 
 
 	antec Sun 07 May 2023  7:53PM> kubectl get all --all-namespaces                                                                     /home/sarnobat
@@ -616,32 +620,6 @@ I couldn't get this to work
 	appserver Sun 07 May 2023  8:14PM> echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" >> ~/kubernetes.list                /home/sarnobat
 	sudo mv ~/kubernetes.list /etc/apt/sources.list.d
 
-	appserver Sun 07 May 2023  8:14PM> sudo apt update && sudo apt install kubeadm                                                      /home/sarnobat
-
-		Hit:1 https://dl.google.com/linux/chrome/deb stable InRelease
-		Hit:2 http://us.archive.ubuntu.com/ubuntu focal InRelease
-		Get:4 http://us.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
-		Get:5 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
-		Ign:6 http://ppa.launchpad.net/b-stolk/ppa/ubuntu focal InRelease
-		Get:7 http://us.archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
-		Hit:8 http://ppa.launchpad.net/videolan/master-daily/ubuntu focal InRelease
-		Get:3 https://packages.cloud.google.com/apt kubernetes-xenial InRelease [8,993 B]
-		Get:9 http://us.archive.ubuntu.com/ubuntu focal-updates/main amd64 DEP-11 Metadata [275 kB]
-		Err:10 http://ppa.launchpad.net/b-stolk/ppa/ubuntu focal Release
-		  404  Not Found [IP: 185.125.190.52 80]
-		Get:11 http://us.archive.ubuntu.com/ubuntu focal-updates/universe amd64 DEP-11 Metadata [410 kB]
-		Get:12 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 Packages [65.7 kB]
-		Get:13 http://us.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 DEP-11 Metadata [944 B]
-		Get:14 http://us.archive.ubuntu.com/ubuntu focal-backports/main amd64 DEP-11 Metadata [7,968 B]
-		Get:15 http://us.archive.ubuntu.com/ubuntu focal-backports/universe amd64 DEP-11 Metadata [30.5 kB]
-		Get:16 http://security.ubuntu.com/ubuntu focal-security/main amd64 DEP-11 Metadata [59.9 kB]
-		Get:17 http://security.ubuntu.com/ubuntu focal-security/universe amd64 DEP-11 Metadata [95.6 kB]
-		Get:18 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 DEP-11 Metadata [940 B]
-		Reading package lists... Done
-		E: The repository 'http://ppa.launchpad.net/b-stolk/ppa/ubuntu focal Release' does not have a Release file.
-		N: Updating from such a repository can't be done securely, and is therefore disabled by default.
-		N: See apt-secure(8) manpage for repository creation and user configuration details.
-
 	appserver Sun 07 May 2023  8:14PM> sudo apt install kubeadm                                                                         /home/sarnobat
 
 		Reading package lists... Done
@@ -670,77 +648,6 @@ I couldn't get this to work
 		Setting up kubeadm (1.27.1-00) ...
 		Processing triggers for man-db (2.9.1-1) ...
 
-		appserver Sun 07 May 2023  8:15PM> kubeadm join 192.168.1.4:6443 --token 33hpb0.ps5p55au5vdualfr        --discovery-token-ca-cert-hash sha256:a0a4f3ec96303b6cbb741259663df3a0101109d284c68329e10d35341866dc78
-
-		[preflight] Running pre-flight checks
-		error execution phase preflight: [preflight] Some fatal errors occurred:
-			[ERROR IsPrivilegedUser]: user is not running as root
-		[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
-		To see the stack trace of this error execute with --v=5 or higher
-
-		appserver Sun 07 May 2023  8:15PM> sudo kubeadm join 192.168.1.4:6443 --token 33hpb0.ps5p55au5vdualfr   --discovery-token-ca-cert-hash sha256:a0a4f3ec96303b6cbb741259663df3a0101109d284c68329e10d35341866dc78
-
-		[preflight] Running pre-flight checks
-			[WARNING Swap]: swap is enabled; production deployments should disable swap unless testing the NodeSwap feature gate of the kubelet
-		[preflight] Reading configuration from the cluster...
-		[preflight] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -o yaml'
-		[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
-		[kubelet-start] Writing kubelet environment file with flags to file "/var/lib/kubelet/kubeadm-flags.env"
-		[kubelet-start] Starting the kubelet
-		[kubelet-start] Waiting for the kubelet to perform the TLS Bootstrap...
-		[kubelet-check] Initial timeout of 40s passed.
-		[kubelet-check] It seems like the kubelet isn't running or healthy.
-		[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
-		[kubelet-check] It seems like the kubelet isn't running or healthy.
-		[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
-		[kubelet-check] It seems like the kubelet isn't running or healthy.
-		[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
-		[kubelet-check] It seems like the kubelet isn't running or healthy.
-		[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
-		[kubelet-check] It seems like the kubelet isn't running or healthy.
-		[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
-
-		Unfortunately, an error has occurred:
-			timed out waiting for the condition
-
-		This error is likely caused by:
-			- The kubelet is not running
-			- The kubelet is unhealthy due to a misconfiguration of the node in some way (required cgroups disabled)
-
-		If you are on a systemd-powered system, you can try to troubleshoot the error with the following commands:
-			- 'systemctl status kubelet'
-			- 'journalctl -xeu kubelet'
-		error execution phase kubelet-start: timed out waiting for the condition
-		To see the stack trace of this error execute with --v=5 or higher
-
-	appserver Sun 07 May 2023  8:17PM> journalctl -u kubelet -f                                                                         /home/sarnobat
-
-		-- Logs begin at Wed 2023-05-03 13:00:27 PDT. --
-
-		May 07 20:17:45 nuc2020 kubelet[30340]: Flag --container-runtime-endpoint has been deprecated, This parameter should be set via the config file specified by the Kubelet's --config flag. See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-config-file/ for more information.
-		May 07 20:17:45 nuc2020 kubelet[30340]: Flag --pod-infra-container-image has been deprecated, will be removed in a future release. Image garbage collector will get sandbox image information from CRI.
-		May 07 20:17:45 nuc2020 kubelet[30340]: I0507 20:17:45.599893   30340 server.go:199] "--pod-infra-container-image will not be pruned by the image garbage collector in kubelet and should also be set in the remote runtime"
-		May 07 20:17:45 nuc2020 kubelet[30340]: I0507 20:17:45.602446   30340 server.go:415] "Kubelet version" kubeletVersion="v1.27.1"
-		May 07 20:17:45 nuc2020 kubelet[30340]: I0507 20:17:45.602465   30340 server.go:417] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
-		May 07 20:17:45 nuc2020 kubelet[30340]: I0507 20:17:45.602664   30340 server.go:837] "Client rotation is on, will bootstrap in background"
-		May 07 20:17:45 nuc2020 kubelet[30340]: E0507 20:17:45.603126   30340 bootstrap.go:241] unable to read existing bootstrap client config from /etc/kubernetes/kubelet.conf: invalid configuration: [unable to read client-cert /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory, unable to read client-key /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory]
-		May 07 20:17:45 nuc2020 kubelet[30340]: E0507 20:17:45.603161   30340 run.go:74] "command failed" err="failed to run Kubelet: unable to load bootstrap kubeconfig: stat /etc/kubernetes/bootstrap-kubelet.conf: no such file or directory"
-		May 07 20:17:45 nuc2020 systemd[1]: kubelet.service: Main process exited, code=exited, status=1/FAILURE
-		May 07 20:17:45 nuc2020 systemd[1]: kubelet.service: Failed with result 'exit-code'.
-		qMay 07 20:17:55 nuc2020 systemd[1]: kubelet.service: Scheduled restart job, restart counter is at 14.
-		May 07 20:17:55 nuc2020 systemd[1]: Stopped kubelet: The Kubernetes Node Agent.
-		May 07 20:17:55 nuc2020 systemd[1]: Started kubelet: The Kubernetes Node Agent.
-		May 07 20:17:55 nuc2020 kubelet[30357]: Flag --container-runtime-endpoint has been deprecated, This parameter should be set via the config file specified by the Kubelet's --config flag. See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-config-file/ for more information.
-		May 07 20:17:55 nuc2020 kubelet[30357]: Flag --pod-infra-container-image has been deprecated, will be removed in a future release. Image garbage collector will get sandbox image information from CRI.
-		May 07 20:17:55 nuc2020 kubelet[30357]: I0507 20:17:55.848662   30357 server.go:199] "--pod-infra-container-image will not be pruned by the image garbage collector in kubelet and should also be set in the remote runtime"
-		May 07 20:17:55 nuc2020 kubelet[30357]: I0507 20:17:55.851348   30357 server.go:415] "Kubelet version" kubeletVersion="v1.27.1"
-		May 07 20:17:55 nuc2020 kubelet[30357]: I0507 20:17:55.851364   30357 server.go:417] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
-		May 07 20:17:55 nuc2020 kubelet[30357]: I0507 20:17:55.851528   30357 server.go:837] "Client rotation is on, will bootstrap in background"
-		May 07 20:17:55 nuc2020 kubelet[30357]: E0507 20:17:55.851939   30357 bootstrap.go:241] unable to read existing bootstrap client config from /etc/kubernetes/kubelet.conf: invalid configuration: [unable to read client-cert /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory, unable to read client-key /var/lib/kubelet/pki/kubelet-client-current.pem for default-auth due to open /var/lib/kubelet/pki/kubelet-client-current.pem: no such file or directory]
-		May 07 20:17:55 nuc2020 kubelet[30357]: E0507 20:17:55.851964   30357 run.go:74] "command failed" err="failed to run Kubelet: unable to load bootstrap kubeconfig: stat /etc/kubernetes/bootstrap-kubelet.conf: no such file or directory"
-		May 07 20:17:55 nuc2020 systemd[1]: kubelet.service: Main process exited, code=exited, status=1/FAILURE
-		May 07 20:17:55 nuc2020 systemd[1]: kubelet.service: Failed with result 'exit-code'.
-		^C
 ### install kubelet
 
 	appserver Sun 07 May 2023  8:17PM> sudo apt update && sudo apt install kubelet                                                      /home/sarnobat
