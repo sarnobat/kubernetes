@@ -1,4 +1,5 @@
 # 2023-05 nginx on Ubuntu 20
+
 -   [2023-05 nginx on Ubuntu 20](#nginx-on-ubuntu-20)
     -   [Server Node (antec)](#server-node-antec)
         -   [~~taint nodes~~](#taint-nodes)
@@ -17,12 +18,14 @@
     -   [nuc2020](#nuc2020)
         -   [~~install kubeadm, kubectl
             etc.~~](#install-kubeadm-kubectl-etc.)
+        -   [install kubelet](#install-kubelet)
         -   [join cluster](#join-cluster)
-    -   [antec](#antec)
+    -   [Server node (antec)](#server-node-antec-1)
         -   [Check node joined
             successfully](#check-node-joined-successfully)
-        -   [Testing](#testing)
+        -   [Testing nginx](#testing-nginx)
     -   [Client Node](#client-node)
+
 
 based on
 * https://www.cloudsigma.com/how-to-install-and-use-kubernetes-on-ubuntu-20-04/
