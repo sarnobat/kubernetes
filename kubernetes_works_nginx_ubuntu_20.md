@@ -602,171 +602,12 @@ I couldn't get this to work
 		kubernetes-worker   Ready    control-plane   23m   v1.26.3
 
 ### ~~junk~~
-	antec Sun 07 May 2023  8:27PM> set                                                                                                  /home/sarnobat
-	antec Sun 07 May 2023  8:28PM> history                                                                                              /home/sarnobat
 
-		27334  sudo sysctl net.bridge.bridge-nf-call-iptables=1
-		27335  sudo kubeadm init --pod-network-cidr=10.244.0.0/16
-		27336  mkdir -p $HOME/.kube\nsudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config\nsudo chown $(id -u):$(id -g) $HOME/.kube/config
-		27337  sudo ufw allow 6443\nsudo ufw allow 6443/tcp
-		27338  kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml\nkubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-rbac.yml
-		27339  kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
-		27340  kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-rbac.yml
-		27341  kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.8.0/Documentation/kube-flannel-rbac.yml
-		27342  kubectl get pods --all-namespaces\n
-		27343  kubectl get componentstatus\n
-		27344  kubectl get cs\n
-		27345  sudo vi /etc/kubernetes/manifests/kube-scheduler.yaml +/port
-		27346  sudo systemctl restart kubelet.service
-		27347  kubeadm join 192.168.1.4:6443 --token 33hpb0.ps5p55au5vdualfr\t--discovery-token-ca-cert-hash sha256:a0a4f3ec96303b6cbb741259663df3a0101109d284c68329e10d35341866dc78
-		27348  sudo kubeadm join 192.168.1.4:6443 --token 33hpb0.ps5p55au5vdualfr\t--discovery-token-ca-cert-hash sha256:a0a4f3ec96303b6cbb741259663df3a0101109d284c68329e10d35341866dc78
-		27349  kubectl get nodes
-
-	antec Sun 07 May 2023  8:28PM> history -100                                                                                         /home/sarnobat
-
-		27251  cd /media/sarnobat/_30_olive/ && sh /tmp/rsync_relative.sh old_computers/100G /media/sarnobat/_44_rackley/
-		27252  cd /media/sarnobat/_30_olive/ && bash /tmp/rsync_relative.sh old_computers/100G /media/sarnobat/_44_rackley/
-		27253  sh ~/bin/rsync_videos_stripe_job.sh
-		27254  ls /media/sarnobat/_30_olive/
-		27255  find /media/sarnobat/_30_olive/ -type d -iname "10G"
-		27256  find /media/sarnobat/_30_olive/ -type d -iname "100G"
-		27257  tmux new rsync_striped_reorganize
-		27258  tmux new -s rsync_striped_reorganize
-		27259  ls_striped.sh
-		27260  df
-		27261  df | grep scar
-		27262  ~/bin/df.sh
-		27263  ~/bin/df.sh | grep scarl
-		27264  ~/bin/df.sh | head
-		27265  ~/bin/df.sh | head -20
-		27266  ls_striped.sh | grep 100M
-		27267  ls_striped.sh | grep -v navajo | grep -v sandy | grep -v backup |  grep 100M
-		27268  ls_striped.sh | grep -v navajo | grep -v sandy | grep -v backup |  grep -v cache | grep 100M
-		27269  crontab -e
-		27270  sh ~/bin/rsync_videos_stripe_job.sh
-		27271  sh ~/bin/rsync_videos_stripe_job.sh
-		27272  sh ~/bin/rsync_videos_stripe_job.sh
-		27273  ~/bin/df.sh | head -30
-		27274  sh ~/bin/rsync_videos_stripe_job.sh
-		27275  sh ~/bin/rsync_videos_stripe_job.sh
-		27276  cat /tmp/du_videos.txt | grep 100G
-		27277  sh ~/bin/rmdir_recursive.sh /media/sarnobat/_27_moonstone/old_computers/2022-04-09_kingston_240G.nuc2017.overheating/Videos/100G
-		27278  find /media/sarnobat/_27_moonstone/old_computers/2022-04-09_kingston_240G.nuc2017.overheating/Videos/100G
-		27279  find /media/sarnobat/_27_moonstone/old_computers/
-		27280  cat /tmp/du_videos.txt | grep 100G
-		27281  ~/bin/df.sh
-		27282  ~/bin/df.sh | head -20
-		27283  ~/bin/df.sh | head -30
-		27284  ls /media/sarnobat/_42_purpureus
-		27285  cat /tmp/du_videos.txt | grep 10G
-		27286  cat /tmp/du_videos.txt | grep 10G$
-		27287  cat /tmp/du_videos.txt | grep 10G$ | grep -v 3TB
-		27288  cat /tmp/du_videos.txt | grep 10G$ | grep -v 3TB | perl -pe 's{.*?/media}{/media}g'
-		27289  cat /tmp/du_videos.txt | grep 10G$ | grep -v 3TB | perl -pe 's{.*?/media}{/media}g' | sort
-		27290  ~/bin/df.sh
-		27291  ~/bin/df.sh | head -30
-		27292  ~/bin/df.sh | head -40
-		27293  ~/bin/df.sh | grep _40
-		27294  ~/bin/df.sh | grep _4
-		27295  ~/bin/df.sh | grep _2
-		27296  ls_striped.sh | grep 1G
-		27297  cat /tmp/du_videos.txt | grep 1G$ | grep -v 3TB | perl -pe 's{.*?/media}{/media}g' | sort
-		27298  cat /tmp/du_videos.txt | grep 1G$ | grep -v -e 3TB -e unmirr | perl -pe 's{.*?/media}{/media}g' | sort
-		27299  ls /media/sarnobat/_7_unmellow/videos/1k/1G
-		27300  find /media/sarnobat/_7_unmellow/videos/1k/1G
-		27301  cat /tmp/du_videos.txt | grep 1G$ | grep -v -e 3TB -e unmirr | perl -pe 's{.*?/media}{/media}g' | sort
-		27302  cat /tmp/du_videos.txt | grep 1G$ | grep -v -e 3TB -e unmirr | perl -pe 's{.*?/media}{/media}g' | sort | perl -pe 's{(.*)}{cd $1}g'
-		27303  cat /tmp/du_videos.txt | grep 1G$ | grep -v -e 3TB -e unmirr | perl -pe 's{.*?/media}{/media}g' | sort | perl -pe 's{(.*)}{cd $1}'
-		27304  cat /tmp/du_videos.txt | grep 1G$ | grep -v -e 3TB -e unmirr | perl -pe 's{.*?/media}{/media}g' | sort | perl -pe 's{(.*)}{cd $1\t\t}'
-		27305  cat /tmp/du_videos.txt | grep 1G$ | grep -v -e 3TB -e unmirr | perl -pe 's{.*?/media}{/media}g' | sort | perl -pe 's{(.*)(videos.*)}{cd $1\t\tsh /tmp/rsync_relative.sh }'
-		27306  cat /tmp/du_videos.txt | grep 1G$ | grep -v -e 3TB -e unmirr | perl -pe 's{.*?/media}{/media}g' | sort | perl -pe 's{(.*)(videos.*)}{cd $1\t\tsh /tmp/rsync_relative.sh $2}'
-		27307  cat /tmp/du_videos.txt | grep 1G$ | grep -v -e 3TB -e unmirr | perl -pe 's{.*?/media}{/media}g' | sort | perl -pe 's{(.*)(videos.*)}{cd $1\t\tsh /tmp/rsync_relative.sh $2}' | grep -v _2
-		27308  cat /tmp/du_videos.txt | grep 1G$ | grep -v -e 3TB -e unmirr | perl -pe 's{.*?/media}{/media}g' | sort | perl -pe 's{(.*)(videos.*)}{cd $1\t\tsh /tmp/rsync_relative.sh $2}' | grep -v _2 | grep -v _3
-		27309  cat /tmp/du_videos.txt | grep 1G$ | grep -v -e 3TB -e unmirr | perl -pe 's{.*?/media}{/media}g' | sort | perl -pe 's{(.*)(videos.*)}{cd $1\t\tsh /tmp/rsync_relative.sh $2\t}' | grep -v _2 | grep -v _3
-		27310  ~/bin/df.sh
-		27311  ~/bin/df.sh | grep _2
-		27312  ~/bin/df.sh | grep -e _2 -e _3
-		27313  ~/bin/df.sh | grep -e _2 -e _3 | head
-		27314  tmux attach-session -t rsync_striped_reorganize
-		27315  source ~/.zshrc
-		27316  ~/bin/df.sh
-		27317  kubectl get all --all-namespaces
-		27318  sudo kubeadm reset\n
-		27319  kubectl taint nodes --all
-		27320  kubectl taint nodes --all node-role.kubernetes.io/control-plane-\n
-		27321  ps aux | grep containerd
-		27322  sudo systemctl status containerd\n
-		27323  sudo mkdir -p /etc/containerd/; containerd config default | sudo tee /etc/containerd/config.toml\n
-		27324  sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml\n
-		27325  sudo systemctl restart containerd\n
-		27326  kubectl taint nodes --all node-role.kubernetes.io/control-plane-\n
-		27327  swapoff -a
-		27328  sudo systemctl restart kubelet
-		27329  kubectl taint nodes --all node-role.kubernetes.io/control-plane-\n
-		27330  sudo swapoff -a\n
-		27331  sudo hostnamectl set-hostname kubernetes-master
-		27332  sudo hostnamectl set-hostname kubernetes-worker\n
-		27333  lsmod | grep br_netfilter\n
-		27334  sudo sysctl net.bridge.bridge-nf-call-iptables=1
-		27335  sudo kubeadm init --pod-network-cidr=10.244.0.0/16
-		27336  mkdir -p $HOME/.kube\nsudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config\nsudo chown $(id -u):$(id -g) $HOME/.kube/config
-		27337  sudo ufw allow 6443\nsudo ufw allow 6443/tcp
-		27338  kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml\nkubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-rbac.yml
-		27339  kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
-		27340  kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-rbac.yml
-		27341  kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.8.0/Documentation/kube-flannel-rbac.yml
-		27342  kubectl get pods --all-namespaces\n
-		27343  kubectl get componentstatus\n
-		27344  kubectl get cs\n
-		27345  sudo vi /etc/kubernetes/manifests/kube-scheduler.yaml +/port
-		27346  sudo systemctl restart kubelet.service
-		27347  kubeadm join 192.168.1.4:6443 --token 33hpb0.ps5p55au5vdualfr\t--discovery-token-ca-cert-hash sha256:a0a4f3ec96303b6cbb741259663df3a0101109d284c68329e10d35341866dc78
-		27348  sudo kubeadm join 192.168.1.4:6443 --token 33hpb0.ps5p55au5vdualfr\t--discovery-token-ca-cert-hash sha256:a0a4f3ec96303b6cbb741259663df3a0101109d284c68329e10d35341866dc78
-		27349  kubectl get nodes
-		27350  history
-		antec Sun 07 May 2023  8:28PM> history -100 | grep -i swap                                                                          /home/sarnobat
-		27327  swapoff -a
-		27330  sudo swapoff -a\n
 
 ## nuc2020
 
 ### ~~install kubeadm, kubectl etc.~~
 
-
-	appserver Sun 07 May 2023  7:25PM> kubectl get all --all-namespaces                                                                 /home/sarnobat
-	zsh: command not found: kubectl
-	appserver Sun 07 May 2023  7:58PM> kubeadm join 192.168.1.4:6443 --token 33hpb0.ps5p55au5vdualfr        --discovery-token-ca-cert-hash sha256:a0a4f3ec96303b6cbb741259663df3a0101109d284c68329e10d35341866dc78
-	zsh: command not found: kubeadm
-	appserver Sun 07 May 2023  8:11PM> sudo apt install -y kubeadm                                                                      /home/sarnobat
-
-		Reading package lists... Done
-		Building dependency tree
-		Reading state information... Done
-
-		No apt package "kubeadm", but there is a snap with that name.
-		Try "snap install kubeadm"
-
-		E: Unable to locate package kubeadm
-
-	appserver Sun 07 May 2023  8:11PM> snap install kubeadm                                                                             /home/sarnobat
-	error: access denied (try with sudo)
-
-	appserver Sun 07 May 2023  8:11PM> sudo snap install kubeadm                                                                        /home/sarnobat
-	error: This revision of snap "kubeadm" was published using classic confinement and thus may perform
-		   arbitrary system changes outside of the security sandbox that snaps are usually confined to,
-		   which may put your system at risk.
-
-		   If you understand and want to proceed repeat the command including --classic.
-
-	appserver Sun 07 May 2023  8:11PM> sudo apt install kubeadm                                                                         /home/sarnobat
-	Reading package lists... Done
-	Building dependency tree
-	Reading state information... Done
-
-	No apt package "kubeadm", but there is a snap with that name.
-	Try "snap install kubeadm"
-
-	E: Unable to locate package kubeadm
 
 	appserver Sun 07 May 2023  8:12PM> curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add                 /home/sarnobat
 
@@ -776,100 +617,101 @@ I couldn't get this to work
 	sudo mv ~/kubernetes.list /etc/apt/sources.list.d
 
 	appserver Sun 07 May 2023  8:14PM> sudo apt update && sudo apt install kubeadm                                                      /home/sarnobat
-	Hit:1 https://dl.google.com/linux/chrome/deb stable InRelease
-	Hit:2 http://us.archive.ubuntu.com/ubuntu focal InRelease
-	Get:4 http://us.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
-	Get:5 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
-	Ign:6 http://ppa.launchpad.net/b-stolk/ppa/ubuntu focal InRelease
-	Get:7 http://us.archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
-	Hit:8 http://ppa.launchpad.net/videolan/master-daily/ubuntu focal InRelease
-	Get:3 https://packages.cloud.google.com/apt kubernetes-xenial InRelease [8,993 B]
-	Get:9 http://us.archive.ubuntu.com/ubuntu focal-updates/main amd64 DEP-11 Metadata [275 kB]
-	Err:10 http://ppa.launchpad.net/b-stolk/ppa/ubuntu focal Release
-	  404  Not Found [IP: 185.125.190.52 80]
-	Get:11 http://us.archive.ubuntu.com/ubuntu focal-updates/universe amd64 DEP-11 Metadata [410 kB]
-	Get:12 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 Packages [65.7 kB]
-	Get:13 http://us.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 DEP-11 Metadata [944 B]
-	Get:14 http://us.archive.ubuntu.com/ubuntu focal-backports/main amd64 DEP-11 Metadata [7,968 B]
-	Get:15 http://us.archive.ubuntu.com/ubuntu focal-backports/universe amd64 DEP-11 Metadata [30.5 kB]
-	Get:16 http://security.ubuntu.com/ubuntu focal-security/main amd64 DEP-11 Metadata [59.9 kB]
-	Get:17 http://security.ubuntu.com/ubuntu focal-security/universe amd64 DEP-11 Metadata [95.6 kB]
-	Get:18 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 DEP-11 Metadata [940 B]
-	Reading package lists... Done
-	E: The repository 'http://ppa.launchpad.net/b-stolk/ppa/ubuntu focal Release' does not have a Release file.
-	N: Updating from such a repository can't be done securely, and is therefore disabled by default.
-	N: See apt-secure(8) manpage for repository creation and user configuration details.
+
+		Hit:1 https://dl.google.com/linux/chrome/deb stable InRelease
+		Hit:2 http://us.archive.ubuntu.com/ubuntu focal InRelease
+		Get:4 http://us.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+		Get:5 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+		Ign:6 http://ppa.launchpad.net/b-stolk/ppa/ubuntu focal InRelease
+		Get:7 http://us.archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
+		Hit:8 http://ppa.launchpad.net/videolan/master-daily/ubuntu focal InRelease
+		Get:3 https://packages.cloud.google.com/apt kubernetes-xenial InRelease [8,993 B]
+		Get:9 http://us.archive.ubuntu.com/ubuntu focal-updates/main amd64 DEP-11 Metadata [275 kB]
+		Err:10 http://ppa.launchpad.net/b-stolk/ppa/ubuntu focal Release
+		  404  Not Found [IP: 185.125.190.52 80]
+		Get:11 http://us.archive.ubuntu.com/ubuntu focal-updates/universe amd64 DEP-11 Metadata [410 kB]
+		Get:12 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 Packages [65.7 kB]
+		Get:13 http://us.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 DEP-11 Metadata [944 B]
+		Get:14 http://us.archive.ubuntu.com/ubuntu focal-backports/main amd64 DEP-11 Metadata [7,968 B]
+		Get:15 http://us.archive.ubuntu.com/ubuntu focal-backports/universe amd64 DEP-11 Metadata [30.5 kB]
+		Get:16 http://security.ubuntu.com/ubuntu focal-security/main amd64 DEP-11 Metadata [59.9 kB]
+		Get:17 http://security.ubuntu.com/ubuntu focal-security/universe amd64 DEP-11 Metadata [95.6 kB]
+		Get:18 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 DEP-11 Metadata [940 B]
+		Reading package lists... Done
+		E: The repository 'http://ppa.launchpad.net/b-stolk/ppa/ubuntu focal Release' does not have a Release file.
+		N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+		N: See apt-secure(8) manpage for repository creation and user configuration details.
 
 	appserver Sun 07 May 2023  8:14PM> sudo apt install kubeadm                                                                         /home/sarnobat
 
-	Reading package lists... Done
-	Building dependency tree
-	Reading state information... Done
-	The following packages were automatically installed and are no longer required:
-	Unpacking socat (1.7.3.3-2) ...
-	Selecting previously unselected package kubelet.
-	Preparing to unpack .../6-kubelet_1.27.1-00_amd64.deb ...
-	Unpacking kubelet (1.27.1-00) ...
-	Selecting previously unselected package kubectl.
-	Preparing to unpack .../7-kubectl_1.27.1-00_amd64.deb ...
-	Unpacking kubectl (1.27.1-00) ...
-	Selecting previously unselected package kubeadm.
-	Preparing to unpack .../8-kubeadm_1.27.1-00_amd64.deb ...
-	Unpacking kubeadm (1.27.1-00) ...
-	Setting up conntrack (1:1.4.5-2) ...
-	Setting up kubectl (1.27.1-00) ...
-	Setting up ebtables (2.0.11-3build1) ...
-	Setting up socat (1.7.3.3-2) ...
-	Setting up cri-tools (1.26.0-00) ...
-	Setting up kubernetes-cni (1.2.0-00) ...
-	Setting up ethtool (1:5.4-1) ...
-	Setting up kubelet (1.27.1-00) ...
-	Created symlink /etc/systemd/system/multi-user.target.wants/kubelet.service → /lib/systemd/system/kubelet.service.
-	Setting up kubeadm (1.27.1-00) ...
-	Processing triggers for man-db (2.9.1-1) ...
+		Reading package lists... Done
+		Building dependency tree
+		Reading state information... Done
+		The following packages were automatically installed and are no longer required:
+		Unpacking socat (1.7.3.3-2) ...
+		Selecting previously unselected package kubelet.
+		Preparing to unpack .../6-kubelet_1.27.1-00_amd64.deb ...
+		Unpacking kubelet (1.27.1-00) ...
+		Selecting previously unselected package kubectl.
+		Preparing to unpack .../7-kubectl_1.27.1-00_amd64.deb ...
+		Unpacking kubectl (1.27.1-00) ...
+		Selecting previously unselected package kubeadm.
+		Preparing to unpack .../8-kubeadm_1.27.1-00_amd64.deb ...
+		Unpacking kubeadm (1.27.1-00) ...
+		Setting up conntrack (1:1.4.5-2) ...
+		Setting up kubectl (1.27.1-00) ...
+		Setting up ebtables (2.0.11-3build1) ...
+		Setting up socat (1.7.3.3-2) ...
+		Setting up cri-tools (1.26.0-00) ...
+		Setting up kubernetes-cni (1.2.0-00) ...
+		Setting up ethtool (1:5.4-1) ...
+		Setting up kubelet (1.27.1-00) ...
+		Created symlink /etc/systemd/system/multi-user.target.wants/kubelet.service → /lib/systemd/system/kubelet.service.
+		Setting up kubeadm (1.27.1-00) ...
+		Processing triggers for man-db (2.9.1-1) ...
 
-	appserver Sun 07 May 2023  8:15PM> kubeadm join 192.168.1.4:6443 --token 33hpb0.ps5p55au5vdualfr        --discovery-token-ca-cert-hash sha256:a0a4f3ec96303b6cbb741259663df3a0101109d284c68329e10d35341866dc78
+		appserver Sun 07 May 2023  8:15PM> kubeadm join 192.168.1.4:6443 --token 33hpb0.ps5p55au5vdualfr        --discovery-token-ca-cert-hash sha256:a0a4f3ec96303b6cbb741259663df3a0101109d284c68329e10d35341866dc78
 
-	[preflight] Running pre-flight checks
-	error execution phase preflight: [preflight] Some fatal errors occurred:
-		[ERROR IsPrivilegedUser]: user is not running as root
-	[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
-	To see the stack trace of this error execute with --v=5 or higher
+		[preflight] Running pre-flight checks
+		error execution phase preflight: [preflight] Some fatal errors occurred:
+			[ERROR IsPrivilegedUser]: user is not running as root
+		[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
+		To see the stack trace of this error execute with --v=5 or higher
 
-	appserver Sun 07 May 2023  8:15PM> sudo kubeadm join 192.168.1.4:6443 --token 33hpb0.ps5p55au5vdualfr   --discovery-token-ca-cert-hash sha256:a0a4f3ec96303b6cbb741259663df3a0101109d284c68329e10d35341866dc78
+		appserver Sun 07 May 2023  8:15PM> sudo kubeadm join 192.168.1.4:6443 --token 33hpb0.ps5p55au5vdualfr   --discovery-token-ca-cert-hash sha256:a0a4f3ec96303b6cbb741259663df3a0101109d284c68329e10d35341866dc78
 
-	[preflight] Running pre-flight checks
-		[WARNING Swap]: swap is enabled; production deployments should disable swap unless testing the NodeSwap feature gate of the kubelet
-	[preflight] Reading configuration from the cluster...
-	[preflight] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -o yaml'
-	[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
-	[kubelet-start] Writing kubelet environment file with flags to file "/var/lib/kubelet/kubeadm-flags.env"
-	[kubelet-start] Starting the kubelet
-	[kubelet-start] Waiting for the kubelet to perform the TLS Bootstrap...
-	[kubelet-check] Initial timeout of 40s passed.
-	[kubelet-check] It seems like the kubelet isn't running or healthy.
-	[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
-	[kubelet-check] It seems like the kubelet isn't running or healthy.
-	[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
-	[kubelet-check] It seems like the kubelet isn't running or healthy.
-	[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
-	[kubelet-check] It seems like the kubelet isn't running or healthy.
-	[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
-	[kubelet-check] It seems like the kubelet isn't running or healthy.
-	[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
+		[preflight] Running pre-flight checks
+			[WARNING Swap]: swap is enabled; production deployments should disable swap unless testing the NodeSwap feature gate of the kubelet
+		[preflight] Reading configuration from the cluster...
+		[preflight] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -o yaml'
+		[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
+		[kubelet-start] Writing kubelet environment file with flags to file "/var/lib/kubelet/kubeadm-flags.env"
+		[kubelet-start] Starting the kubelet
+		[kubelet-start] Waiting for the kubelet to perform the TLS Bootstrap...
+		[kubelet-check] Initial timeout of 40s passed.
+		[kubelet-check] It seems like the kubelet isn't running or healthy.
+		[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
+		[kubelet-check] It seems like the kubelet isn't running or healthy.
+		[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
+		[kubelet-check] It seems like the kubelet isn't running or healthy.
+		[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
+		[kubelet-check] It seems like the kubelet isn't running or healthy.
+		[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
+		[kubelet-check] It seems like the kubelet isn't running or healthy.
+		[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp 127.0.0.1:10248: connect: connection refused.
 
-	Unfortunately, an error has occurred:
-		timed out waiting for the condition
+		Unfortunately, an error has occurred:
+			timed out waiting for the condition
 
-	This error is likely caused by:
-		- The kubelet is not running
-		- The kubelet is unhealthy due to a misconfiguration of the node in some way (required cgroups disabled)
+		This error is likely caused by:
+			- The kubelet is not running
+			- The kubelet is unhealthy due to a misconfiguration of the node in some way (required cgroups disabled)
 
-	If you are on a systemd-powered system, you can try to troubleshoot the error with the following commands:
-		- 'systemctl status kubelet'
-		- 'journalctl -xeu kubelet'
-	error execution phase kubelet-start: timed out waiting for the condition
-	To see the stack trace of this error execute with --v=5 or higher
+		If you are on a systemd-powered system, you can try to troubleshoot the error with the following commands:
+			- 'systemctl status kubelet'
+			- 'journalctl -xeu kubelet'
+		error execution phase kubelet-start: timed out waiting for the condition
+		To see the stack trace of this error execute with --v=5 or higher
 
 	appserver Sun 07 May 2023  8:17PM> journalctl -u kubelet -f                                                                         /home/sarnobat
 
@@ -899,6 +741,7 @@ I couldn't get this to work
 		May 07 20:17:55 nuc2020 systemd[1]: kubelet.service: Main process exited, code=exited, status=1/FAILURE
 		May 07 20:17:55 nuc2020 systemd[1]: kubelet.service: Failed with result 'exit-code'.
 		^C
+### install kubelet
 
 	appserver Sun 07 May 2023  8:17PM> sudo apt update && sudo apt install kubelet                                                      /home/sarnobat
 
