@@ -1,5 +1,19 @@
 # 2023-05 nginx on Ubuntu 20
 
+-   [2023-05 nginx on Ubuntu 20](#nginx-on-ubuntu-20)
+    -   [1. a) Infrastructure setup: Server Node
+        (antec)](#a-infrastructure-setup-server-node-antec)
+        -   [kubeadm init](#kubeadm-init)
+        -   [kubectl apply](#kubectl-apply)
+    -   [1. b) Infrastructure setup: Worker node
+        (nuc2020)](#b-infrastructure-setup-worker-node-nuc2020)
+        -   [kubeadm join](#kubeadm-join)
+    -   [2. a) Application deployment: Server node
+        (antec)](#a-application-deployment-server-node-antec)
+        -   [kubectl create deployment
+            nginx](#kubectl-create-deployment-nginx)
+        -   [Testing nginx](#testing-nginx)
+        
 Based on
 * https://www.cloudsigma.com/how-to-install-and-use-kubernetes-on-ubuntu-20-04/
     
