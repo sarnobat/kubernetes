@@ -11,6 +11,10 @@ https://blog.andreaskrahl.de/content/images/2020/11/1-QLGlVwQ1wmm6c6TrPg4s-w.png
 
 ### 2023-05
 
+#### Part 1: creating a cluster of virtual hardware
+See other md file
+
+#### Part 2: deploying an application to the hardware
 ```
 kubectl create deployment mydeployment --image=python --command -- python -m http.server
 kubectl expose deployment  mydeployment --port 8000 --type=LoadBalancer --name=my-service
