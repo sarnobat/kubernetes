@@ -8,6 +8,15 @@ use cases:
 
 https://blog.andreaskrahl.de/content/images/2020/11/1-QLGlVwQ1wmm6c6TrPg4s-w.png
 
+
+### 2023-05
+
+```
+kubectl create deployment mydeployment --image=python --command -- python -m http.server
+kubectl expose deployment  mydeployment --port 8000 --type=LoadBalancer --name=my-service
+kubectl get services
+curl 'http://nuc2020:30805/'
+```
 ### 2023-03
 Worked
 https://hub.docker.com/r/ubuntu/apache2
