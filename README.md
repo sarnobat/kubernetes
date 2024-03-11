@@ -8,6 +8,8 @@ use cases:
 
 https://blog.andreaskrahl.de/content/images/2020/11/1-QLGlVwQ1wmm6c6TrPg4s-w.png
 
+### TODO
+* 2024-03 hello world java http (not rest) servlet (maybe graal vm native compiled)
 
 ### 2023-05
 
