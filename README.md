@@ -2,6 +2,9 @@
 
 
 ### 2025-06
+Just created:
+* /Volumes/git/computers.git/mac/bin/kubernetes_mac_os_helloworld.sh
+
 See also
 * /Volumes/git/sarnobat.git/2023/tex/2023/pdf/2023-03_cisco_training_kubernetes.pdf
 * /Volumes/git/mwk.git/2021/snippets/basic_clusters_still_need_human_sorting/application/snpt_1633771455220_0__Docker__Kubernetes_meetup_.mwk
