@@ -3,6 +3,7 @@
 
 ### 2025-06
 See also
+* /Volumes/git/sarnobat.git/2023/tex/2023/pdf/2023-03_cisco_training_kubernetes.pdf
 * /Volumes/git/mwk.git/2021/snippets/basic_clusters_still_need_human_sorting/application/snpt_1633771455220_0__Docker__Kubernetes_meetup_.mwk
 * /Volumes/trash_numerous/trash/index_mwk/snippets/2024/snippets/snpt_1733944500_2020-12-17_A_pod_must_be_self_c.mwk
 * /Volumes/git/computers.git/2024/common/bin/kubectl_create_yaml_programmaticaly.sh
